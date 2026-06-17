@@ -11,14 +11,19 @@ SOURCES = [
     "InayaStudyApp/InayaStudyAppApp.swift",
     "InayaStudyApp/Models/Topic.swift",
     "InayaStudyApp/Models/PersistenceModels.swift",
+    "InayaStudyApp/Models/CharacterState.swift",
     "InayaStudyApp/Data/TopicRegistry.swift",
+    "InayaStudyApp/Data/AdventureMapLayout.swift",
     "InayaStudyApp/Services/ProblemGenerator.swift",
     "InayaStudyApp/Services/ScienceProblemGenerator.swift",
     "InayaStudyApp/Services/ProgressStore.swift",
     "InayaStudyApp/Services/SettingsStore.swift",
+    "InayaStudyApp/Services/RewardsStore.swift",
+    "InayaStudyApp/Services/UserProfileStore.swift",
     "InayaStudyApp/ViewModels/QuizViewModel.swift",
     "InayaStudyApp/Helpers/Theme.swift",
     "InayaStudyApp/Helpers/Encouragement.swift",
+    "InayaStudyApp/Helpers/MapProgressHelper.swift",
     "InayaStudyApp/Helpers/SoundEffects.swift",
     "InayaStudyApp/Helpers/Haptics.swift",
     "InayaStudyApp/Helpers/KeychainPIN.swift",
@@ -30,7 +35,15 @@ SOURCES = [
     "InayaStudyApp/Views/ResultsView.swift",
     "InayaStudyApp/Views/ProgressView.swift",
     "InayaStudyApp/Views/SettingsView.swift",
+    "InayaStudyApp/Views/Character/CharacterView.swift",
+    "InayaStudyApp/Views/Map/AdventureMapView.swift",
+    "InayaStudyApp/Views/Map/StreakRowView.swift",
+    "InayaStudyApp/Views/Rewards/StarsEarnedView.swift",
+    "InayaStudyApp/Views/Rewards/RewardBadgeView.swift",
+    "InayaStudyApp/Views/Rewards/ProfileView.swift",
+    "InayaStudyApp/Views/Onboarding/OnboardingView.swift",
     "InayaStudyApp/Views/Components/NumericKeypadView.swift",
+    "InayaStudyApp/Views/Components/AdventureNumpadView.swift",
     "InayaStudyApp/Views/Components/SharedComponents.swift",
     "InayaStudyApp/Views/Components/QuizKeyboardShortcuts.swift",
     "InayaStudyApp/Views/Visuals/ClockFaceView.swift",
@@ -86,7 +99,7 @@ def main() -> None:
             f"\t\t{bf} /* {name} in Sources */ = {{isa = PBXBuildFile; fileRef = {fr} /* {name} */; }};"
         )
         file_refs.append(
-            f"\t\t{fr} /* {name} */ = {{isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = {name}; sourceTree = \"<group>\"; }};"
+            f"\t\t{fr} /* {name} */ = {{isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = {path}; sourceTree = SOURCE_ROOT; }};"
         )
         source_phase.append(f"\t\t\t{bf} /* {name} in Sources */,")
 
@@ -99,7 +112,7 @@ def main() -> None:
             f"\t\t{bf} /* {name} in Resources */ = {{isa = PBXBuildFile; fileRef = {fr} /* {name} */; }};"
         )
         file_refs.append(
-            f"\t\t{fr} /* {name} */ = {{isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = {name}; sourceTree = \"<group>\"; }};"
+            f"\t\t{fr} /* {name} */ = {{isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = {path}; sourceTree = SOURCE_ROOT; }};"
         )
         resource_phase.append(f"\t\t\t{bf} /* {name} in Resources */,")
 
@@ -112,7 +125,7 @@ def main() -> None:
             f"\t\t{bf} /* {name} in Sources */ = {{isa = PBXBuildFile; fileRef = {fr} /* {name} */; }};"
         )
         file_refs.append(
-            f"\t\t{fr} /* {name} */ = {{isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = {name}; sourceTree = \"<group>\"; }};"
+            f"\t\t{fr} /* {name} */ = {{isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = {path}; sourceTree = SOURCE_ROOT; }};"
         )
         test_sources.append(f"\t\t\t{bf} /* {name} in Sources */,")
 
@@ -128,6 +141,11 @@ def main() -> None:
         ]
     )
     lines.extend(file_refs)
+
+    source_file_ref_ids = ", ".join(f"{uid('F', i)}" for i in range(1, idx))
+    test_file_ref_id = f"{uid('F', 200)}"
+    asset_ref_id = f"{uid('F', 100)}"
+
     lines.extend(
         [
             "/* End PBXFileReference section */",
@@ -139,17 +157,9 @@ def main() -> None:
             "",
             "/* Begin PBXGroup section */",
             f"\t\t{uid('G', 1)} = {{isa = PBXGroup; children = ({uid('G', 2)} /* InayaStudyApp */, {uid('G', 3)} /* InayaStudyAppTests */, {uid('G', 4)} /* Products */); sourceTree = \"<group>\"; }};",
-            f"\t\t{uid('G', 2)} /* InayaStudyApp */ = {{isa = PBXGroup; children = ({uid('F', 1)}, {uid('G', 10)}, {uid('G', 11)}, {uid('G', 12)}, {uid('G', 13)}, {uid('G', 14)}, {uid('G', 16)}, {uid('F', 100)}); path = InayaStudyApp; sourceTree = \"<group>\"; }};",
-            f"\t\t{uid('G', 3)} /* InayaStudyAppTests */ = {{isa = PBXGroup; children = ({uid('F', 200)}); path = InayaStudyAppTests; sourceTree = \"<group>\"; }};",
+            f"\t\t{uid('G', 2)} /* InayaStudyApp */ = {{isa = PBXGroup; children = ({source_file_ref_ids}, {asset_ref_id}); name = InayaStudyApp; sourceTree = \"<group>\"; }};",
+            f"\t\t{uid('G', 3)} /* InayaStudyAppTests */ = {{isa = PBXGroup; children = ({test_file_ref_id}); name = InayaStudyAppTests; sourceTree = \"<group>\"; }};",
             f"\t\t{uid('G', 4)} /* Products */ = {{isa = PBXGroup; children = ({uid('F', 900)}, {uid('F', 901)}); name = Products; sourceTree = \"<group>\"; }};",
-            f"\t\t{uid('G', 10)} /* Models */ = {{isa = PBXGroup; children = ({uid('F', 2)}, {uid('F', 3)}); path = Models; sourceTree = \"<group>\"; }};",
-            f"\t\t{uid('G', 11)} /* Data */ = {{isa = PBXGroup; children = ({uid('F', 4)}); path = Data; sourceTree = \"<group>\"; }};",
-            f"\t\t{uid('G', 12)} /* Services */ = {{isa = PBXGroup; children = ({uid('F', 5)}, {uid('F', 6)}, {uid('F', 7)}, {uid('F', 8)}); path = Services; sourceTree = \"<group>\"; }};",
-            f"\t\t{uid('G', 13)} /* ViewModels */ = {{isa = PBXGroup; children = ({uid('F', 9)}); path = ViewModels; sourceTree = \"<group>\"; }};",
-            f"\t\t{uid('G', 14)} /* Helpers */ = {{isa = PBXGroup; children = ({uid('F', 10)}, {uid('F', 11)}, {uid('F', 12)}, {uid('F', 13)}, {uid('F', 14)}); path = Helpers; sourceTree = \"<group>\"; }};",
-            f"\t\t{uid('G', 16)} /* Views */ = {{isa = PBXGroup; children = ({uid('G', 17)}, {uid('G', 18)}, {uid('F', 15)}, {uid('F', 16)}, {uid('F', 17)}, {uid('F', 18)}, {uid('F', 19)}, {uid('F', 20)}, {uid('F', 21)}, {uid('F', 22)}); path = Views; sourceTree = \"<group>\"; }};",
-            f"\t\t{uid('G', 17)} /* Components */ = {{isa = PBXGroup; children = ({uid('F', 23)}, {uid('F', 24)}, {uid('F', 25)}); path = Components; sourceTree = \"<group>\"; }};",
-            f"\t\t{uid('G', 18)} /* Visuals */ = {{isa = PBXGroup; children = ({uid('F', 26)}, {uid('F', 27)}, {uid('F', 28)}, {uid('F', 29)}, {uid('F', 30)}, {uid('F', 31)}, {uid('F', 32)}, {uid('F', 33)}, {uid('F', 34)}, {uid('F', 35)}, {uid('F', 36)}); path = Visuals; sourceTree = \"<group>\"; }};",
             "/* End PBXGroup section */",
             "",
             "/* Begin PBXNativeTarget section */",

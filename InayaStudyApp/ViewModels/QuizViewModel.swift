@@ -21,6 +21,7 @@ final class QuizViewModel: ObservableObject {
     @Published private(set) var showingFeedback = false
     @Published private(set) var lastWasCorrect = false
     @Published private(set) var encouragement = ""
+    @Published private(set) var selectedAnswer: String?
     @Published var isComplete = false
 
     private var advanceTask: Task<Void, Never>?
@@ -65,6 +66,7 @@ final class QuizViewModel: ObservableObject {
         let trimmed = answer.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
 
+        selectedAnswer = trimmed
         Haptics.tap()
         let correct = ProblemGenerator.isAnswerValid(problem, userAnswer: trimmed)
         lastWasCorrect = correct
@@ -84,7 +86,7 @@ final class QuizViewModel: ObservableObject {
 
         advanceTask?.cancel()
         advanceTask = Task {
-            try? await Task.sleep(nanoseconds: 2_000_000_000)
+            try? await Task.sleep(nanoseconds: 1_500_000_000)
             guard !Task.isCancelled else { return }
             await MainActor.run { self.advance() }
         }
@@ -101,6 +103,7 @@ final class QuizViewModel: ObservableObject {
 
     private func advance() {
         showingFeedback = false
+        selectedAnswer = nil
         userInput = ""
         if currentIndex + 1 >= problems.count {
             isComplete = true

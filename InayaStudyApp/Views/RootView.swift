@@ -2,23 +2,22 @@ import SwiftUI
 
 struct RootView: View {
     @EnvironmentObject private var progressStore: ProgressStore
-    @State private var selectedSubject: Subject = .math
-    @State private var selectedGrade: GradeLevel?
-    @State private var selectedTab: AppTab = .home
+    @EnvironmentObject private var profileStore: UserProfileStore
+    @State private var selectedTab: AppTab = .adventure
 
     var body: some View {
         TabView(selection: $selectedTab) {
             NavigationStack {
-                homeStack
+                AdventureMapView()
             }
-            .tabItem { Label(AppTab.home.title, systemImage: AppTab.home.icon) }
-            .tag(AppTab.home)
+            .tabItem { Label(AppTab.adventure.title, systemImage: AppTab.adventure.icon) }
+            .tag(AppTab.adventure)
 
             NavigationStack {
-                StudentProgressView()
+                ProfileView()
             }
-            .tabItem { Label(AppTab.progress.title, systemImage: AppTab.progress.icon) }
-            .tag(AppTab.progress)
+            .tabItem { Label(AppTab.badges.title, systemImage: AppTab.badges.icon) }
+            .tag(AppTab.badges)
 
             NavigationStack {
                 SettingsTabView()
@@ -27,24 +26,23 @@ struct RootView: View {
             .tag(AppTab.settings)
         }
     }
+}
 
-    @ViewBuilder
-    private var homeStack: some View {
-        if let grade = selectedGrade {
-            TopicGridView(grade: grade, subject: selectedSubject)
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button("Back") {
-                            selectedGrade = nil
-                        }
-                    }
-                }
-        } else {
-            HomeView(
-                selectedSubject: $selectedSubject,
-                selectedGrade: $selectedGrade,
-                selectedTab: $selectedTab
-            )
+enum AppTab: String, CaseIterable, Identifiable {
+    case adventure, badges, settings
+    var id: String { rawValue }
+    var title: String {
+        switch self {
+        case .adventure: return "Adventure"
+        case .badges: return "Badges"
+        case .settings: return "Settings"
+        }
+    }
+    var icon: String {
+        switch self {
+        case .adventure: return "map.fill"
+        case .badges: return "rosette"
+        case .settings: return "gearshape.fill"
         }
     }
 }

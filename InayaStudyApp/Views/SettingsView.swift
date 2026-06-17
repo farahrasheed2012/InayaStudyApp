@@ -3,6 +3,7 @@ import SwiftUI
 struct SettingsTabView: View {
     @ObservedObject private var settings = SettingsStore.shared
     @EnvironmentObject private var progressStore: ProgressStore
+    @EnvironmentObject private var rewardsStore: RewardsStore
 
     @State private var unlocked = false
     @State private var pinInput = ""
@@ -98,6 +99,7 @@ struct SettingsTabView: View {
         .confirmationDialog("Reset all practice history?", isPresented: $showResetConfirm, titleVisibility: .visible) {
             Button("Reset", role: .destructive) {
                 progressStore.resetAll()
+                rewardsStore.resetAll()
             }
             Button("Cancel", role: .cancel) {}
         }

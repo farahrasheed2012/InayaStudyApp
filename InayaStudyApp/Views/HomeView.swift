@@ -4,7 +4,6 @@ struct HomeView: View {
     @EnvironmentObject private var progressStore: ProgressStore
     @Binding var selectedSubject: Subject
     @Binding var selectedGrade: GradeLevel?
-    @Binding var selectedTab: AppTab
 
     var body: some View {
         ScrollView {
@@ -150,25 +149,6 @@ struct HomeView: View {
                     .fill(i < filled ? Color.green : Color.secondary.opacity(0.3))
                     .frame(width: 8, height: 8)
             }
-        }
-    }
-}
-
-enum AppTab: String, CaseIterable, Identifiable {
-    case home, progress, settings
-    var id: String { rawValue }
-    var title: String {
-        switch self {
-        case .home: return "Home"
-        case .progress: return "Progress"
-        case .settings: return "Settings"
-        }
-    }
-    var icon: String {
-        switch self {
-        case .home: return "house.fill"
-        case .progress: return "chart.bar.fill"
-        case .settings: return "gearshape.fill"
         }
     }
 }
