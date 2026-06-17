@@ -1,0 +1,567 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		MPB001 /* InayaStudyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF001 /* InayaStudyAppApp.swift */; };
+		MPB002 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF002 /* Topic.swift */; };
+		MPB003 /* PersistenceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF003 /* PersistenceModels.swift */; };
+		MPB004 /* TopicRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF004 /* TopicRegistry.swift */; };
+		MPB005 /* ProblemGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF005 /* ProblemGenerator.swift */; };
+		MPB006 /* ScienceProblemGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF006 /* ScienceProblemGenerator.swift */; };
+		MPB007 /* ProgressStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF007 /* ProgressStore.swift */; };
+		MPB008 /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF008 /* SettingsStore.swift */; };
+		MPB009 /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF009 /* QuizViewModel.swift */; };
+		MPB010 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF010 /* Theme.swift */; };
+		MPB011 /* Encouragement.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF011 /* Encouragement.swift */; };
+		MPB012 /* SoundEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF012 /* SoundEffects.swift */; };
+		MPB013 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF013 /* Haptics.swift */; };
+		MPB014 /* KeychainPIN.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF014 /* KeychainPIN.swift */; };
+		MPB015 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF015 /* RootView.swift */; };
+		MPB016 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF016 /* HomeView.swift */; };
+		MPB017 /* TopicGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF017 /* TopicGridView.swift */; };
+		MPB018 /* SessionSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF018 /* SessionSetupView.swift */; };
+		MPB019 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF019 /* QuizView.swift */; };
+		MPB020 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF020 /* ResultsView.swift */; };
+		MPB021 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF021 /* ProgressView.swift */; };
+		MPB022 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF022 /* SettingsView.swift */; };
+		MPB023 /* NumericKeypadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF023 /* NumericKeypadView.swift */; };
+		MPB024 /* SharedComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF024 /* SharedComponents.swift */; };
+		MPB025 /* QuizKeyboardShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF025 /* QuizKeyboardShortcuts.swift */; };
+		MPB026 /* ClockFaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF026 /* ClockFaceView.swift */; };
+		MPB027 /* CoinRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF027 /* CoinRowView.swift */; };
+		MPB028 /* NumberLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF028 /* NumberLineView.swift */; };
+		MPB029 /* ArrayGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF029 /* ArrayGridView.swift */; };
+		MPB030 /* FractionCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF030 /* FractionCircleView.swift */; };
+		MPB031 /* BarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF031 /* BarGraphView.swift */; };
+		MPB032 /* ProblemVisualView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF032 /* ProblemVisualView.swift */; };
+		MPB033 /* MatterStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF033 /* MatterStateView.swift */; };
+		MPB034 /* FoodChainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF034 /* FoodChainView.swift */; };
+		MPB035 /* LifeCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF035 /* LifeCycleView.swift */; };
+		MPB036 /* ScienceToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF036 /* ScienceToolView.swift */; };
+		MPB100 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = MPF100 /* Assets.xcassets */; };
+		MPB200 /* ProblemGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF200 /* ProblemGeneratorTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		MPX001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = MPP000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = MPT001;
+			remoteInfo = InayaStudyApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		MPF001 /* InayaStudyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyAppApp.swift; sourceTree = "<group>"; };
+		MPF002 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		MPF003 /* PersistenceModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceModels.swift; sourceTree = "<group>"; };
+		MPF004 /* TopicRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicRegistry.swift; sourceTree = "<group>"; };
+		MPF005 /* ProblemGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemGenerator.swift; sourceTree = "<group>"; };
+		MPF006 /* ScienceProblemGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScienceProblemGenerator.swift; sourceTree = "<group>"; };
+		MPF007 /* ProgressStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressStore.swift; sourceTree = "<group>"; };
+		MPF008 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		MPF009 /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
+		MPF010 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		MPF011 /* Encouragement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encouragement.swift; sourceTree = "<group>"; };
+		MPF012 /* SoundEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffects.swift; sourceTree = "<group>"; };
+		MPF013 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		MPF014 /* KeychainPIN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPIN.swift; sourceTree = "<group>"; };
+		MPF015 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		MPF016 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		MPF017 /* TopicGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicGridView.swift; sourceTree = "<group>"; };
+		MPF018 /* SessionSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSetupView.swift; sourceTree = "<group>"; };
+		MPF019 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		MPF020 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
+		MPF021 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		MPF022 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		MPF023 /* NumericKeypadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericKeypadView.swift; sourceTree = "<group>"; };
+		MPF024 /* SharedComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedComponents.swift; sourceTree = "<group>"; };
+		MPF025 /* QuizKeyboardShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizKeyboardShortcuts.swift; sourceTree = "<group>"; };
+		MPF026 /* ClockFaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockFaceView.swift; sourceTree = "<group>"; };
+		MPF027 /* CoinRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRowView.swift; sourceTree = "<group>"; };
+		MPF028 /* NumberLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberLineView.swift; sourceTree = "<group>"; };
+		MPF029 /* ArrayGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayGridView.swift; sourceTree = "<group>"; };
+		MPF030 /* FractionCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractionCircleView.swift; sourceTree = "<group>"; };
+		MPF031 /* BarGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraphView.swift; sourceTree = "<group>"; };
+		MPF032 /* ProblemVisualView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemVisualView.swift; sourceTree = "<group>"; };
+		MPF033 /* MatterStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatterStateView.swift; sourceTree = "<group>"; };
+		MPF034 /* FoodChainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodChainView.swift; sourceTree = "<group>"; };
+		MPF035 /* LifeCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeCycleView.swift; sourceTree = "<group>"; };
+		MPF036 /* ScienceToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScienceToolView.swift; sourceTree = "<group>"; };
+		MPF100 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		MPF200 /* ProblemGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemGeneratorTests.swift; sourceTree = "<group>"; };
+		MPF900 /* InayaStudyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InayaStudyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		MPF901 /* MathPathTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathPathTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		MPP001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		MPP002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		MPG001 = {
+			isa = PBXGroup;
+			children = (
+				MPG002 /* InayaStudyApp */,
+				MPG003 /* MathPathTests */,
+				MPG004 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		MPG002 /* InayaStudyApp */ = {
+			isa = PBXGroup;
+			children = (
+				MPF001 /* InayaStudyAppApp.swift */,
+				MPG010 /* Models */,
+				MPG011 /* Data */,
+				MPG012 /* Services */,
+				MPG013 /* ViewModels */,
+				MPG014 /* Helpers */,
+				MPG016 /* Views */,
+				MPF100 /* Assets.xcassets */,
+			);
+			path = InayaStudyApp;
+			sourceTree = "<group>";
+		};
+		MPG003 /* MathPathTests */ = {
+			isa = PBXGroup;
+			children = (
+				MPF200 /* ProblemGeneratorTests.swift */,
+			);
+			path = MathPathTests;
+			sourceTree = "<group>";
+		};
+		MPG004 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				MPF900 /* InayaStudyApp.app */,
+				MPF901 /* MathPathTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		MPG010 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				MPF002 /* Topic.swift */,
+				MPF003 /* PersistenceModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		MPG011 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				MPF004 /* TopicRegistry.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		MPG012 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				MPF005 /* ProblemGenerator.swift */,
+				MPF006 /* ScienceProblemGenerator.swift */,
+				MPF007 /* ProgressStore.swift */,
+				MPF008 /* SettingsStore.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		MPG013 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				MPF009 /* QuizViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		MPG014 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				MPF010 /* Theme.swift */,
+				MPF011 /* Encouragement.swift */,
+				MPF012 /* SoundEffects.swift */,
+				MPF013 /* Haptics.swift */,
+				MPF014 /* KeychainPIN.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		MPG016 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				MPG017 /* Components */,
+				MPG018 /* Visuals */,
+				MPF015 /* RootView.swift */,
+				MPF016 /* HomeView.swift */,
+				MPF017 /* TopicGridView.swift */,
+				MPF018 /* SessionSetupView.swift */,
+				MPF019 /* QuizView.swift */,
+				MPF020 /* ResultsView.swift */,
+				MPF021 /* ProgressView.swift */,
+				MPF022 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		MPG017 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				MPF023 /* NumericKeypadView.swift */,
+				MPF024 /* SharedComponents.swift */,
+				MPF025 /* QuizKeyboardShortcuts.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		MPG018 /* Visuals */ = {
+			isa = PBXGroup;
+			children = (
+				MPF026 /* ClockFaceView.swift */,
+				MPF027 /* CoinRowView.swift */,
+				MPF028 /* NumberLineView.swift */,
+				MPF029 /* ArrayGridView.swift */,
+				MPF030 /* FractionCircleView.swift */,
+				MPF031 /* BarGraphView.swift */,
+				MPF032 /* ProblemVisualView.swift */,
+				MPF033 /* MatterStateView.swift */,
+				MPF034 /* FoodChainView.swift */,
+				MPF035 /* LifeCycleView.swift */,
+				MPF036 /* ScienceToolView.swift */,
+			);
+			path = Visuals;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		MPT001 /* InayaStudyApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = MPC003 /* Build configuration list for PBXNativeTarget "InayaStudyApp" */;
+			buildPhases = (
+				MPE001 /* Sources */,
+				MPP001 /* Frameworks */,
+				MPE002 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = InayaStudyApp;
+			productName = InayaStudyApp;
+			productReference = MPF900 /* InayaStudyApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		MPT002 /* MathPathTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = MPC004 /* Build configuration list for PBXNativeTarget "MathPathTests" */;
+			buildPhases = (
+				MPE003 /* Sources */,
+				MPP002 /* Frameworks */,
+				MPE004 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				MPD001 /* PBXTargetDependency */,
+			);
+			name = MathPathTests;
+			productName = MathPathTests;
+			productReference = MPF901 /* MathPathTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		MPP000 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					MPT002 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = MPT001;
+					};
+				};
+			};
+			buildConfigurationList = MPC001 /* Build configuration list for PBXProject "MathPath" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = MPG001;
+			productRefGroup = MPG004 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				MPT001 /* InayaStudyApp */,
+				MPT002 /* MathPathTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		MPE002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				MPB100 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		MPE004 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		MPE001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				MPB001 /* InayaStudyAppApp.swift in Sources */,
+				MPB002 /* Topic.swift in Sources */,
+				MPB003 /* PersistenceModels.swift in Sources */,
+				MPB004 /* TopicRegistry.swift in Sources */,
+				MPB005 /* ProblemGenerator.swift in Sources */,
+				MPB006 /* ScienceProblemGenerator.swift in Sources */,
+				MPB007 /* ProgressStore.swift in Sources */,
+				MPB008 /* SettingsStore.swift in Sources */,
+				MPB009 /* QuizViewModel.swift in Sources */,
+				MPB010 /* Theme.swift in Sources */,
+				MPB011 /* Encouragement.swift in Sources */,
+				MPB012 /* SoundEffects.swift in Sources */,
+				MPB013 /* Haptics.swift in Sources */,
+				MPB014 /* KeychainPIN.swift in Sources */,
+				MPB015 /* RootView.swift in Sources */,
+				MPB016 /* HomeView.swift in Sources */,
+				MPB017 /* TopicGridView.swift in Sources */,
+				MPB018 /* SessionSetupView.swift in Sources */,
+				MPB019 /* QuizView.swift in Sources */,
+				MPB020 /* ResultsView.swift in Sources */,
+				MPB021 /* ProgressView.swift in Sources */,
+				MPB022 /* SettingsView.swift in Sources */,
+				MPB023 /* NumericKeypadView.swift in Sources */,
+				MPB024 /* SharedComponents.swift in Sources */,
+				MPB025 /* QuizKeyboardShortcuts.swift in Sources */,
+				MPB026 /* ClockFaceView.swift in Sources */,
+				MPB027 /* CoinRowView.swift in Sources */,
+				MPB028 /* NumberLineView.swift in Sources */,
+				MPB029 /* ArrayGridView.swift in Sources */,
+				MPB030 /* FractionCircleView.swift in Sources */,
+				MPB031 /* BarGraphView.swift in Sources */,
+				MPB032 /* ProblemVisualView.swift in Sources */,
+				MPB033 /* MatterStateView.swift in Sources */,
+				MPB034 /* FoodChainView.swift in Sources */,
+				MPB035 /* LifeCycleView.swift in Sources */,
+				MPB036 /* ScienceToolView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		MPE003 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				MPB200 /* ProblemGeneratorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		MPD001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = MPT001 /* InayaStudyApp */;
+			targetProxy = MPX001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		MPC005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		MPC006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		MPC007 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MathPath;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inaya.studyapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		MPC008 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MathPath;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inaya.studyapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		MPC009 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inaya.studyapp.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InayaStudyApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/InayaStudyApp";
+			};
+			name = Debug;
+		};
+		MPC010 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inaya.studyapp.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InayaStudyApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/InayaStudyApp";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		MPC001 /* Build configuration list for PBXProject "MathPath" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				MPC005 /* Debug */,
+				MPC006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		MPC003 /* Build configuration list for PBXNativeTarget "InayaStudyApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				MPC007 /* Debug */,
+				MPC008 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		MPC004 /* Build configuration list for PBXNativeTarget "MathPathTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				MPC009 /* Debug */,
+				MPC010 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = MPP000 /* Project object */;
+}
