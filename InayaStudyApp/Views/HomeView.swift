@@ -57,7 +57,7 @@ struct HomeView: View {
             .padding()
         }
         .background(AppTheme.background.ignoresSafeArea())
-        .navigationTitle("MathPath")
+        .navigationTitle(AppTheme.appName)
         .onChange(of: selectedSubject) { _ in
             selectedGrade = nil
         }

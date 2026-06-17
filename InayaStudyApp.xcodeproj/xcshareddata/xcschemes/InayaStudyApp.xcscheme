@@ -17,7 +17,7 @@
                BlueprintIdentifier = "MPT001"
                BuildableName = "InayaStudyApp.app"
                BlueprintName = "InayaStudyApp"
-               ReferencedContainer = "container:MathPath.xcodeproj">
+               ReferencedContainer = "container:InayaStudyApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "MPT002"
-               BuildableName = "MathPathTests.xctest"
-               BlueprintName = "MathPathTests"
-               ReferencedContainer = "container:MathPath.xcodeproj">
+               BuildableName = "InayaStudyAppTests.xctest"
+               BlueprintName = "InayaStudyAppTests"
+               ReferencedContainer = "container:InayaStudyApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,7 +57,7 @@
             BlueprintIdentifier = "MPT001"
             BuildableName = "InayaStudyApp.app"
             BlueprintName = "InayaStudyApp"
-            ReferencedContainer = "container:MathPath.xcodeproj">
+            ReferencedContainer = "container:InayaStudyApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -74,7 +74,7 @@
             BlueprintIdentifier = "MPT001"
             BuildableName = "InayaStudyApp.app"
             BlueprintName = "InayaStudyApp"
-            ReferencedContainer = "container:MathPath.xcodeproj">
+            ReferencedContainer = "container:InayaStudyApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

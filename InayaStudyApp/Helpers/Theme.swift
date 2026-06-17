@@ -1,6 +1,7 @@
 import SwiftUI
 
 enum AppTheme {
+    static let appName = "Inaya Study App"
     static let background = Color("AppBackground")
     static let card = Color("CardBackground")
     static let success = Color.green

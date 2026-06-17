@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Generate MathPath.xcodeproj/project.pbxproj for InayaStudyApp."""
+"""Generate InayaStudyApp.xcodeproj/project.pbxproj."""
 
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-PROJECT = ROOT / "MathPath.xcodeproj" / "project.pbxproj"
+PROJECT = ROOT / "InayaStudyApp.xcodeproj" / "project.pbxproj"
+DISPLAY_NAME = "Inaya Study App"
 
 SOURCES = [
     "InayaStudyApp/InayaStudyAppApp.swift",
@@ -45,7 +46,7 @@ SOURCES = [
     "InayaStudyApp/Views/Visuals/ScienceToolView.swift",
 ]
 
-TESTS = ["MathPathTests/ProblemGeneratorTests.swift"]
+TESTS = ["InayaStudyAppTests/ProblemGeneratorTests.swift"]
 RESOURCES = ["InayaStudyApp/Assets.xcassets"]
 
 
@@ -123,7 +124,7 @@ def main() -> None:
             "",
             "/* Begin PBXFileReference section */",
             f"\t\t{uid('F', 900)} /* InayaStudyApp.app */ = {{isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InayaStudyApp.app; sourceTree = BUILT_PRODUCTS_DIR; }};",
-            f"\t\t{uid('F', 901)} /* MathPathTests.xctest */ = {{isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MathPathTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; }};",
+            f"\t\t{uid('F', 901)} /* InayaStudyAppTests.xctest */ = {{isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InayaStudyAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; }};",
         ]
     )
     lines.extend(file_refs)
@@ -137,9 +138,9 @@ def main() -> None:
             "/* End PBXFrameworksBuildPhase section */",
             "",
             "/* Begin PBXGroup section */",
-            f"\t\t{uid('G', 1)} = {{isa = PBXGroup; children = ({uid('G', 2)} /* InayaStudyApp */, {uid('G', 3)} /* MathPathTests */, {uid('G', 4)} /* Products */); sourceTree = \"<group>\"; }};",
+            f"\t\t{uid('G', 1)} = {{isa = PBXGroup; children = ({uid('G', 2)} /* InayaStudyApp */, {uid('G', 3)} /* InayaStudyAppTests */, {uid('G', 4)} /* Products */); sourceTree = \"<group>\"; }};",
             f"\t\t{uid('G', 2)} /* InayaStudyApp */ = {{isa = PBXGroup; children = ({uid('F', 1)}, {uid('G', 10)}, {uid('G', 11)}, {uid('G', 12)}, {uid('G', 13)}, {uid('G', 14)}, {uid('G', 16)}, {uid('F', 100)}); path = InayaStudyApp; sourceTree = \"<group>\"; }};",
-            f"\t\t{uid('G', 3)} /* MathPathTests */ = {{isa = PBXGroup; children = ({uid('F', 200)}); path = MathPathTests; sourceTree = \"<group>\"; }};",
+            f"\t\t{uid('G', 3)} /* InayaStudyAppTests */ = {{isa = PBXGroup; children = ({uid('F', 200)}); path = InayaStudyAppTests; sourceTree = \"<group>\"; }};",
             f"\t\t{uid('G', 4)} /* Products */ = {{isa = PBXGroup; children = ({uid('F', 900)}, {uid('F', 901)}); name = Products; sourceTree = \"<group>\"; }};",
             f"\t\t{uid('G', 10)} /* Models */ = {{isa = PBXGroup; children = ({uid('F', 2)}, {uid('F', 3)}); path = Models; sourceTree = \"<group>\"; }};",
             f"\t\t{uid('G', 11)} /* Data */ = {{isa = PBXGroup; children = ({uid('F', 4)}); path = Data; sourceTree = \"<group>\"; }};",
@@ -153,7 +154,7 @@ def main() -> None:
             "",
             "/* Begin PBXNativeTarget section */",
             f"\t\t{uid('T', 1)} /* InayaStudyApp */ = {{isa = PBXNativeTarget; buildConfigurationList = {uid('C', 3)}; buildPhases = ({uid('E', 1)} /* Sources */, {uid('P', 1)} /* Frameworks */, {uid('E', 2)} /* Resources */); buildRules = (); dependencies = (); name = InayaStudyApp; productName = InayaStudyApp; productReference = {uid('F', 900)}; productType = \"com.apple.product-type.application\"; }};",
-            f"\t\t{uid('T', 2)} /* MathPathTests */ = {{isa = PBXNativeTarget; buildConfigurationList = {uid('C', 4)}; buildPhases = ({uid('E', 3)} /* Sources */, {uid('P', 2)} /* Frameworks */, {uid('E', 4)} /* Resources */); buildRules = (); dependencies = ({uid('D', 1)}); name = MathPathTests; productName = MathPathTests; productReference = {uid('F', 901)}; productType = \"com.apple.product-type.bundle.unit-test\"; }};",
+            f"\t\t{uid('T', 2)} /* InayaStudyAppTests */ = {{isa = PBXNativeTarget; buildConfigurationList = {uid('C', 4)}; buildPhases = ({uid('E', 3)} /* Sources */, {uid('P', 2)} /* Frameworks */, {uid('E', 4)} /* Resources */); buildRules = (); dependencies = ({uid('D', 1)}); name = InayaStudyAppTests; productName = InayaStudyAppTests; productReference = {uid('F', 901)}; productType = \"com.apple.product-type.bundle.unit-test\"; }};",
             "/* End PBXNativeTarget section */",
             "",
             "/* Begin PBXContainerItemProxy section */",
@@ -187,8 +188,8 @@ def main() -> None:
             "/* Begin XCBuildConfiguration section */",
             f"\t\t{uid('C', 5)} /* Debug */ = {{isa = XCBuildConfiguration; buildSettings = {{ALWAYS_SEARCH_USER_PATHS = NO; CLANG_ENABLE_MODULES = YES; CLANG_ENABLE_OBJC_ARC = YES; COPY_PHASE_STRIP = NO; DEBUG_INFORMATION_FORMAT = dwarf; ENABLE_TESTABILITY = YES; GCC_OPTIMIZATION_LEVEL = 0; IPHONEOS_DEPLOYMENT_TARGET = 16.0; MACOSX_DEPLOYMENT_TARGET = 13.0; ONLY_ACTIVE_ARCH = YES; SDKROOT = iphoneos; SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG; SWIFT_OPTIMIZATION_LEVEL = \"-Onone\"; }}; name = Debug; }};",
             f"\t\t{uid('C', 6)} /* Release */ = {{isa = XCBuildConfiguration; buildSettings = {{ALWAYS_SEARCH_USER_PATHS = NO; CLANG_ENABLE_MODULES = YES; CLANG_ENABLE_OBJC_ARC = YES; COPY_PHASE_STRIP = NO; DEBUG_INFORMATION_FORMAT = \"dwarf-with-dsym\"; ENABLE_NS_ASSERTIONS = NO; GCC_OPTIMIZATION_LEVEL = s; IPHONEOS_DEPLOYMENT_TARGET = 16.0; MACOSX_DEPLOYMENT_TARGET = 13.0; SDKROOT = iphoneos; SWIFT_COMPILATION_MODE = wholemodule; VALIDATE_PRODUCT = YES; }}; name = Release; }};",
-            f"\t\t{uid('C', 7)} /* Debug */ = {{isa = XCBuildConfiguration; buildSettings = {{ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES; ENABLE_PREVIEWS = YES; GENERATE_INFOPLIST_FILE = YES; INFOPLIST_KEY_CFBundleDisplayName = MathPath; INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES; IPHONEOS_DEPLOYMENT_TARGET = 16.0; LD_RUNPATH_SEARCH_PATHS = (\"$(inherited)\", \"@executable_path/Frameworks\"); MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.inaya.studyapp; PRODUCT_NAME = \"$(TARGET_NAME)\"; SUPPORTS_MACCATALYST = YES; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = \"1,2\"; }}; name = Debug; }};",
-            f"\t\t{uid('C', 8)} /* Release */ = {{isa = XCBuildConfiguration; buildSettings = {{ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES; ENABLE_PREVIEWS = YES; GENERATE_INFOPLIST_FILE = YES; INFOPLIST_KEY_CFBundleDisplayName = MathPath; INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES; IPHONEOS_DEPLOYMENT_TARGET = 16.0; LD_RUNPATH_SEARCH_PATHS = (\"$(inherited)\", \"@executable_path/Frameworks\"); MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.inaya.studyapp; PRODUCT_NAME = \"$(TARGET_NAME)\"; SUPPORTS_MACCATALYST = YES; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = \"1,2\"; }}; name = Release; }};",
+            f"\t\t{uid('C', 7)} /* Debug */ = {{isa = XCBuildConfiguration; buildSettings = {{ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES; ENABLE_PREVIEWS = YES; GENERATE_INFOPLIST_FILE = YES; INFOPLIST_KEY_CFBundleDisplayName = \"{DISPLAY_NAME}\"; INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES; IPHONEOS_DEPLOYMENT_TARGET = 16.0; LD_RUNPATH_SEARCH_PATHS = (\"$(inherited)\", \"@executable_path/Frameworks\"); MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.inaya.studyapp; PRODUCT_NAME = \"$(TARGET_NAME)\"; SUPPORTS_MACCATALYST = YES; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = \"1,2\"; }}; name = Debug; }};",
+            f"\t\t{uid('C', 8)} /* Release */ = {{isa = XCBuildConfiguration; buildSettings = {{ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES; ENABLE_PREVIEWS = YES; GENERATE_INFOPLIST_FILE = YES; INFOPLIST_KEY_CFBundleDisplayName = \"{DISPLAY_NAME}\"; INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES; IPHONEOS_DEPLOYMENT_TARGET = 16.0; LD_RUNPATH_SEARCH_PATHS = (\"$(inherited)\", \"@executable_path/Frameworks\"); MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.inaya.studyapp; PRODUCT_NAME = \"$(TARGET_NAME)\"; SUPPORTS_MACCATALYST = YES; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = \"1,2\"; }}; name = Release; }};",
             f"\t\t{uid('C', 9)} /* Debug */ = {{isa = XCBuildConfiguration; buildSettings = {{BUNDLE_LOADER = \"$(TEST_HOST)\"; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 16.0; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.inaya.studyapp.tests; PRODUCT_NAME = \"$(TARGET_NAME)\"; SWIFT_VERSION = 5.0; TEST_HOST = \"$(BUILT_PRODUCTS_DIR)/InayaStudyApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/InayaStudyApp\"; }}; name = Debug; }};",
             f"\t\t{uid('C', 10)} /* Release */ = {{isa = XCBuildConfiguration; buildSettings = {{BUNDLE_LOADER = \"$(TEST_HOST)\"; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 16.0; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.inaya.studyapp.tests; PRODUCT_NAME = \"$(TARGET_NAME)\"; SWIFT_VERSION = 5.0; TEST_HOST = \"$(BUILT_PRODUCTS_DIR)/InayaStudyApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/InayaStudyApp\"; }}; name = Release; }};",
             "/* End XCBuildConfiguration section */",
@@ -196,7 +197,7 @@ def main() -> None:
             "/* Begin XCConfigurationList section */",
             f"\t\t{uid('C', 1)} /* Build configuration list for PBXProject */ = {{isa = XCConfigurationList; buildConfigurations = ({uid('C', 5)}, {uid('C', 6)}); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; }};",
             f"\t\t{uid('C', 3)} /* Build configuration list for PBXNativeTarget InayaStudyApp */ = {{isa = XCConfigurationList; buildConfigurations = ({uid('C', 7)}, {uid('C', 8)}); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; }};",
-            f"\t\t{uid('C', 4)} /* Build configuration list for PBXNativeTarget MathPathTests */ = {{isa = XCConfigurationList; buildConfigurations = ({uid('C', 9)}, {uid('C', 10)}); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; }};",
+            f"\t\t{uid('C', 4)} /* Build configuration list for PBXNativeTarget InayaStudyAppTests */ = {{isa = XCConfigurationList; buildConfigurations = ({uid('C', 9)}, {uid('C', 10)}); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; }};",
             "/* End XCConfigurationList section */",
             "\t};",
             f"\trootObject = {PROJECT_ID} /* Project object */;",
