@@ -6,6 +6,7 @@ final class SettingsStore: ObservableObject {
     static let shared = SettingsStore()
 
     @AppStorage("soundEffectsEnabled") var soundEffectsEnabled = true
+    @AppStorage("voiceGuidanceEnabled") var voiceGuidanceEnabled = true
     @AppStorage("hapticsEnabled") var hapticsEnabled = true
     @AppStorage("defaultDifficulty") private var defaultDifficultyRaw = Difficulty.medium.rawValue
     @AppStorage("defaultQuestionCount") var defaultQuestionCount = 10

@@ -3,7 +3,13 @@ import AudioToolbox
 
 @MainActor
 enum SoundEffects {
-    private static var player: AVAudioPlayer?
+    private static var configured = false
+
+    static func prepare() {
+        guard !configured else { return }
+        configured = true
+        SpeechManager.shared.configureAudioSession()
+    }
 
     static func playTap() {
         guard SettingsStore.shared.soundEffectsEnabled else { return }
@@ -13,6 +19,30 @@ enum SoundEffects {
     static func playCorrect() {
         guard SettingsStore.shared.soundEffectsEnabled else { return }
         playSequence(frequencies: [523.25, 659.25, 783.99], duration: 0.12)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.08) {
+            playApplause()
+        }
+    }
+
+    /// Quick celebratory claps — layered after correct answers and big wins.
+    static func playApplause() {
+        guard SettingsStore.shared.soundEffectsEnabled else { return }
+        let clapCount = 7
+        for index in 0..<clapCount {
+            let delay = Double(index) * 0.07 + Double.random(in: 0...0.03)
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                let frequency = Double.random(in: 200...480)
+                playTone(frequency: frequency, duration: 0.045, volume: 0.18)
+            }
+        }
+    }
+
+    static func playCelebration() {
+        guard SettingsStore.shared.soundEffectsEnabled else { return }
+        playSequence(frequencies: [523.25, 659.25, 880, 1046.5], duration: 0.14)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            playApplause()
+        }
     }
 
     static func playIncorrect() {
@@ -23,11 +53,14 @@ enum SoundEffects {
     static func playStarEarned() {
         guard SettingsStore.shared.soundEffectsEnabled else { return }
         playSequence(frequencies: [880, 1046.5, 1318.5], duration: 0.1)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+            playApplause()
+        }
     }
 
     static func playBadgeUnlocked() {
         guard SettingsStore.shared.soundEffectsEnabled else { return }
-        playSequence(frequencies: [523.25, 659.25, 880, 1046.5], duration: 0.14)
+        playCelebration()
     }
 
     static func playUnlock() {

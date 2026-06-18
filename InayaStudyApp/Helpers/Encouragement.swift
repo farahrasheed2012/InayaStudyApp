@@ -37,9 +37,10 @@ enum Encouragement {
         "Future scientist!",
     ]
 
-    static func random(for subject: Subject = .math) -> String {
-        let pool = subject == .science ? sciencePhrases : mathPhrases
-        return pool.randomElement() ?? "Great job!"
+    static func random(for subject: Subject, name: String = "Inaya") -> String {
+        let pool = (subject == .science ? sciencePhrases : mathPhrases)
+            .map { $0.replacingOccurrences(of: "Inaya", with: name) }
+        return pool.randomElement() ?? "Great job, \(name)!"
     }
 
     static func random() -> String {

@@ -21,6 +21,7 @@ struct OnboardingView: View {
                     withAnimation { page += 1 }
                 } else {
                     profileStore.hasCompletedOnboarding = true
+                    SpeechManager.shared.speakGreeting(name: profileStore.studentName)
                     onFinish()
                 }
             }

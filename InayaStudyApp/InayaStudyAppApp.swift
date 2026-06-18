@@ -22,6 +22,9 @@ struct InayaStudyAppApp: App {
             .environmentObject(settings)
             .environmentObject(rewardsStore)
             .environmentObject(profileStore)
+            .onAppear {
+                SoundEffects.prepare()
+            }
             #if targetEnvironment(macCatalyst)
             .frame(minWidth: 560, minHeight: 700)
             #endif

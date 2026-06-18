@@ -79,7 +79,7 @@ struct QuizView: View {
             )
         }
         .fullScreenCover(isPresented: $showBadge) {
-            RewardBadgeView(topic: topic, accuracy: viewModel.accuracy) {
+            RewardBadgeView(topic: topic, accuracy: viewModel.accuracy, studentName: profileStore.studentName) {
                 showBadge = false
                 showStars = true
             }

@@ -58,6 +58,7 @@ struct SettingsTabView: View {
         Form {
             Section("Experience") {
                 Toggle("Sound effects", isOn: $settings.soundEffectsEnabled)
+                Toggle("Voice encouragement", isOn: $settings.voiceGuidanceEnabled)
                 Toggle("Haptics", isOn: $settings.hapticsEnabled)
             }
 

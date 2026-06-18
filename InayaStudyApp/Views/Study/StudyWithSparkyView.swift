@@ -3,6 +3,7 @@ import SwiftUI
 struct StudyWithSparkyView: View {
     let topic: Topic
 
+    @EnvironmentObject private var profileStore: UserProfileStore
     @State private var page = 0
     @State private var exampleProblems: [Problem] = []
     @State private var revealedExamples: Set<Int> = []
@@ -237,6 +238,10 @@ struct StudyWithSparkyView: View {
                             revealedExamples.insert(index)
                             sparkyMood = .excited
                             SoundEffects.playCorrect()
+                            SpeechManager.shared.speakPraise(
+                                name: profileStore.studentName,
+                                subject: topic.subject
+                            )
                         }
                     }
                     .font(AppTypography.cardTitle)

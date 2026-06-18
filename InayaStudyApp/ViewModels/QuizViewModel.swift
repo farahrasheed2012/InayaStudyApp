@@ -71,7 +71,7 @@ final class QuizViewModel: ObservableObject {
         let correct = ProblemGenerator.isAnswerValid(problem, userAnswer: trimmed)
         lastWasCorrect = correct
         encouragement = correct
-            ? Encouragement.random(for: topic.subject)
+            ? Encouragement.random(for: topic.subject, name: UserProfileStore.shared.studentName)
             : TopicStudyGuide.explanation(for: problem, topic: topic)
         answered.append(AnsweredProblem(id: problem.id, problem: problem, userAnswer: trimmed, isCorrect: correct))
         showingFeedback = true
@@ -79,6 +79,10 @@ final class QuizViewModel: ObservableObject {
         if correct {
             SoundEffects.playCorrect()
             Haptics.success()
+            SpeechManager.shared.speakPraise(
+                name: UserProfileStore.shared.studentName,
+                subject: topic.subject
+            )
         } else {
             SoundEffects.playIncorrect()
             Haptics.error()

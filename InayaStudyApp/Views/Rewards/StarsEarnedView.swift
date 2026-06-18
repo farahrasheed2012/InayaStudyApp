@@ -156,6 +156,7 @@ struct StarsEarnedView: View {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
             withAnimation(.spring()) { showButton = true }
+            SpeechManager.shared.speakResults(stars: earnedStars, name: studentName, subject: topic.subject)
         }
     }
 }

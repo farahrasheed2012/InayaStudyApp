@@ -3,6 +3,7 @@ import SwiftUI
 struct RewardBadgeView: View {
     let topic: Topic
     let accuracy: Double
+    let studentName: String
     var onDismiss: () -> Void
 
     @State private var showContent = false
@@ -60,6 +61,7 @@ struct RewardBadgeView: View {
         .onAppear {
             SoundEffects.playBadgeUnlocked()
             Haptics.badgeUnlocked()
+            SpeechManager.shared.speakBadgeUnlock(topicName: topic.name, name: studentName)
             withAnimation(.spring(response: 0.5, dampingFraction: 0.65)) {
                 showContent = true
             }

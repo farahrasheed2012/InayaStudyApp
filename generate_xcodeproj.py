@@ -26,6 +26,7 @@ SOURCES = [
     "InayaStudyApp/Helpers/Encouragement.swift",
     "InayaStudyApp/Helpers/MapProgressHelper.swift",
     "InayaStudyApp/Helpers/SoundEffects.swift",
+    "InayaStudyApp/Helpers/SpeechManager.swift",
     "InayaStudyApp/Helpers/Haptics.swift",
     "InayaStudyApp/Helpers/KeychainPIN.swift",
     "InayaStudyApp/Views/RootView.swift",
