@@ -22,5 +22,8 @@ struct FractionCircleView: View {
             }
         }
         .frame(width: 140, height: 140)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Fraction circle")
+        .accessibilityValue("\(numerator) out of \(denominator) parts shaded")
     }
 }

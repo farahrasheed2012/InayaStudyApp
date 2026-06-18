@@ -8,10 +8,14 @@ struct QuizView: View {
     @EnvironmentObject private var progressStore: ProgressStore
     @EnvironmentObject private var rewardsStore: RewardsStore
     @EnvironmentObject private var profileStore: UserProfileStore
+    @ObservedObject private var settings = SettingsStore.shared
 
     @StateObject private var viewModel: QuizViewModel
     @State private var showStars = false
     @State private var showBadge = false
+    @State private var showReviewMisses = false
+    @State private var showDifficultyNudge = false
+    @State private var timerResetToken = 0
     @State private var sparkyMood: SparkyMood = .thinking
     @State private var hintText: String?
     @State private var slideOffset: CGFloat = 0
@@ -37,6 +41,20 @@ struct QuizView: View {
             if let problem = viewModel.currentProblem {
                 ScrollView {
                     VStack(spacing: 16) {
+                        if settings.challengeModeEnabled && !viewModel.showingFeedback {
+                            HStack {
+                                Spacer()
+                                QuizCountdownTimer(
+                                    totalSeconds: settings.challengeTimerSeconds,
+                                    accent: accent
+                                ) {
+                                    guard !viewModel.showingFeedback else { return }
+                                    viewModel.submitTimeout()
+                                    sparkyMood = .encouraging
+                                }
+                                .id(timerResetToken)
+                            }
+                        }
                         topicLabel
                         questionCard(problem: problem)
                         answerArea(problem: problem)
@@ -56,18 +74,23 @@ struct QuizView: View {
         .onChange(of: viewModel.currentIndex) { _ in
             sparkyMood = .thinking
             hintText = nil
+            timerResetToken += 1
             animateSlideIn()
         }
         .onChange(of: viewModel.isComplete) { complete in
             if complete {
                 viewModel.finish(progressStore: progressStore)
-                let earned = rewardsStore.recordIfNewMasterBadge(
-                    topicId: topic.id,
-                    stars: viewModel.stars,
-                    accuracy: viewModel.accuracy
-                )
-                showBadge = earned
-                if !earned { showStars = true }
+                if viewModel.missedProblems.isEmpty {
+                    proceedToResults()
+                } else {
+                    showReviewMisses = true
+                }
+            }
+        }
+        .navigationDestination(isPresented: $showReviewMisses) {
+            ReviewMissesView(topic: topic, missed: viewModel.missedProblems) {
+                showReviewMisses = false
+                proceedToResults()
             }
         }
         .navigationDestination(isPresented: $showStars) {
@@ -75,6 +98,7 @@ struct QuizView: View {
                 viewModel: viewModel,
                 topic: topic,
                 studentName: profileStore.studentName,
+                showDifficultyNudge: $showDifficultyNudge,
                 onContinue: { dismissToMap() }
             )
         }
@@ -299,6 +323,24 @@ struct QuizView: View {
 
     private func dismissToMap() {
         dismiss()
+    }
+
+    private func proceedToResults() {
+        if DifficultyNudgeEvaluator.shouldNudge(
+            progressStore: progressStore,
+            subject: topic.subject,
+            difficulty: difficulty
+        ) {
+            showDifficultyNudge = true
+        }
+
+        let earned = rewardsStore.recordIfNewMasterBadge(
+            topicId: topic.id,
+            stars: viewModel.stars,
+            accuracy: viewModel.accuracy
+        )
+        showBadge = earned
+        if !earned { showStars = true }
     }
 }
 

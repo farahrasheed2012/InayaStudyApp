@@ -33,5 +33,8 @@ struct LifeCycleView: View {
             }
         }
         .padding()
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(kind) life cycle")
+        .accessibilityValue(stages.enumerated().map { "\($0.offset + 1). \($0.element)" }.joined(separator: ", "))
     }
 }

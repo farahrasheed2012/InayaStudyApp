@@ -54,7 +54,7 @@ struct OnboardingView: View {
             Text("Your Adventure")
                 .font(.largeTitle.bold())
             miniMapPreview
-            Text("Follow the path, unlock worlds, and collect badges!")
+            Text("Follow the path, play games, unlock worlds, and collect badges!")
                 .font(.title3)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)

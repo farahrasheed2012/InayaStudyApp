@@ -9,59 +9,73 @@
 /* Begin PBXBuildFile section */
 		MPB001 /* InayaStudyApp/InayaStudyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF001 /* InayaStudyApp/InayaStudyAppApp.swift */; };
 		MPB002 /* InayaStudyApp/Models/Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF002 /* InayaStudyApp/Models/Topic.swift */; };
-		MPB003 /* InayaStudyApp/Models/PersistenceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF003 /* InayaStudyApp/Models/PersistenceModels.swift */; };
-		MPB004 /* InayaStudyApp/Models/CharacterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF004 /* InayaStudyApp/Models/CharacterState.swift */; };
-		MPB005 /* InayaStudyApp/Data/TopicRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF005 /* InayaStudyApp/Data/TopicRegistry.swift */; };
-		MPB006 /* InayaStudyApp/Data/AdventureMapLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF006 /* InayaStudyApp/Data/AdventureMapLayout.swift */; };
-		MPB007 /* InayaStudyApp/Data/TopicStudyGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF007 /* InayaStudyApp/Data/TopicStudyGuide.swift */; };
-		MPB008 /* InayaStudyApp/Services/ProblemGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF008 /* InayaStudyApp/Services/ProblemGenerator.swift */; };
-		MPB009 /* InayaStudyApp/Services/ScienceProblemGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF009 /* InayaStudyApp/Services/ScienceProblemGenerator.swift */; };
-		MPB010 /* InayaStudyApp/Services/ProgressStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF010 /* InayaStudyApp/Services/ProgressStore.swift */; };
-		MPB011 /* InayaStudyApp/Services/SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF011 /* InayaStudyApp/Services/SettingsStore.swift */; };
-		MPB012 /* InayaStudyApp/Services/RewardsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF012 /* InayaStudyApp/Services/RewardsStore.swift */; };
-		MPB013 /* InayaStudyApp/Services/UserProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF013 /* InayaStudyApp/Services/UserProfileStore.swift */; };
-		MPB014 /* InayaStudyApp/ViewModels/QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF014 /* InayaStudyApp/ViewModels/QuizViewModel.swift */; };
-		MPB015 /* InayaStudyApp/Helpers/Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF015 /* InayaStudyApp/Helpers/Theme.swift */; };
-		MPB016 /* InayaStudyApp/Helpers/Encouragement.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF016 /* InayaStudyApp/Helpers/Encouragement.swift */; };
-		MPB017 /* InayaStudyApp/Helpers/MapProgressHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF017 /* InayaStudyApp/Helpers/MapProgressHelper.swift */; };
-		MPB018 /* InayaStudyApp/Helpers/SoundEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF018 /* InayaStudyApp/Helpers/SoundEffects.swift */; };
-		MPB019 /* InayaStudyApp/Helpers/SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF019 /* InayaStudyApp/Helpers/SpeechManager.swift */; };
-		MPB020 /* InayaStudyApp/Helpers/Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF020 /* InayaStudyApp/Helpers/Haptics.swift */; };
-		MPB021 /* InayaStudyApp/Helpers/KeychainPIN.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF021 /* InayaStudyApp/Helpers/KeychainPIN.swift */; };
-		MPB022 /* InayaStudyApp/Views/RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF022 /* InayaStudyApp/Views/RootView.swift */; };
-		MPB023 /* InayaStudyApp/Views/HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF023 /* InayaStudyApp/Views/HomeView.swift */; };
-		MPB024 /* InayaStudyApp/Views/TopicGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF024 /* InayaStudyApp/Views/TopicGridView.swift */; };
-		MPB025 /* InayaStudyApp/Views/SessionSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF025 /* InayaStudyApp/Views/SessionSetupView.swift */; };
-		MPB026 /* InayaStudyApp/Views/Study/TopicActivityHubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF026 /* InayaStudyApp/Views/Study/TopicActivityHubView.swift */; };
-		MPB027 /* InayaStudyApp/Views/Study/StudyWithSparkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF027 /* InayaStudyApp/Views/Study/StudyWithSparkyView.swift */; };
-		MPB028 /* InayaStudyApp/Views/QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF028 /* InayaStudyApp/Views/QuizView.swift */; };
-		MPB029 /* InayaStudyApp/Views/ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF029 /* InayaStudyApp/Views/ResultsView.swift */; };
-		MPB030 /* InayaStudyApp/Views/ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF030 /* InayaStudyApp/Views/ProgressView.swift */; };
-		MPB031 /* InayaStudyApp/Views/SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF031 /* InayaStudyApp/Views/SettingsView.swift */; };
-		MPB032 /* InayaStudyApp/Views/Character/CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF032 /* InayaStudyApp/Views/Character/CharacterView.swift */; };
-		MPB033 /* InayaStudyApp/Views/Map/AdventureMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF033 /* InayaStudyApp/Views/Map/AdventureMapView.swift */; };
-		MPB034 /* InayaStudyApp/Views/Map/StreakRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF034 /* InayaStudyApp/Views/Map/StreakRowView.swift */; };
-		MPB035 /* InayaStudyApp/Views/Rewards/StarsEarnedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF035 /* InayaStudyApp/Views/Rewards/StarsEarnedView.swift */; };
-		MPB036 /* InayaStudyApp/Views/Rewards/RewardBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF036 /* InayaStudyApp/Views/Rewards/RewardBadgeView.swift */; };
-		MPB037 /* InayaStudyApp/Views/Rewards/ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF037 /* InayaStudyApp/Views/Rewards/ProfileView.swift */; };
-		MPB038 /* InayaStudyApp/Views/Onboarding/OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF038 /* InayaStudyApp/Views/Onboarding/OnboardingView.swift */; };
-		MPB039 /* InayaStudyApp/Views/Components/NumericKeypadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF039 /* InayaStudyApp/Views/Components/NumericKeypadView.swift */; };
-		MPB040 /* InayaStudyApp/Views/Components/AdventureNumpadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF040 /* InayaStudyApp/Views/Components/AdventureNumpadView.swift */; };
-		MPB041 /* InayaStudyApp/Views/Components/SharedComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF041 /* InayaStudyApp/Views/Components/SharedComponents.swift */; };
-		MPB042 /* InayaStudyApp/Views/Components/QuizKeyboardShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF042 /* InayaStudyApp/Views/Components/QuizKeyboardShortcuts.swift */; };
-		MPB043 /* InayaStudyApp/Views/Visuals/ClockFaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF043 /* InayaStudyApp/Views/Visuals/ClockFaceView.swift */; };
-		MPB044 /* InayaStudyApp/Views/Visuals/CoinRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF044 /* InayaStudyApp/Views/Visuals/CoinRowView.swift */; };
-		MPB045 /* InayaStudyApp/Views/Visuals/NumberLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF045 /* InayaStudyApp/Views/Visuals/NumberLineView.swift */; };
-		MPB046 /* InayaStudyApp/Views/Visuals/ArrayGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF046 /* InayaStudyApp/Views/Visuals/ArrayGridView.swift */; };
-		MPB047 /* InayaStudyApp/Views/Visuals/FractionCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF047 /* InayaStudyApp/Views/Visuals/FractionCircleView.swift */; };
-		MPB048 /* InayaStudyApp/Views/Visuals/BarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF048 /* InayaStudyApp/Views/Visuals/BarGraphView.swift */; };
-		MPB049 /* InayaStudyApp/Views/Visuals/ProblemVisualView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF049 /* InayaStudyApp/Views/Visuals/ProblemVisualView.swift */; };
-		MPB050 /* InayaStudyApp/Views/Visuals/MatterStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF050 /* InayaStudyApp/Views/Visuals/MatterStateView.swift */; };
-		MPB051 /* InayaStudyApp/Views/Visuals/FoodChainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF051 /* InayaStudyApp/Views/Visuals/FoodChainView.swift */; };
-		MPB052 /* InayaStudyApp/Views/Visuals/LifeCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF052 /* InayaStudyApp/Views/Visuals/LifeCycleView.swift */; };
-		MPB053 /* InayaStudyApp/Views/Visuals/ScienceToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF053 /* InayaStudyApp/Views/Visuals/ScienceToolView.swift */; };
+		MPB003 /* InayaStudyApp/Models/TopicGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF003 /* InayaStudyApp/Models/TopicGame.swift */; };
+		MPB004 /* InayaStudyApp/Models/PersistenceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF004 /* InayaStudyApp/Models/PersistenceModels.swift */; };
+		MPB005 /* InayaStudyApp/Models/CharacterState.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF005 /* InayaStudyApp/Models/CharacterState.swift */; };
+		MPB006 /* InayaStudyApp/Data/TopicRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF006 /* InayaStudyApp/Data/TopicRegistry.swift */; };
+		MPB007 /* InayaStudyApp/Data/AdventureMapLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF007 /* InayaStudyApp/Data/AdventureMapLayout.swift */; };
+		MPB008 /* InayaStudyApp/Data/TopicStudyGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF008 /* InayaStudyApp/Data/TopicStudyGuide.swift */; };
+		MPB009 /* InayaStudyApp/Services/ProblemGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF009 /* InayaStudyApp/Services/ProblemGenerator.swift */; };
+		MPB010 /* InayaStudyApp/Services/ScienceProblemGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF010 /* InayaStudyApp/Services/ScienceProblemGenerator.swift */; };
+		MPB011 /* InayaStudyApp/Services/ProgressStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF011 /* InayaStudyApp/Services/ProgressStore.swift */; };
+		MPB012 /* InayaStudyApp/Services/SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF012 /* InayaStudyApp/Services/SettingsStore.swift */; };
+		MPB013 /* InayaStudyApp/Services/RewardsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF013 /* InayaStudyApp/Services/RewardsStore.swift */; };
+		MPB014 /* InayaStudyApp/Services/UserProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF014 /* InayaStudyApp/Services/UserProfileStore.swift */; };
+		MPB015 /* InayaStudyApp/ViewModels/QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF015 /* InayaStudyApp/ViewModels/QuizViewModel.swift */; };
+		MPB016 /* InayaStudyApp/Helpers/Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF016 /* InayaStudyApp/Helpers/Theme.swift */; };
+		MPB017 /* InayaStudyApp/Helpers/Encouragement.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF017 /* InayaStudyApp/Helpers/Encouragement.swift */; };
+		MPB018 /* InayaStudyApp/Helpers/MapProgressHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF018 /* InayaStudyApp/Helpers/MapProgressHelper.swift */; };
+		MPB019 /* InayaStudyApp/Helpers/SoundEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF019 /* InayaStudyApp/Helpers/SoundEffects.swift */; };
+		MPB020 /* InayaStudyApp/Helpers/SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF020 /* InayaStudyApp/Helpers/SpeechManager.swift */; };
+		MPB021 /* InayaStudyApp/Helpers/Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF021 /* InayaStudyApp/Helpers/Haptics.swift */; };
+		MPB022 /* InayaStudyApp/Helpers/KeychainPIN.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF022 /* InayaStudyApp/Helpers/KeychainPIN.swift */; };
+		MPB023 /* InayaStudyApp/Views/RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF023 /* InayaStudyApp/Views/RootView.swift */; };
+		MPB024 /* InayaStudyApp/Views/HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF024 /* InayaStudyApp/Views/HomeView.swift */; };
+		MPB025 /* InayaStudyApp/Views/TopicGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF025 /* InayaStudyApp/Views/TopicGridView.swift */; };
+		MPB026 /* InayaStudyApp/Views/SessionSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF026 /* InayaStudyApp/Views/SessionSetupView.swift */; };
+		MPB027 /* InayaStudyApp/Views/Study/TopicActivityHubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF027 /* InayaStudyApp/Views/Study/TopicActivityHubView.swift */; };
+		MPB028 /* InayaStudyApp/Views/Study/StudyWithSparkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF028 /* InayaStudyApp/Views/Study/StudyWithSparkyView.swift */; };
+		MPB029 /* InayaStudyApp/Views/Games/GameShellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF029 /* InayaStudyApp/Views/Games/GameShellView.swift */; };
+		MPB030 /* InayaStudyApp/Views/Games/SparkyMatchGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF030 /* InayaStudyApp/Views/Games/SparkyMatchGameView.swift */; };
+		MPB031 /* InayaStudyApp/Views/Games/CoinCounterGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF031 /* InayaStudyApp/Views/Games/CoinCounterGameView.swift */; };
+		MPB032 /* InayaStudyApp/Views/Games/NumberHopGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF032 /* InayaStudyApp/Views/Games/NumberHopGameView.swift */; };
+		MPB033 /* InayaStudyApp/Views/Games/LifeCycleLineupGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF033 /* InayaStudyApp/Views/Games/LifeCycleLineupGameView.swift */; };
+		MPB034 /* InayaStudyApp/Views/Games/TopicGamesMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF034 /* InayaStudyApp/Views/Games/TopicGamesMenuView.swift */; };
+		MPB035 /* InayaStudyApp/Views/QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF035 /* InayaStudyApp/Views/QuizView.swift */; };
+		MPB036 /* InayaStudyApp/Views/ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF036 /* InayaStudyApp/Views/ResultsView.swift */; };
+		MPB037 /* InayaStudyApp/Views/ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF037 /* InayaStudyApp/Views/ProgressView.swift */; };
+		MPB038 /* InayaStudyApp/Views/SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF038 /* InayaStudyApp/Views/SettingsView.swift */; };
+		MPB039 /* InayaStudyApp/Views/Character/CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF039 /* InayaStudyApp/Views/Character/CharacterView.swift */; };
+		MPB040 /* InayaStudyApp/Views/Map/AdventureMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF040 /* InayaStudyApp/Views/Map/AdventureMapView.swift */; };
+		MPB041 /* InayaStudyApp/Views/Map/StreakRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF041 /* InayaStudyApp/Views/Map/StreakRowView.swift */; };
+		MPB042 /* InayaStudyApp/Views/Rewards/StarsEarnedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF042 /* InayaStudyApp/Views/Rewards/StarsEarnedView.swift */; };
+		MPB043 /* InayaStudyApp/Views/Rewards/RewardBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF043 /* InayaStudyApp/Views/Rewards/RewardBadgeView.swift */; };
+		MPB044 /* InayaStudyApp/Views/Rewards/ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF044 /* InayaStudyApp/Views/Rewards/ProfileView.swift */; };
+		MPB045 /* InayaStudyApp/Views/Onboarding/OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF045 /* InayaStudyApp/Views/Onboarding/OnboardingView.swift */; };
+		MPB046 /* InayaStudyApp/Views/Components/NumericKeypadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF046 /* InayaStudyApp/Views/Components/NumericKeypadView.swift */; };
+		MPB047 /* InayaStudyApp/Views/Components/AdventureNumpadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF047 /* InayaStudyApp/Views/Components/AdventureNumpadView.swift */; };
+		MPB048 /* InayaStudyApp/Views/Components/SharedComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF048 /* InayaStudyApp/Views/Components/SharedComponents.swift */; };
+		MPB049 /* InayaStudyApp/Views/Components/QuizKeyboardShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF049 /* InayaStudyApp/Views/Components/QuizKeyboardShortcuts.swift */; };
+		MPB050 /* InayaStudyApp/Views/Visuals/ClockFaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF050 /* InayaStudyApp/Views/Visuals/ClockFaceView.swift */; };
+		MPB051 /* InayaStudyApp/Views/Visuals/CoinRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF051 /* InayaStudyApp/Views/Visuals/CoinRowView.swift */; };
+		MPB052 /* InayaStudyApp/Views/Visuals/NumberLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF052 /* InayaStudyApp/Views/Visuals/NumberLineView.swift */; };
+		MPB053 /* InayaStudyApp/Views/Visuals/ArrayGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF053 /* InayaStudyApp/Views/Visuals/ArrayGridView.swift */; };
+		MPB054 /* InayaStudyApp/Views/Visuals/FractionCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF054 /* InayaStudyApp/Views/Visuals/FractionCircleView.swift */; };
+		MPB055 /* InayaStudyApp/Views/Visuals/BarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF055 /* InayaStudyApp/Views/Visuals/BarGraphView.swift */; };
+		MPB056 /* InayaStudyApp/Views/Visuals/ProblemVisualView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF056 /* InayaStudyApp/Views/Visuals/ProblemVisualView.swift */; };
+		MPB057 /* InayaStudyApp/Views/Visuals/MatterStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF057 /* InayaStudyApp/Views/Visuals/MatterStateView.swift */; };
+		MPB058 /* InayaStudyApp/Views/Visuals/FoodChainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF058 /* InayaStudyApp/Views/Visuals/FoodChainView.swift */; };
+		MPB059 /* InayaStudyApp/Views/Visuals/LifeCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF059 /* InayaStudyApp/Views/Visuals/LifeCycleView.swift */; };
+		MPB060 /* InayaStudyApp/Views/Visuals/ScienceToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF060 /* InayaStudyApp/Views/Visuals/ScienceToolView.swift */; };
 		MPB100 /* InayaStudyApp/Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = MPF100 /* InayaStudyApp/Assets.xcassets */; };
 		MPB200 /* InayaStudyAppTests/ProblemGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF200 /* InayaStudyAppTests/ProblemGeneratorTests.swift */; };
+		MPB061 /* InayaStudyApp/Protocols/ProblemGenerating.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF061 /* InayaStudyApp/Protocols/ProblemGenerating.swift */; };
+		MPB062 /* InayaStudyApp/Models/SwiftDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF062 /* InayaStudyApp/Models/SwiftDataModels.swift */; };
+		MPB063 /* InayaStudyApp/Services/ProgressMigration.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF063 /* InayaStudyApp/Services/ProgressMigration.swift */; };
+		MPB064 /* InayaStudyApp/Views/Quiz/ReviewMissesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF064 /* InayaStudyApp/Views/Quiz/ReviewMissesView.swift */; };
+		MPB065 /* InayaStudyApp/Views/Quiz/QuizCountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF065 /* InayaStudyApp/Views/Quiz/QuizCountdownTimer.swift */; };
+		MPB066 /* InayaStudyApp/Views/Quiz/DifficultyNudgeBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF066 /* InayaStudyApp/Views/Quiz/DifficultyNudgeBanner.swift */; };
+		MPB201 /* InayaStudyAppTests/ScienceProblemGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF201 /* InayaStudyAppTests/ScienceProblemGeneratorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,61 +91,75 @@
 /* Begin PBXFileReference section */
 		MPF001 /* InayaStudyApp/InayaStudyAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/InayaStudyAppApp.swift; sourceTree = SOURCE_ROOT; };
 		MPF002 /* InayaStudyApp/Models/Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Models/Topic.swift; sourceTree = SOURCE_ROOT; };
-		MPF003 /* InayaStudyApp/Models/PersistenceModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Models/PersistenceModels.swift; sourceTree = SOURCE_ROOT; };
-		MPF004 /* InayaStudyApp/Models/CharacterState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Models/CharacterState.swift; sourceTree = SOURCE_ROOT; };
-		MPF005 /* InayaStudyApp/Data/TopicRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Data/TopicRegistry.swift; sourceTree = SOURCE_ROOT; };
-		MPF006 /* InayaStudyApp/Data/AdventureMapLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Data/AdventureMapLayout.swift; sourceTree = SOURCE_ROOT; };
-		MPF007 /* InayaStudyApp/Data/TopicStudyGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Data/TopicStudyGuide.swift; sourceTree = SOURCE_ROOT; };
-		MPF008 /* InayaStudyApp/Services/ProblemGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Services/ProblemGenerator.swift; sourceTree = SOURCE_ROOT; };
-		MPF009 /* InayaStudyApp/Services/ScienceProblemGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Services/ScienceProblemGenerator.swift; sourceTree = SOURCE_ROOT; };
-		MPF010 /* InayaStudyApp/Services/ProgressStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Services/ProgressStore.swift; sourceTree = SOURCE_ROOT; };
-		MPF011 /* InayaStudyApp/Services/SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Services/SettingsStore.swift; sourceTree = SOURCE_ROOT; };
-		MPF012 /* InayaStudyApp/Services/RewardsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Services/RewardsStore.swift; sourceTree = SOURCE_ROOT; };
-		MPF013 /* InayaStudyApp/Services/UserProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Services/UserProfileStore.swift; sourceTree = SOURCE_ROOT; };
-		MPF014 /* InayaStudyApp/ViewModels/QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/ViewModels/QuizViewModel.swift; sourceTree = SOURCE_ROOT; };
-		MPF015 /* InayaStudyApp/Helpers/Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Helpers/Theme.swift; sourceTree = SOURCE_ROOT; };
-		MPF016 /* InayaStudyApp/Helpers/Encouragement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Helpers/Encouragement.swift; sourceTree = SOURCE_ROOT; };
-		MPF017 /* InayaStudyApp/Helpers/MapProgressHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Helpers/MapProgressHelper.swift; sourceTree = SOURCE_ROOT; };
-		MPF018 /* InayaStudyApp/Helpers/SoundEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Helpers/SoundEffects.swift; sourceTree = SOURCE_ROOT; };
-		MPF019 /* InayaStudyApp/Helpers/SpeechManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Helpers/SpeechManager.swift; sourceTree = SOURCE_ROOT; };
-		MPF020 /* InayaStudyApp/Helpers/Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Helpers/Haptics.swift; sourceTree = SOURCE_ROOT; };
-		MPF021 /* InayaStudyApp/Helpers/KeychainPIN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Helpers/KeychainPIN.swift; sourceTree = SOURCE_ROOT; };
-		MPF022 /* InayaStudyApp/Views/RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/RootView.swift; sourceTree = SOURCE_ROOT; };
-		MPF023 /* InayaStudyApp/Views/HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/HomeView.swift; sourceTree = SOURCE_ROOT; };
-		MPF024 /* InayaStudyApp/Views/TopicGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/TopicGridView.swift; sourceTree = SOURCE_ROOT; };
-		MPF025 /* InayaStudyApp/Views/SessionSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/SessionSetupView.swift; sourceTree = SOURCE_ROOT; };
-		MPF026 /* InayaStudyApp/Views/Study/TopicActivityHubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Study/TopicActivityHubView.swift; sourceTree = SOURCE_ROOT; };
-		MPF027 /* InayaStudyApp/Views/Study/StudyWithSparkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Study/StudyWithSparkyView.swift; sourceTree = SOURCE_ROOT; };
-		MPF028 /* InayaStudyApp/Views/QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/QuizView.swift; sourceTree = SOURCE_ROOT; };
-		MPF029 /* InayaStudyApp/Views/ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/ResultsView.swift; sourceTree = SOURCE_ROOT; };
-		MPF030 /* InayaStudyApp/Views/ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/ProgressView.swift; sourceTree = SOURCE_ROOT; };
-		MPF031 /* InayaStudyApp/Views/SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/SettingsView.swift; sourceTree = SOURCE_ROOT; };
-		MPF032 /* InayaStudyApp/Views/Character/CharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Character/CharacterView.swift; sourceTree = SOURCE_ROOT; };
-		MPF033 /* InayaStudyApp/Views/Map/AdventureMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Map/AdventureMapView.swift; sourceTree = SOURCE_ROOT; };
-		MPF034 /* InayaStudyApp/Views/Map/StreakRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Map/StreakRowView.swift; sourceTree = SOURCE_ROOT; };
-		MPF035 /* InayaStudyApp/Views/Rewards/StarsEarnedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Rewards/StarsEarnedView.swift; sourceTree = SOURCE_ROOT; };
-		MPF036 /* InayaStudyApp/Views/Rewards/RewardBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Rewards/RewardBadgeView.swift; sourceTree = SOURCE_ROOT; };
-		MPF037 /* InayaStudyApp/Views/Rewards/ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Rewards/ProfileView.swift; sourceTree = SOURCE_ROOT; };
-		MPF038 /* InayaStudyApp/Views/Onboarding/OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Onboarding/OnboardingView.swift; sourceTree = SOURCE_ROOT; };
-		MPF039 /* InayaStudyApp/Views/Components/NumericKeypadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Components/NumericKeypadView.swift; sourceTree = SOURCE_ROOT; };
-		MPF040 /* InayaStudyApp/Views/Components/AdventureNumpadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Components/AdventureNumpadView.swift; sourceTree = SOURCE_ROOT; };
-		MPF041 /* InayaStudyApp/Views/Components/SharedComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Components/SharedComponents.swift; sourceTree = SOURCE_ROOT; };
-		MPF042 /* InayaStudyApp/Views/Components/QuizKeyboardShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Components/QuizKeyboardShortcuts.swift; sourceTree = SOURCE_ROOT; };
-		MPF043 /* InayaStudyApp/Views/Visuals/ClockFaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/ClockFaceView.swift; sourceTree = SOURCE_ROOT; };
-		MPF044 /* InayaStudyApp/Views/Visuals/CoinRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/CoinRowView.swift; sourceTree = SOURCE_ROOT; };
-		MPF045 /* InayaStudyApp/Views/Visuals/NumberLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/NumberLineView.swift; sourceTree = SOURCE_ROOT; };
-		MPF046 /* InayaStudyApp/Views/Visuals/ArrayGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/ArrayGridView.swift; sourceTree = SOURCE_ROOT; };
-		MPF047 /* InayaStudyApp/Views/Visuals/FractionCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/FractionCircleView.swift; sourceTree = SOURCE_ROOT; };
-		MPF048 /* InayaStudyApp/Views/Visuals/BarGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/BarGraphView.swift; sourceTree = SOURCE_ROOT; };
-		MPF049 /* InayaStudyApp/Views/Visuals/ProblemVisualView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/ProblemVisualView.swift; sourceTree = SOURCE_ROOT; };
-		MPF050 /* InayaStudyApp/Views/Visuals/MatterStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/MatterStateView.swift; sourceTree = SOURCE_ROOT; };
-		MPF051 /* InayaStudyApp/Views/Visuals/FoodChainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/FoodChainView.swift; sourceTree = SOURCE_ROOT; };
-		MPF052 /* InayaStudyApp/Views/Visuals/LifeCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/LifeCycleView.swift; sourceTree = SOURCE_ROOT; };
-		MPF053 /* InayaStudyApp/Views/Visuals/ScienceToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/ScienceToolView.swift; sourceTree = SOURCE_ROOT; };
+		MPF003 /* InayaStudyApp/Models/TopicGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Models/TopicGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF004 /* InayaStudyApp/Models/PersistenceModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Models/PersistenceModels.swift; sourceTree = SOURCE_ROOT; };
+		MPF005 /* InayaStudyApp/Models/CharacterState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Models/CharacterState.swift; sourceTree = SOURCE_ROOT; };
+		MPF006 /* InayaStudyApp/Data/TopicRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Data/TopicRegistry.swift; sourceTree = SOURCE_ROOT; };
+		MPF007 /* InayaStudyApp/Data/AdventureMapLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Data/AdventureMapLayout.swift; sourceTree = SOURCE_ROOT; };
+		MPF008 /* InayaStudyApp/Data/TopicStudyGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Data/TopicStudyGuide.swift; sourceTree = SOURCE_ROOT; };
+		MPF009 /* InayaStudyApp/Services/ProblemGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Services/ProblemGenerator.swift; sourceTree = SOURCE_ROOT; };
+		MPF010 /* InayaStudyApp/Services/ScienceProblemGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Services/ScienceProblemGenerator.swift; sourceTree = SOURCE_ROOT; };
+		MPF011 /* InayaStudyApp/Services/ProgressStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Services/ProgressStore.swift; sourceTree = SOURCE_ROOT; };
+		MPF012 /* InayaStudyApp/Services/SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Services/SettingsStore.swift; sourceTree = SOURCE_ROOT; };
+		MPF013 /* InayaStudyApp/Services/RewardsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Services/RewardsStore.swift; sourceTree = SOURCE_ROOT; };
+		MPF014 /* InayaStudyApp/Services/UserProfileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Services/UserProfileStore.swift; sourceTree = SOURCE_ROOT; };
+		MPF015 /* InayaStudyApp/ViewModels/QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/ViewModels/QuizViewModel.swift; sourceTree = SOURCE_ROOT; };
+		MPF016 /* InayaStudyApp/Helpers/Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Helpers/Theme.swift; sourceTree = SOURCE_ROOT; };
+		MPF017 /* InayaStudyApp/Helpers/Encouragement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Helpers/Encouragement.swift; sourceTree = SOURCE_ROOT; };
+		MPF018 /* InayaStudyApp/Helpers/MapProgressHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Helpers/MapProgressHelper.swift; sourceTree = SOURCE_ROOT; };
+		MPF019 /* InayaStudyApp/Helpers/SoundEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Helpers/SoundEffects.swift; sourceTree = SOURCE_ROOT; };
+		MPF020 /* InayaStudyApp/Helpers/SpeechManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Helpers/SpeechManager.swift; sourceTree = SOURCE_ROOT; };
+		MPF021 /* InayaStudyApp/Helpers/Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Helpers/Haptics.swift; sourceTree = SOURCE_ROOT; };
+		MPF022 /* InayaStudyApp/Helpers/KeychainPIN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Helpers/KeychainPIN.swift; sourceTree = SOURCE_ROOT; };
+		MPF023 /* InayaStudyApp/Views/RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/RootView.swift; sourceTree = SOURCE_ROOT; };
+		MPF024 /* InayaStudyApp/Views/HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/HomeView.swift; sourceTree = SOURCE_ROOT; };
+		MPF025 /* InayaStudyApp/Views/TopicGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/TopicGridView.swift; sourceTree = SOURCE_ROOT; };
+		MPF026 /* InayaStudyApp/Views/SessionSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/SessionSetupView.swift; sourceTree = SOURCE_ROOT; };
+		MPF027 /* InayaStudyApp/Views/Study/TopicActivityHubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Study/TopicActivityHubView.swift; sourceTree = SOURCE_ROOT; };
+		MPF028 /* InayaStudyApp/Views/Study/StudyWithSparkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Study/StudyWithSparkyView.swift; sourceTree = SOURCE_ROOT; };
+		MPF029 /* InayaStudyApp/Views/Games/GameShellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Games/GameShellView.swift; sourceTree = SOURCE_ROOT; };
+		MPF030 /* InayaStudyApp/Views/Games/SparkyMatchGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Games/SparkyMatchGameView.swift; sourceTree = SOURCE_ROOT; };
+		MPF031 /* InayaStudyApp/Views/Games/CoinCounterGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Games/CoinCounterGameView.swift; sourceTree = SOURCE_ROOT; };
+		MPF032 /* InayaStudyApp/Views/Games/NumberHopGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Games/NumberHopGameView.swift; sourceTree = SOURCE_ROOT; };
+		MPF033 /* InayaStudyApp/Views/Games/LifeCycleLineupGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Games/LifeCycleLineupGameView.swift; sourceTree = SOURCE_ROOT; };
+		MPF034 /* InayaStudyApp/Views/Games/TopicGamesMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Games/TopicGamesMenuView.swift; sourceTree = SOURCE_ROOT; };
+		MPF035 /* InayaStudyApp/Views/QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/QuizView.swift; sourceTree = SOURCE_ROOT; };
+		MPF036 /* InayaStudyApp/Views/ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/ResultsView.swift; sourceTree = SOURCE_ROOT; };
+		MPF037 /* InayaStudyApp/Views/ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/ProgressView.swift; sourceTree = SOURCE_ROOT; };
+		MPF038 /* InayaStudyApp/Views/SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/SettingsView.swift; sourceTree = SOURCE_ROOT; };
+		MPF039 /* InayaStudyApp/Views/Character/CharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Character/CharacterView.swift; sourceTree = SOURCE_ROOT; };
+		MPF040 /* InayaStudyApp/Views/Map/AdventureMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Map/AdventureMapView.swift; sourceTree = SOURCE_ROOT; };
+		MPF041 /* InayaStudyApp/Views/Map/StreakRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Map/StreakRowView.swift; sourceTree = SOURCE_ROOT; };
+		MPF042 /* InayaStudyApp/Views/Rewards/StarsEarnedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Rewards/StarsEarnedView.swift; sourceTree = SOURCE_ROOT; };
+		MPF043 /* InayaStudyApp/Views/Rewards/RewardBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Rewards/RewardBadgeView.swift; sourceTree = SOURCE_ROOT; };
+		MPF044 /* InayaStudyApp/Views/Rewards/ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Rewards/ProfileView.swift; sourceTree = SOURCE_ROOT; };
+		MPF045 /* InayaStudyApp/Views/Onboarding/OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Onboarding/OnboardingView.swift; sourceTree = SOURCE_ROOT; };
+		MPF046 /* InayaStudyApp/Views/Components/NumericKeypadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Components/NumericKeypadView.swift; sourceTree = SOURCE_ROOT; };
+		MPF047 /* InayaStudyApp/Views/Components/AdventureNumpadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Components/AdventureNumpadView.swift; sourceTree = SOURCE_ROOT; };
+		MPF048 /* InayaStudyApp/Views/Components/SharedComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Components/SharedComponents.swift; sourceTree = SOURCE_ROOT; };
+		MPF049 /* InayaStudyApp/Views/Components/QuizKeyboardShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Components/QuizKeyboardShortcuts.swift; sourceTree = SOURCE_ROOT; };
+		MPF050 /* InayaStudyApp/Views/Visuals/ClockFaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/ClockFaceView.swift; sourceTree = SOURCE_ROOT; };
+		MPF051 /* InayaStudyApp/Views/Visuals/CoinRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/CoinRowView.swift; sourceTree = SOURCE_ROOT; };
+		MPF052 /* InayaStudyApp/Views/Visuals/NumberLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/NumberLineView.swift; sourceTree = SOURCE_ROOT; };
+		MPF053 /* InayaStudyApp/Views/Visuals/ArrayGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/ArrayGridView.swift; sourceTree = SOURCE_ROOT; };
+		MPF054 /* InayaStudyApp/Views/Visuals/FractionCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/FractionCircleView.swift; sourceTree = SOURCE_ROOT; };
+		MPF055 /* InayaStudyApp/Views/Visuals/BarGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/BarGraphView.swift; sourceTree = SOURCE_ROOT; };
+		MPF056 /* InayaStudyApp/Views/Visuals/ProblemVisualView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/ProblemVisualView.swift; sourceTree = SOURCE_ROOT; };
+		MPF057 /* InayaStudyApp/Views/Visuals/MatterStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/MatterStateView.swift; sourceTree = SOURCE_ROOT; };
+		MPF058 /* InayaStudyApp/Views/Visuals/FoodChainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/FoodChainView.swift; sourceTree = SOURCE_ROOT; };
+		MPF059 /* InayaStudyApp/Views/Visuals/LifeCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/LifeCycleView.swift; sourceTree = SOURCE_ROOT; };
+		MPF060 /* InayaStudyApp/Views/Visuals/ScienceToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/ScienceToolView.swift; sourceTree = SOURCE_ROOT; };
 		MPF100 /* InayaStudyApp/Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = InayaStudyApp/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		MPF200 /* InayaStudyAppTests/ProblemGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyAppTests/ProblemGeneratorTests.swift; sourceTree = SOURCE_ROOT; };
 		MPF900 /* InayaStudyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InayaStudyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		MPF901 /* InayaStudyAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InayaStudyAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		MPF061 /* InayaStudyApp/Protocols/ProblemGenerating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Protocols/ProblemGenerating.swift; sourceTree = SOURCE_ROOT; };
+		MPF062 /* InayaStudyApp/Models/SwiftDataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Models/SwiftDataModels.swift; sourceTree = SOURCE_ROOT; };
+		MPF063 /* InayaStudyApp/Services/ProgressMigration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Services/ProgressMigration.swift; sourceTree = SOURCE_ROOT; };
+		MPF064 /* InayaStudyApp/Views/Quiz/ReviewMissesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Quiz/ReviewMissesView.swift; sourceTree = SOURCE_ROOT; };
+		MPF065 /* InayaStudyApp/Views/Quiz/QuizCountdownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Quiz/QuizCountdownTimer.swift; sourceTree = SOURCE_ROOT; };
+		MPF066 /* InayaStudyApp/Views/Quiz/DifficultyNudgeBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Quiz/DifficultyNudgeBanner.swift; sourceTree = SOURCE_ROOT; };
+		MPF201 /* InayaStudyAppTests/ScienceProblemGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyAppTests/ScienceProblemGeneratorTests.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,57 +194,70 @@
 			children = (
 				MPF001 /* InayaStudyApp/InayaStudyAppApp.swift */,
 				MPF002 /* InayaStudyApp/Models/Topic.swift */,
-				MPF003 /* InayaStudyApp/Models/PersistenceModels.swift */,
-				MPF004 /* InayaStudyApp/Models/CharacterState.swift */,
-				MPF005 /* InayaStudyApp/Data/TopicRegistry.swift */,
-				MPF006 /* InayaStudyApp/Data/AdventureMapLayout.swift */,
-				MPF007 /* InayaStudyApp/Data/TopicStudyGuide.swift */,
-				MPF008 /* InayaStudyApp/Services/ProblemGenerator.swift */,
-				MPF009 /* InayaStudyApp/Services/ScienceProblemGenerator.swift */,
-				MPF010 /* InayaStudyApp/Services/ProgressStore.swift */,
-				MPF011 /* InayaStudyApp/Services/SettingsStore.swift */,
-				MPF012 /* InayaStudyApp/Services/RewardsStore.swift */,
-				MPF013 /* InayaStudyApp/Services/UserProfileStore.swift */,
-				MPF014 /* InayaStudyApp/ViewModels/QuizViewModel.swift */,
-				MPF015 /* InayaStudyApp/Helpers/Theme.swift */,
-				MPF016 /* InayaStudyApp/Helpers/Encouragement.swift */,
-				MPF017 /* InayaStudyApp/Helpers/MapProgressHelper.swift */,
-				MPF018 /* InayaStudyApp/Helpers/SoundEffects.swift */,
-				MPF019 /* InayaStudyApp/Helpers/SpeechManager.swift */,
-				MPF020 /* InayaStudyApp/Helpers/Haptics.swift */,
-				MPF021 /* InayaStudyApp/Helpers/KeychainPIN.swift */,
-				MPF022 /* InayaStudyApp/Views/RootView.swift */,
-				MPF023 /* InayaStudyApp/Views/HomeView.swift */,
-				MPF024 /* InayaStudyApp/Views/TopicGridView.swift */,
-				MPF025 /* InayaStudyApp/Views/SessionSetupView.swift */,
-				MPF026 /* InayaStudyApp/Views/Study/TopicActivityHubView.swift */,
-				MPF027 /* InayaStudyApp/Views/Study/StudyWithSparkyView.swift */,
-				MPF028 /* InayaStudyApp/Views/QuizView.swift */,
-				MPF029 /* InayaStudyApp/Views/ResultsView.swift */,
-				MPF030 /* InayaStudyApp/Views/ProgressView.swift */,
-				MPF031 /* InayaStudyApp/Views/SettingsView.swift */,
-				MPF032 /* InayaStudyApp/Views/Character/CharacterView.swift */,
-				MPF033 /* InayaStudyApp/Views/Map/AdventureMapView.swift */,
-				MPF034 /* InayaStudyApp/Views/Map/StreakRowView.swift */,
-				MPF035 /* InayaStudyApp/Views/Rewards/StarsEarnedView.swift */,
-				MPF036 /* InayaStudyApp/Views/Rewards/RewardBadgeView.swift */,
-				MPF037 /* InayaStudyApp/Views/Rewards/ProfileView.swift */,
-				MPF038 /* InayaStudyApp/Views/Onboarding/OnboardingView.swift */,
-				MPF039 /* InayaStudyApp/Views/Components/NumericKeypadView.swift */,
-				MPF040 /* InayaStudyApp/Views/Components/AdventureNumpadView.swift */,
-				MPF041 /* InayaStudyApp/Views/Components/SharedComponents.swift */,
-				MPF042 /* InayaStudyApp/Views/Components/QuizKeyboardShortcuts.swift */,
-				MPF043 /* InayaStudyApp/Views/Visuals/ClockFaceView.swift */,
-				MPF044 /* InayaStudyApp/Views/Visuals/CoinRowView.swift */,
-				MPF045 /* InayaStudyApp/Views/Visuals/NumberLineView.swift */,
-				MPF046 /* InayaStudyApp/Views/Visuals/ArrayGridView.swift */,
-				MPF047 /* InayaStudyApp/Views/Visuals/FractionCircleView.swift */,
-				MPF048 /* InayaStudyApp/Views/Visuals/BarGraphView.swift */,
-				MPF049 /* InayaStudyApp/Views/Visuals/ProblemVisualView.swift */,
-				MPF050 /* InayaStudyApp/Views/Visuals/MatterStateView.swift */,
-				MPF051 /* InayaStudyApp/Views/Visuals/FoodChainView.swift */,
-				MPF052 /* InayaStudyApp/Views/Visuals/LifeCycleView.swift */,
-				MPF053 /* InayaStudyApp/Views/Visuals/ScienceToolView.swift */,
+				MPF061 /* InayaStudyApp/Protocols/ProblemGenerating.swift */,
+				MPF003 /* InayaStudyApp/Models/TopicGame.swift */,
+				MPF004 /* InayaStudyApp/Models/PersistenceModels.swift */,
+				MPF062 /* InayaStudyApp/Models/SwiftDataModels.swift */,
+				MPF005 /* InayaStudyApp/Models/CharacterState.swift */,
+				MPF006 /* InayaStudyApp/Data/TopicRegistry.swift */,
+				MPF007 /* InayaStudyApp/Data/AdventureMapLayout.swift */,
+				MPF008 /* InayaStudyApp/Data/TopicStudyGuide.swift */,
+				MPF009 /* InayaStudyApp/Services/ProblemGenerator.swift */,
+				MPF010 /* InayaStudyApp/Services/ScienceProblemGenerator.swift */,
+				MPF011 /* InayaStudyApp/Services/ProgressStore.swift */,
+				MPF063 /* InayaStudyApp/Services/ProgressMigration.swift */,
+				MPF012 /* InayaStudyApp/Services/SettingsStore.swift */,
+				MPF013 /* InayaStudyApp/Services/RewardsStore.swift */,
+				MPF014 /* InayaStudyApp/Services/UserProfileStore.swift */,
+				MPF015 /* InayaStudyApp/ViewModels/QuizViewModel.swift */,
+				MPF016 /* InayaStudyApp/Helpers/Theme.swift */,
+				MPF017 /* InayaStudyApp/Helpers/Encouragement.swift */,
+				MPF018 /* InayaStudyApp/Helpers/MapProgressHelper.swift */,
+				MPF019 /* InayaStudyApp/Helpers/SoundEffects.swift */,
+				MPF020 /* InayaStudyApp/Helpers/SpeechManager.swift */,
+				MPF021 /* InayaStudyApp/Helpers/Haptics.swift */,
+				MPF022 /* InayaStudyApp/Helpers/KeychainPIN.swift */,
+				MPF023 /* InayaStudyApp/Views/RootView.swift */,
+				MPF024 /* InayaStudyApp/Views/HomeView.swift */,
+				MPF025 /* InayaStudyApp/Views/TopicGridView.swift */,
+				MPF026 /* InayaStudyApp/Views/SessionSetupView.swift */,
+				MPF027 /* InayaStudyApp/Views/Study/TopicActivityHubView.swift */,
+				MPF028 /* InayaStudyApp/Views/Study/StudyWithSparkyView.swift */,
+				MPF029 /* InayaStudyApp/Views/Games/GameShellView.swift */,
+				MPF030 /* InayaStudyApp/Views/Games/SparkyMatchGameView.swift */,
+				MPF031 /* InayaStudyApp/Views/Games/CoinCounterGameView.swift */,
+				MPF032 /* InayaStudyApp/Views/Games/NumberHopGameView.swift */,
+				MPF033 /* InayaStudyApp/Views/Games/LifeCycleLineupGameView.swift */,
+				MPF034 /* InayaStudyApp/Views/Games/TopicGamesMenuView.swift */,
+				MPF035 /* InayaStudyApp/Views/QuizView.swift */,
+				MPF066 /* InayaStudyApp/Views/Quiz/DifficultyNudgeBanner.swift */,
+				MPF065 /* InayaStudyApp/Views/Quiz/QuizCountdownTimer.swift */,
+				MPF064 /* InayaStudyApp/Views/Quiz/ReviewMissesView.swift */,
+				MPF036 /* InayaStudyApp/Views/ResultsView.swift */,
+				MPF037 /* InayaStudyApp/Views/ProgressView.swift */,
+				MPF038 /* InayaStudyApp/Views/SettingsView.swift */,
+				MPF039 /* InayaStudyApp/Views/Character/CharacterView.swift */,
+				MPF040 /* InayaStudyApp/Views/Map/AdventureMapView.swift */,
+				MPF041 /* InayaStudyApp/Views/Map/StreakRowView.swift */,
+				MPF042 /* InayaStudyApp/Views/Rewards/StarsEarnedView.swift */,
+				MPF043 /* InayaStudyApp/Views/Rewards/RewardBadgeView.swift */,
+				MPF044 /* InayaStudyApp/Views/Rewards/ProfileView.swift */,
+				MPF045 /* InayaStudyApp/Views/Onboarding/OnboardingView.swift */,
+				MPF046 /* InayaStudyApp/Views/Components/NumericKeypadView.swift */,
+				MPF047 /* InayaStudyApp/Views/Components/AdventureNumpadView.swift */,
+				MPF048 /* InayaStudyApp/Views/Components/SharedComponents.swift */,
+				MPF049 /* InayaStudyApp/Views/Components/QuizKeyboardShortcuts.swift */,
+				MPF050 /* InayaStudyApp/Views/Visuals/ClockFaceView.swift */,
+				MPF051 /* InayaStudyApp/Views/Visuals/CoinRowView.swift */,
+				MPF052 /* InayaStudyApp/Views/Visuals/NumberLineView.swift */,
+				MPF053 /* InayaStudyApp/Views/Visuals/ArrayGridView.swift */,
+				MPF054 /* InayaStudyApp/Views/Visuals/FractionCircleView.swift */,
+				MPF055 /* InayaStudyApp/Views/Visuals/BarGraphView.swift */,
+				MPF056 /* InayaStudyApp/Views/Visuals/ProblemVisualView.swift */,
+				MPF057 /* InayaStudyApp/Views/Visuals/MatterStateView.swift */,
+				MPF058 /* InayaStudyApp/Views/Visuals/FoodChainView.swift */,
+				MPF059 /* InayaStudyApp/Views/Visuals/LifeCycleView.swift */,
+				MPF060 /* InayaStudyApp/Views/Visuals/ScienceToolView.swift */,
 				MPF100 /* InayaStudyApp/Assets.xcassets */,
 			);
 			name = InayaStudyApp;
@@ -226,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				MPF200 /* InayaStudyAppTests/ProblemGeneratorTests.swift */,
+				MPF201 /* InayaStudyAppTests/ScienceProblemGeneratorTests.swift */,
 			);
 			name = InayaStudyAppTests;
 			sourceTree = "<group>";
@@ -337,57 +379,70 @@
 			files = (
 				MPB001 /* InayaStudyApp/InayaStudyAppApp.swift in Sources */,
 				MPB002 /* InayaStudyApp/Models/Topic.swift in Sources */,
-				MPB003 /* InayaStudyApp/Models/PersistenceModels.swift in Sources */,
-				MPB004 /* InayaStudyApp/Models/CharacterState.swift in Sources */,
-				MPB005 /* InayaStudyApp/Data/TopicRegistry.swift in Sources */,
-				MPB006 /* InayaStudyApp/Data/AdventureMapLayout.swift in Sources */,
-				MPB007 /* InayaStudyApp/Data/TopicStudyGuide.swift in Sources */,
-				MPB008 /* InayaStudyApp/Services/ProblemGenerator.swift in Sources */,
-				MPB009 /* InayaStudyApp/Services/ScienceProblemGenerator.swift in Sources */,
-				MPB010 /* InayaStudyApp/Services/ProgressStore.swift in Sources */,
-				MPB011 /* InayaStudyApp/Services/SettingsStore.swift in Sources */,
-				MPB012 /* InayaStudyApp/Services/RewardsStore.swift in Sources */,
-				MPB013 /* InayaStudyApp/Services/UserProfileStore.swift in Sources */,
-				MPB014 /* InayaStudyApp/ViewModels/QuizViewModel.swift in Sources */,
-				MPB015 /* InayaStudyApp/Helpers/Theme.swift in Sources */,
-				MPB016 /* InayaStudyApp/Helpers/Encouragement.swift in Sources */,
-				MPB017 /* InayaStudyApp/Helpers/MapProgressHelper.swift in Sources */,
-				MPB018 /* InayaStudyApp/Helpers/SoundEffects.swift in Sources */,
-				MPB019 /* InayaStudyApp/Helpers/SpeechManager.swift in Sources */,
-				MPB020 /* InayaStudyApp/Helpers/Haptics.swift in Sources */,
-				MPB021 /* InayaStudyApp/Helpers/KeychainPIN.swift in Sources */,
-				MPB022 /* InayaStudyApp/Views/RootView.swift in Sources */,
-				MPB023 /* InayaStudyApp/Views/HomeView.swift in Sources */,
-				MPB024 /* InayaStudyApp/Views/TopicGridView.swift in Sources */,
-				MPB025 /* InayaStudyApp/Views/SessionSetupView.swift in Sources */,
-				MPB026 /* InayaStudyApp/Views/Study/TopicActivityHubView.swift in Sources */,
-				MPB027 /* InayaStudyApp/Views/Study/StudyWithSparkyView.swift in Sources */,
-				MPB028 /* InayaStudyApp/Views/QuizView.swift in Sources */,
-				MPB029 /* InayaStudyApp/Views/ResultsView.swift in Sources */,
-				MPB030 /* InayaStudyApp/Views/ProgressView.swift in Sources */,
-				MPB031 /* InayaStudyApp/Views/SettingsView.swift in Sources */,
-				MPB032 /* InayaStudyApp/Views/Character/CharacterView.swift in Sources */,
-				MPB033 /* InayaStudyApp/Views/Map/AdventureMapView.swift in Sources */,
-				MPB034 /* InayaStudyApp/Views/Map/StreakRowView.swift in Sources */,
-				MPB035 /* InayaStudyApp/Views/Rewards/StarsEarnedView.swift in Sources */,
-				MPB036 /* InayaStudyApp/Views/Rewards/RewardBadgeView.swift in Sources */,
-				MPB037 /* InayaStudyApp/Views/Rewards/ProfileView.swift in Sources */,
-				MPB038 /* InayaStudyApp/Views/Onboarding/OnboardingView.swift in Sources */,
-				MPB039 /* InayaStudyApp/Views/Components/NumericKeypadView.swift in Sources */,
-				MPB040 /* InayaStudyApp/Views/Components/AdventureNumpadView.swift in Sources */,
-				MPB041 /* InayaStudyApp/Views/Components/SharedComponents.swift in Sources */,
-				MPB042 /* InayaStudyApp/Views/Components/QuizKeyboardShortcuts.swift in Sources */,
-				MPB043 /* InayaStudyApp/Views/Visuals/ClockFaceView.swift in Sources */,
-				MPB044 /* InayaStudyApp/Views/Visuals/CoinRowView.swift in Sources */,
-				MPB045 /* InayaStudyApp/Views/Visuals/NumberLineView.swift in Sources */,
-				MPB046 /* InayaStudyApp/Views/Visuals/ArrayGridView.swift in Sources */,
-				MPB047 /* InayaStudyApp/Views/Visuals/FractionCircleView.swift in Sources */,
-				MPB048 /* InayaStudyApp/Views/Visuals/BarGraphView.swift in Sources */,
-				MPB049 /* InayaStudyApp/Views/Visuals/ProblemVisualView.swift in Sources */,
-				MPB050 /* InayaStudyApp/Views/Visuals/MatterStateView.swift in Sources */,
-				MPB051 /* InayaStudyApp/Views/Visuals/FoodChainView.swift in Sources */,
-				MPB052 /* InayaStudyApp/Views/Visuals/LifeCycleView.swift in Sources */,
-				MPB053 /* InayaStudyApp/Views/Visuals/ScienceToolView.swift in Sources */,
+				MPB003 /* InayaStudyApp/Models/TopicGame.swift in Sources */,
+				MPB004 /* InayaStudyApp/Models/PersistenceModels.swift in Sources */,
+				MPB005 /* InayaStudyApp/Models/CharacterState.swift in Sources */,
+				MPB006 /* InayaStudyApp/Data/TopicRegistry.swift in Sources */,
+				MPB007 /* InayaStudyApp/Data/AdventureMapLayout.swift in Sources */,
+				MPB008 /* InayaStudyApp/Data/TopicStudyGuide.swift in Sources */,
+				MPB009 /* InayaStudyApp/Services/ProblemGenerator.swift in Sources */,
+				MPB010 /* InayaStudyApp/Services/ScienceProblemGenerator.swift in Sources */,
+				MPB011 /* InayaStudyApp/Services/ProgressStore.swift in Sources */,
+				MPB012 /* InayaStudyApp/Services/SettingsStore.swift in Sources */,
+				MPB013 /* InayaStudyApp/Services/RewardsStore.swift in Sources */,
+				MPB014 /* InayaStudyApp/Services/UserProfileStore.swift in Sources */,
+				MPB015 /* InayaStudyApp/ViewModels/QuizViewModel.swift in Sources */,
+				MPB016 /* InayaStudyApp/Helpers/Theme.swift in Sources */,
+				MPB017 /* InayaStudyApp/Helpers/Encouragement.swift in Sources */,
+				MPB018 /* InayaStudyApp/Helpers/MapProgressHelper.swift in Sources */,
+				MPB019 /* InayaStudyApp/Helpers/SoundEffects.swift in Sources */,
+				MPB020 /* InayaStudyApp/Helpers/SpeechManager.swift in Sources */,
+				MPB021 /* InayaStudyApp/Helpers/Haptics.swift in Sources */,
+				MPB022 /* InayaStudyApp/Helpers/KeychainPIN.swift in Sources */,
+				MPB023 /* InayaStudyApp/Views/RootView.swift in Sources */,
+				MPB024 /* InayaStudyApp/Views/HomeView.swift in Sources */,
+				MPB025 /* InayaStudyApp/Views/TopicGridView.swift in Sources */,
+				MPB026 /* InayaStudyApp/Views/SessionSetupView.swift in Sources */,
+				MPB027 /* InayaStudyApp/Views/Study/TopicActivityHubView.swift in Sources */,
+				MPB028 /* InayaStudyApp/Views/Study/StudyWithSparkyView.swift in Sources */,
+				MPB029 /* InayaStudyApp/Views/Games/GameShellView.swift in Sources */,
+				MPB030 /* InayaStudyApp/Views/Games/SparkyMatchGameView.swift in Sources */,
+				MPB031 /* InayaStudyApp/Views/Games/CoinCounterGameView.swift in Sources */,
+				MPB032 /* InayaStudyApp/Views/Games/NumberHopGameView.swift in Sources */,
+				MPB033 /* InayaStudyApp/Views/Games/LifeCycleLineupGameView.swift in Sources */,
+				MPB034 /* InayaStudyApp/Views/Games/TopicGamesMenuView.swift in Sources */,
+				MPB035 /* InayaStudyApp/Views/QuizView.swift in Sources */,
+				MPB036 /* InayaStudyApp/Views/ResultsView.swift in Sources */,
+				MPB037 /* InayaStudyApp/Views/ProgressView.swift in Sources */,
+				MPB038 /* InayaStudyApp/Views/SettingsView.swift in Sources */,
+				MPB039 /* InayaStudyApp/Views/Character/CharacterView.swift in Sources */,
+				MPB040 /* InayaStudyApp/Views/Map/AdventureMapView.swift in Sources */,
+				MPB041 /* InayaStudyApp/Views/Map/StreakRowView.swift in Sources */,
+				MPB042 /* InayaStudyApp/Views/Rewards/StarsEarnedView.swift in Sources */,
+				MPB043 /* InayaStudyApp/Views/Rewards/RewardBadgeView.swift in Sources */,
+				MPB044 /* InayaStudyApp/Views/Rewards/ProfileView.swift in Sources */,
+				MPB045 /* InayaStudyApp/Views/Onboarding/OnboardingView.swift in Sources */,
+				MPB046 /* InayaStudyApp/Views/Components/NumericKeypadView.swift in Sources */,
+				MPB047 /* InayaStudyApp/Views/Components/AdventureNumpadView.swift in Sources */,
+				MPB048 /* InayaStudyApp/Views/Components/SharedComponents.swift in Sources */,
+				MPB049 /* InayaStudyApp/Views/Components/QuizKeyboardShortcuts.swift in Sources */,
+				MPB050 /* InayaStudyApp/Views/Visuals/ClockFaceView.swift in Sources */,
+				MPB051 /* InayaStudyApp/Views/Visuals/CoinRowView.swift in Sources */,
+				MPB052 /* InayaStudyApp/Views/Visuals/NumberLineView.swift in Sources */,
+				MPB053 /* InayaStudyApp/Views/Visuals/ArrayGridView.swift in Sources */,
+				MPB054 /* InayaStudyApp/Views/Visuals/FractionCircleView.swift in Sources */,
+				MPB055 /* InayaStudyApp/Views/Visuals/BarGraphView.swift in Sources */,
+				MPB056 /* InayaStudyApp/Views/Visuals/ProblemVisualView.swift in Sources */,
+				MPB057 /* InayaStudyApp/Views/Visuals/MatterStateView.swift in Sources */,
+				MPB058 /* InayaStudyApp/Views/Visuals/FoodChainView.swift in Sources */,
+				MPB059 /* InayaStudyApp/Views/Visuals/LifeCycleView.swift in Sources */,
+				MPB060 /* InayaStudyApp/Views/Visuals/ScienceToolView.swift in Sources */,
+				MPB061 /* InayaStudyApp/Protocols/ProblemGenerating.swift in Sources */,
+				MPB062 /* InayaStudyApp/Models/SwiftDataModels.swift in Sources */,
+				MPB063 /* InayaStudyApp/Services/ProgressMigration.swift in Sources */,
+				MPB064 /* InayaStudyApp/Views/Quiz/ReviewMissesView.swift in Sources */,
+				MPB065 /* InayaStudyApp/Views/Quiz/QuizCountdownTimer.swift in Sources */,
+				MPB066 /* InayaStudyApp/Views/Quiz/DifficultyNudgeBanner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +451,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				MPB200 /* InayaStudyAppTests/ProblemGeneratorTests.swift in Sources */,
+				MPB201 /* InayaStudyAppTests/ScienceProblemGeneratorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,7 +476,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -439,7 +495,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_OPTIMIZATION_LEVEL = s;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -460,7 +516,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Inaya Study App";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -488,7 +544,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Inaya Study App";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -510,7 +566,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.inaya.studyapp.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -526,7 +582,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.inaya.studyapp.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

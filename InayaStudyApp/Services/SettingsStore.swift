@@ -8,6 +8,8 @@ final class SettingsStore: ObservableObject {
     @AppStorage("soundEffectsEnabled") var soundEffectsEnabled = true
     @AppStorage("voiceGuidanceEnabled") var voiceGuidanceEnabled = true
     @AppStorage("hapticsEnabled") var hapticsEnabled = true
+    @AppStorage("challengeModeEnabled") var challengeModeEnabled = false
+    @AppStorage("challengeTimerSeconds") var challengeTimerSeconds = 30
     @AppStorage("defaultDifficulty") private var defaultDifficultyRaw = Difficulty.medium.rawValue
     @AppStorage("defaultQuestionCount") var defaultQuestionCount = 10
 

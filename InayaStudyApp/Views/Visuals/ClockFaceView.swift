@@ -32,6 +32,7 @@ struct ClockFaceView: View {
             .frame(width: 2, height: 10)
             .offset(y: -78)
             .rotationEffect(.degrees(Double(index) * 30))
+            .accessibilityHidden(true)
     }
 
     private func hand(length: CGFloat, width: CGFloat, angle: Angle) -> some View {

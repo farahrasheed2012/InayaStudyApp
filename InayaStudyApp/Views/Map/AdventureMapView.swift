@@ -3,6 +3,7 @@ import SwiftUI
 struct AdventureMapView: View {
     @EnvironmentObject private var progressStore: ProgressStore
     @EnvironmentObject private var profileStore: UserProfileStore
+    @ObservedObject private var settings = SettingsStore.shared
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     @State private var subject: Subject = .math
@@ -56,7 +57,7 @@ struct AdventureMapView: View {
                 let streak = progressStore.streak()
                 StreakRowView(
                     currentStreak: streak.current,
-                    lastPracticed: progressStore.snapshot.streak.lastPracticedDate
+                    lastPracticed: progressStore.lastPracticedDate()
                 )
 
                 CharacterView(
@@ -68,6 +69,24 @@ struct AdventureMapView: View {
                         Haptics.tap()
                     }
                 )
+
+                Button {
+                    settings.voiceGuidanceEnabled.toggle()
+                    if !settings.voiceGuidanceEnabled {
+                        SpeechManager.shared.stop()
+                    } else {
+                        SpeechManager.shared.previewVoice()
+                    }
+                    Haptics.tap()
+                } label: {
+                    Image(systemName: settings.voiceGuidanceEnabled ? "speaker.wave.2.fill" : "speaker.slash.fill")
+                        .font(.title3)
+                        .foregroundStyle(settings.voiceGuidanceEnabled ? Color.accentColor : .secondary)
+                        .frame(width: 44, height: 44)
+                        .background(AppTheme.card.opacity(0.9))
+                        .clipShape(Circle())
+                }
+                .accessibilityLabel(settings.voiceGuidanceEnabled ? "Mute Sparky voice" : "Turn on Sparky voice")
             }
 
             HStack(spacing: 10) {

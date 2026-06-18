@@ -1262,3 +1262,13 @@ enum ProblemGenerator {
             .replacingOccurrences(of: " ", with: "")
     }
 }
+
+struct MathProblemGenerator: ProblemGenerating {
+    let topic: Topic
+
+    var subject: Subject { .math }
+
+    func generate(difficulty: Difficulty) -> Problem {
+        ProblemGenerator.generate(topic: topic, difficulty: difficulty)
+    }
+}

@@ -4,13 +4,17 @@ struct StarsEarnedView: View {
     @ObservedObject var viewModel: QuizViewModel
     let topic: Topic
     let studentName: String
+    @Binding var showDifficultyNudge: Bool
     var onContinue: () -> Void
 
+    @EnvironmentObject private var progressStore: ProgressStore
+    @ObservedObject private var settings = SettingsStore.shared
     @State private var revealedStars = 0
     @State private var displayedScore = 0
     @State private var showButton = false
     @State private var showReview = false
     @State private var sparkyMood: SparkyMood = .idle
+    @State private var restartWithHarder = false
 
     private var earnedStars: Int { viewModel.stars }
     private var missed: [AnsweredProblem] { viewModel.answered.filter { !$0.isCorrect } }
@@ -71,6 +75,37 @@ struct StarsEarnedView: View {
                     }
 
                     if showButton {
+                        if showDifficultyNudge,
+                           let next = DifficultyNudgeEvaluator.nextDifficulty(after: viewModel.difficulty) {
+                            DifficultyNudgeBanner(
+                                currentDifficulty: viewModel.difficulty,
+                                nextDifficulty: next,
+                                onAccept: {
+                                    settings.defaultDifficulty = next
+                                    let key = DifficultyNudgeEvaluator.nudgeKey(
+                                        subject: topic.subject,
+                                        from: viewModel.difficulty,
+                                        to: next
+                                    )
+                                    progressStore.markDifficultyNudgeShown(key: key)
+                                    showDifficultyNudge = false
+                                    restartWithHarder = true
+                                },
+                                onDismiss: {
+                                    if let next = DifficultyNudgeEvaluator.nextDifficulty(after: viewModel.difficulty) {
+                                        let key = DifficultyNudgeEvaluator.nudgeKey(
+                                            subject: topic.subject,
+                                            from: viewModel.difficulty,
+                                            to: next
+                                        )
+                                        progressStore.markDifficultyNudgeShown(key: key)
+                                    }
+                                    showDifficultyNudge = false
+                                }
+                            )
+                            .padding(.bottom, 8)
+                        }
+
                         Button(action: onContinue) {
                             Text("Continue")
                                 .font(AppTypography.cardTitle)
@@ -90,6 +125,9 @@ struct StarsEarnedView: View {
         .fullWidthContent()
         .background(AppTheme.background.ignoresSafeArea())
         .navigationBarBackButtonHidden(true)
+        .navigationDestination(isPresented: $restartWithHarder) {
+            SessionSetupView(topic: topic)
+        }
         .onAppear { runSequence() }
     }
 

@@ -14,5 +14,8 @@ struct ArrayGridView: View {
             }
         }
         .padding()
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Array grid")
+        .accessibilityValue("\(rows) rows by \(cols) columns, \(rows * cols) squares")
     }
 }

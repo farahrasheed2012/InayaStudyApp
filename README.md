@@ -4,25 +4,28 @@ A SwiftUI practice app for **Inaya**, aligned to Texas TEKS standards (Round Roc
 
 ## Features
 
-- **2nd & 3rd grade math** and **2nd grade science** with TEKS labels
-- **Dynamic problem generation** for every topic and difficulty (Easy / Medium / Hard)
-- Visual aids: clocks, coins, number lines, arrays, fraction circles, bar graphs, science diagrams
-- Progress tracking, streaks, and per-topic accuracy
+- **2nd & 3rd grade math** and **2nd/3rd grade science** with TEKS labels
+- **Dynamic problem generation** via `ProblemGenerating` protocol (math + science engines)
+- **SwiftData** progress: session history, per-topic accuracy, streaks
+- Visual aids with VoiceOver labels (clocks, coins, number lines, arrays, fractions, bar graphs)
+- **Review Misses** screen after quizzes with wrong answers
+- **Adaptive difficulty nudge** when recent sessions score ≥ 80%
+- Optional **Challenge Mode** timed questions (15/30/45 seconds)
+- **iPad/Mac NavigationSplitView** sidebar for topic picking; iPhone keeps tab + map flow
 - Parent PIN–gated settings (Keychain)
-- **Mac Catalyst** + iOS (iPad portrait/landscape)
-- Sound effects, haptics, confetti on 3-star sessions
+- Mac Catalyst + iOS
+- Sound effects, haptics, Sparky voice encouragement, confetti on 3-star sessions
 
 ## Requirements
 
 - Xcode 15+
-- iOS 16.0+ / macOS 13.0+ (via Mac Catalyst)
-- Swift 5
+- iOS 17.0+ / macOS 14.0+ (via Mac Catalyst)
+- Swift 5.9+
 
 ## Build
 
 ```bash
 cd /path/to/InayaStudyApp
-python3 generate_xcodeproj.py   # if project.pbxproj is missing
 open InayaStudyApp.xcodeproj
 ```
 
@@ -52,14 +55,15 @@ xcodebuild -project InayaStudyApp.xcodeproj -scheme InayaStudyApp \
 
 | Path | Purpose |
 |------|---------|
-| `InayaStudyApp/Models/Topic.swift` | Subject, grade, topic, and problem models |
-| `InayaStudyApp/Data/TopicRegistry.swift` | Math and science TEKS topics |
+| `InayaStudyApp/Protocols/ProblemGenerating.swift` | Generator protocol + factory |
+| `InayaStudyApp/Models/SwiftDataModels.swift` | SwiftData persistence models |
 | `InayaStudyApp/Services/ProblemGenerator.swift` | Runtime math problem generation |
 | `InayaStudyApp/Services/ScienceProblemGenerator.swift` | Runtime science problem generation |
-| `InayaStudyApp/Views/` | Home, topics, quiz, results, progress, settings |
-| `InayaStudyApp/Views/Visuals/` | Clock, coins, number line, science visuals |
-| `InayaStudyAppTests/ProblemGeneratorTests.swift` | Generator unit tests |
+| `InayaStudyApp/Services/ProgressStore.swift` | SwiftData-backed progress service |
+| `InayaStudyApp/Views/Quiz/ReviewMissesView.swift` | Post-quiz miss review |
+| `InayaStudyApp/Views/StudySplitRootView.swift` | iPad/Mac split navigation |
+| `InayaStudyAppTests/` | Generator unit tests |
 
 ## For Inaya
 
-Pick Math or Science, choose a topic, set difficulty and question count, then practice at your own pace — **no timers**. Earn up to 3 stars per session!
+Pick Math or Science, choose a topic, study with Sparky, play a mini-game, then practice for stars. Challenge Mode adds a timer if you want an extra challenge!

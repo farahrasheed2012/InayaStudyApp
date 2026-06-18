@@ -865,3 +865,13 @@ enum ScienceProblemGenerator {
         problems.randomElement()!
     }
 }
+
+struct ScienceProblemGeneratorEngine: ProblemGenerating {
+    let topic: Topic
+
+    var subject: Subject { .science }
+
+    func generate(difficulty: Difficulty) -> Problem {
+        ScienceProblemGenerator.generate(topic: topic, difficulty: difficulty)
+    }
+}

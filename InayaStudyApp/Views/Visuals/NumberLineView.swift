@@ -31,6 +31,9 @@ struct NumberLineView: View {
             }
         }
         .frame(height: 80)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Number line from \(min) to \(max)")
+        .accessibilityValue(markedAccessibilityValue)
         .onAppear {
             withAnimation(.spring(duration: 0.5)) { animate = true }
         }
@@ -40,5 +43,10 @@ struct NumberLineView: View {
         let range = CGFloat(max - min)
         guard range > 0 else { return width / 2 }
         return 20 + (CGFloat(value - min) / range) * (width - 40)
+    }
+
+    private var markedAccessibilityValue: String {
+        guard !marked.isEmpty else { return "No numbers marked" }
+        return "Marked at \(marked.map(String.init).joined(separator: ", "))"
     }
 }

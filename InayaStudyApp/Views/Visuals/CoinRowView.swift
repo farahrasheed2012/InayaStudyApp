@@ -10,6 +10,13 @@ struct CoinRowView: View {
             }
         }
         .padding()
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(coinsAccessibilityLabel)
+    }
+
+    private var coinsAccessibilityLabel: String {
+        let labels = coins.map { coinLabel($0) }
+        return "Coins: \(labels.joined(separator: ", "))"
     }
 
     @ViewBuilder

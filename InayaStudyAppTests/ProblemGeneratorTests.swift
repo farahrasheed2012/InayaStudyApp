@@ -92,6 +92,52 @@ final class ProblemGeneratorTests: XCTestCase {
         }
     }
 
+    func testNoAnswerCollisionInMultipleChoice() {
+        for topic in TopicRegistry.all {
+            for _ in 0..<5 {
+                let problem = ProblemGenerator.generate(topic: topic, difficulty: .easy)
+                guard problem.answerType == .multipleChoice, let choices = problem.choices else { continue }
+                let wrongOnly = choices.filter { !ProblemGenerator.isAnswerValid(problem, userAnswer: $0) || $0 != problem.correctAnswer }
+                for choice in choices where choice != problem.correctAnswer {
+                    XCTAssertFalse(
+                        ProblemGenerator.isAnswerValid(problem, userAnswer: choice),
+                        "Wrong choice '\(choice)' validated as correct for \(topic.id)"
+                    )
+                }
+            }
+        }
+    }
+
+    func testScienceWrongAnswerCountIsThree() {
+        for topic in TopicRegistry.scienceSecondGrade + TopicRegistry.scienceThirdGrade {
+            let generator = ScienceProblemGeneratorEngine(topic: topic)
+            let problem = generator.generate(difficulty: .easy)
+            guard let choices = problem.choices else {
+                XCTFail("Missing choices for \(topic.id)")
+                continue
+            }
+            let wrongChoices = choices.filter { $0 != problem.correctAnswer }
+            XCTAssertEqual(wrongChoices.count, 3, topic.id)
+        }
+    }
+
+    func testGeneratorProtocolMathEngine() {
+        let topic = TopicRegistry.topic(id: "multiplication")!
+        let generator: any ProblemGenerating = MathProblemGenerator(topic: topic)
+        XCTAssertEqual(generator.subject, .math)
+        let problem = generator.generate(difficulty: .easy)
+        XCTAssertFalse(problem.questionText.isEmpty)
+    }
+
+    func testDeterminismStressMath() {
+        let topic = TopicRegistry.mathSecondGrade[0]
+        let generator = MathProblemGenerator(topic: topic)
+        for _ in 0..<100 {
+            let problem = generator.generate(difficulty: .medium)
+            XCTAssertFalse(problem.correctAnswer.isEmpty)
+        }
+    }
+
     private func assertValidProblem(_ problem: Problem, topic: Topic) {
         XCTAssertFalse(problem.questionText.isEmpty, topic.id)
         XCTAssertFalse(problem.correctAnswer.isEmpty, topic.id)

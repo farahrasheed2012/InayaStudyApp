@@ -107,17 +107,13 @@ enum MapProgressHelper {
 
     @MainActor
     static func bestStars(for topicId: String, progressStore: ProgressStore) -> Int {
-        let sessions = progressStore.snapshot.sessions.filter { $0.topicId == topicId }
-        let best = sessions.map { session -> Double in
-            guard session.totalQuestions > 0 else { return 0 }
-            return Double(session.correctAnswers) / Double(session.totalQuestions)
-        }.max() ?? progressStore.accuracy(for: topicId)
+        let best = progressStore.bestSessionAccuracy(for: topicId)
         return Encouragement.stars(for: best)
     }
 
     @MainActor
     static func sparkyShouldSleep(progressStore: ProgressStore) -> Bool {
-        let last = progressStore.snapshot.streak.lastPracticedDate
+        let last = progressStore.lastPracticedDate()
         if last == .distantPast { return true }
         let days = Calendar.current.dateComponents([.day], from: last, to: .now).day ?? 0
         return days >= 2

@@ -60,6 +60,14 @@ struct SettingsTabView: View {
                 Toggle("Sound effects", isOn: $settings.soundEffectsEnabled)
                 Toggle("Voice encouragement", isOn: $settings.voiceGuidanceEnabled)
                 Toggle("Haptics", isOn: $settings.hapticsEnabled)
+                Toggle("Challenge Mode — timed questions", isOn: $settings.challengeModeEnabled)
+                if settings.challengeModeEnabled {
+                    Picker("Seconds per question", selection: $settings.challengeTimerSeconds) {
+                        Text("15").tag(15)
+                        Text("30").tag(30)
+                        Text("45").tag(45)
+                    }
+                }
             }
 
             Section("Defaults") {

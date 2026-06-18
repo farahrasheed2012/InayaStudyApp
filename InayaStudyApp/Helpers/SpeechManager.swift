@@ -21,8 +21,10 @@ final class SpeechManager: NSObject {
 
     func speak(_ text: String) {
         guard SettingsStore.shared.voiceGuidanceEnabled else { return }
+        let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
         synthesizer.stopSpeaking(at: .immediate)
-        synthesizer.speak(makeUtterance(text))
+        synthesizer.speak(makeUtterance(trimmed))
     }
 
     func speakPraise(name: String, subject: Subject) {
@@ -51,7 +53,7 @@ final class SpeechManager: NSObject {
 
     func speakResults(stars: Int, name: String, subject: Subject) {
         let message = Encouragement.resultsMessage(stars: stars, subject: subject, name: name)
-        speak(message.replacingOccurrences(of: "🌟", with: "").replacingOccurrences(of: "🔬", with: "").trimmingCharacters(in: .whitespaces))
+        speak(message.sanitizedForSpeech)
     }
 
     func speakBadgeUnlock(topicName: String, name: String) {
@@ -60,6 +62,11 @@ final class SpeechManager: NSObject {
 
     func speakGreeting(name: String) {
         speak("Hi \(name)! I'm Sparky. Let's learn together!")
+    }
+
+    func previewVoice() {
+        let name = UserProfileStore.shared.studentName
+        speak("Hi \(name)! This is how Sparky sounds now.")
     }
 
     func stop() {
@@ -72,6 +79,14 @@ final class SpeechManager: NSObject {
         utterance.pitchMultiplier = 1.08
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         return utterance
+    }
+}
+
+private extension String {
+    var sanitizedForSpeech: String {
+        replacingOccurrences(of: "🌟", with: "")
+            .replacingOccurrences(of: "🔬", with: "")
+            .trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }
 

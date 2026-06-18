@@ -26,6 +26,9 @@ struct BarGraphView: View {
         .onAppear {
             withAnimation(.easeOut(duration: 0.6)) { progress = 1 }
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Bar graph")
+        .accessibilityValue(data.map { "\($0.label) \($0.value)" }.joined(separator: ", "))
     }
 }
 

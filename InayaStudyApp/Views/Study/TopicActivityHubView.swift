@@ -29,7 +29,7 @@ struct TopicActivityHubView: View {
                 CharacterView(
                     mood: .idle,
                     size: 88,
-                    speechText: "Learn first, then earn stars, \(profileStore.studentName)!"
+                    speechText: "Study, play games, then earn stars, \(profileStore.studentName)!"
                 )
 
                 VStack(spacing: 14) {
@@ -41,6 +41,18 @@ struct TopicActivityHubView: View {
                             subtitle: "Guide + 2 example problems — no scoring",
                             icon: "book.fill",
                             color: accent
+                        )
+                    }
+                    .buttonStyle(.plain)
+
+                    NavigationLink {
+                        TopicGamesMenuView(topic: topic)
+                    } label: {
+                        hubButton(
+                            title: "Play to Learn",
+                            subtitle: "Fun mini-games that help you practice",
+                            icon: "gamecontroller.fill",
+                            color: AppTheme.color(hex: "9B59B6")
                         )
                     }
                     .buttonStyle(.plain)
