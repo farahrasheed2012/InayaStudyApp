@@ -3,12 +3,11 @@ import SwiftUI
 struct AdventureMapView: View {
     @EnvironmentObject private var progressStore: ProgressStore
     @EnvironmentObject private var profileStore: UserProfileStore
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     @State private var subject: Subject = .math
     @State private var grade: GradeLevel = .second
     @State private var slideDirection: CGFloat = 0
-    @State private var sparkyProgress: CGFloat = 0
-    @State private var pulse = false
 
     private var route: AdventureMapRoute {
         AdventureMapLayout.route(subject: subject, grade: grade)
@@ -33,37 +32,18 @@ struct AdventureMapView: View {
     }
 
     var body: some View {
-        ZStack(alignment: .topTrailing) {
-            ScrollViewReader { proxy in
-                ScrollView {
-                    VStack(spacing: 0) {
-                        header
-                        mapContent
-                            .padding(.bottom, 40)
-                    }
-                    .frame(maxWidth: 430)
-                    .frame(maxWidth: .infinity)
+        ScrollViewReader { proxy in
+            ScrollView {
+                VStack(spacing: 0) {
+                    header
+                    mapContent
+                        .padding(.bottom, 40)
                 }
-                .onAppear {
-                    scrollToCurrent(proxy: proxy)
-                    animateSparkyWalk()
-                }
-                .onChange(of: subject) { _ in
-                    scrollToCurrent(proxy: proxy)
-                    animateSparkyWalk()
-                }
-                .onChange(of: grade) { _ in
-                    scrollToCurrent(proxy: proxy)
-                    animateSparkyWalk()
-                }
+                .contentColumn()
             }
-
-            CharacterView(mood: sparkyMood, size: 64, onTap: {
-                SoundEffects.playSparkyBleep()
-                Haptics.tap()
-            })
-            .padding(.trailing, 12)
-            .padding(.top, 8)
+            .onAppear { scrollToCurrent(proxy: proxy) }
+            .onChange(of: subject) { _ in scrollToCurrent(proxy: proxy) }
+            .onChange(of: grade) { _ in scrollToCurrent(proxy: proxy) }
         }
         .background(mapBackground.ignoresSafeArea())
         .navigationTitle(profileStore.greeting())
@@ -72,18 +52,30 @@ struct AdventureMapView: View {
 
     private var header: some View {
         VStack(spacing: 12) {
-            let streak = progressStore.streak()
-            StreakRowView(
-                currentStreak: streak.current,
-                lastPracticed: progressStore.snapshot.streak.lastPracticedDate
-            )
+            HStack(alignment: .center, spacing: 12) {
+                let streak = progressStore.streak()
+                StreakRowView(
+                    currentStreak: streak.current,
+                    lastPracticed: progressStore.snapshot.streak.lastPracticedDate
+                )
+
+                CharacterView(
+                    mood: sparkyMood,
+                    size: 52,
+                    showSpeechBubble: false,
+                    onTap: {
+                        SoundEffects.playSparkyBleep()
+                        Haptics.tap()
+                    }
+                )
+            }
 
             HStack(spacing: 10) {
                 subjectPill(.math, label: "Math 🔢")
                 subjectPill(.science, label: "Science 🔬")
             }
 
-            if subject == .math {
+            if subject == .math || subject == .science {
                 HStack(spacing: 10) {
                     gradePill(.second)
                     gradePill(.third)
@@ -98,13 +90,17 @@ struct AdventureMapView: View {
             withAnimation(.spring(response: 0.45, dampingFraction: 0.8)) {
                 slideDirection = value == .science ? 1 : -1
                 subject = value
-                if value == .science { grade = .second }
+                if value == .science && grade == .third {
+                    // science 3rd grade supported
+                } else if value == .science {
+                    grade = .second
+                }
             }
         } label: {
             Text(label)
-                .font(.headline)
+                .font(AppTypography.label)
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, 12)
+                .padding(.vertical, 14)
                 .background(subject == value ? Color.accentColor : AppTheme.card)
                 .foregroundStyle(subject == value ? .white : .primary)
                 .clipShape(Capsule())
@@ -117,9 +113,9 @@ struct AdventureMapView: View {
             withAnimation(.spring()) { grade = value }
         } label: {
             Text(value.rawValue)
-                .font(.subheadline.bold())
+                .font(AppTypography.label)
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, 8)
+                .padding(.vertical, 10)
                 .background(grade == value ? Color.blue.opacity(0.2) : AppTheme.card)
                 .clipShape(Capsule())
         }
@@ -127,172 +123,173 @@ struct AdventureMapView: View {
     }
 
     private var mapContent: some View {
-        ZStack(alignment: .top) {
-            mapPath
-                .stroke(Color.brown.opacity(0.35), style: StrokeStyle(lineWidth: 8, lineCap: .round, dash: [2, 8]))
-
-            VStack(spacing: 36) {
-                startEndNode(
-                    title: route.startTitle,
-                    emoji: route.startEmoji,
-                    isEnd: false
-                )
+        VStack(spacing: 20) {
+            startEndNode(title: route.startTitle, emoji: route.startEmoji)
                 .id("start")
 
-                ForEach(Array(topicOnlyStops.enumerated()), id: \.element.id) { index, stop in
-                    if let worldTitle = stop.worldTitle, let emoji = stop.worldEmoji,
-                       index == 0 || topicOnlyStops[index - 1].worldTitle != worldTitle {
-                        worldLabel(title: worldTitle, emoji: emoji)
-                    }
+            ForEach(Array(topicOnlyStops.enumerated()), id: \.element.id) { index, stop in
+                if case .topic(let topic) = stop.kind {
+                    let status = MapProgressHelper.status(
+                        for: stop,
+                        at: index,
+                        allStops: stops,
+                        progressStore: progressStore
+                    )
+                    let showWorld = stop.worldTitle != nil &&
+                        (index == 0 || topicOnlyStops[index - 1].worldTitle != stop.worldTitle)
 
-                    stopNode(stop: stop, index: index)
-                        .id(stop.id)
+                    stopCard(
+                        topic: topic,
+                        status: status,
+                        worldTitle: showWorld ? stop.worldTitle : nil,
+                        worldEmoji: showWorld ? stop.worldEmoji : nil,
+                        alignTrailing: index.isMultiple(of: 2)
+                    )
+                    .id(stop.id)
                 }
-
-                startEndNode(
-                    title: route.endTitle,
-                    emoji: route.endEmoji,
-                    isEnd: true
-                )
-                .id("end")
             }
-            .padding(.horizontal, 24)
-            .offset(x: slideDirection * 0)
-            .transition(.asymmetric(
-                insertion: .move(edge: slideDirection > 0 ? .trailing : .leading),
-                removal: .move(edge: slideDirection > 0 ? .leading : .trailing)
-            ))
+
+            startEndNode(title: route.endTitle, emoji: route.endEmoji)
+                .id("end")
         }
+        .padding(.horizontal, 8)
         .padding(.top, 8)
     }
 
-    private var mapPath: Path {
-        let offsets = stopOffsets(count: topicOnlyStops.count + 2)
-        var path = Path()
-        for i in 0..<offsets.count - 1 {
-            let y1 = CGFloat(i) * 120 + 40
-            let y2 = CGFloat(i + 1) * 120 + 40
-            let x1 = offsets[i]
-            let x2 = offsets[i + 1]
-            path.move(to: CGPoint(x: x1, y: y1))
-            path.addCurve(
-                to: CGPoint(x: x2, y: y2),
-                control1: CGPoint(x: x1, y: y1 + 50),
-                control2: CGPoint(x: x2, y: y2 - 50)
-            )
-        }
-        return path
-    }
-
-    private func stopOffsets(count: Int) -> [CGFloat] {
-        (0..<count).map { i in
-            i.isMultiple(of: 2) ? 120 : 260
-        }
-    }
-
-    @ViewBuilder
-    private func stopNode(stop: MapStopItem, index: Int) -> some View {
-        let offset = index.isMultiple(of: 2) ? CGFloat(-60) : CGFloat(60)
-        let status = MapProgressHelper.status(for: stop, at: index, allStops: stops, progressStore: progressStore)
-
-        switch stop.kind {
-        case .start, .end:
-            EmptyView()
-        case .topic(let topic):
-            HStack {
-                if offset > 0 { Spacer() }
-                NavigationLink {
-                    SessionSetupView(topic: topic)
-                } label: {
-                    mapStopButton(topic: topic, status: status)
-                }
-                .disabled(status == .locked)
-                .buttonStyle(.plain)
-                #if targetEnvironment(macCatalyst)
-                .onHover { hovering in
-                    if hovering && status != .locked {
-                        // hover scale handled in button
-                    }
-                }
-                #endif
-                if offset < 0 { Spacer() }
-            }
-            .offset(x: offset * sparkyProgress)
-        }
-    }
-
-    @ViewBuilder
-    private func mapStopButton(topic: Topic, status: MapStopStatus) -> some View {
+    private func stopCard(
+        topic: Topic,
+        status: MapStopStatus,
+        worldTitle: String?,
+        worldEmoji: String?,
+        alignTrailing: Bool
+    ) -> some View {
         let color = TopicAccent(topic: topic).color
-        ZStack {
-            Circle()
-                .fill(status == .locked ? Color.gray.opacity(0.35) : color)
-                .frame(width: 80, height: 80)
-                .shadow(color: color.opacity(status == .locked ? 0 : 0.4), radius: pulse && status == .current ? 10 : 4)
-                .scaleEffect(pulse && status == .current ? 1.06 : 1)
-                .animation(status == .current ? .easeInOut(duration: 1).repeatForever(autoreverses: true) : .default, value: pulse)
+        let unlocked = status != .locked
+        let content = stopCardContent(
+            topic: topic,
+            status: status,
+            worldTitle: worldTitle,
+            worldEmoji: worldEmoji,
+            color: color,
+            unlocked: unlocked
+        )
 
-            Image(systemName: topic.icon)
-                .font(.title2)
-                .foregroundStyle(status == .locked ? Color.secondary : Color.white)
+        return Group {
+            if unlocked {
+                NavigationLink {
+                    TopicActivityHubView(topic: topic)
+                } label: {
+                    content
+                }
+                .buttonStyle(.plain)
+            } else {
+                content
+            }
+        }
+        .frame(maxWidth: horizontalSizeClass == .regular ? 520 : .infinity)
+        .frame(maxWidth: .infinity, alignment: alignTrailing ? .trailing : .leading)
+        .accessibilityLabel("\(topic.name), \(statusLabel(status))")
+        .accessibilityHint(unlocked ? "Opens study and practice" : "Complete the previous stop first")
+    }
 
-            if status == .locked {
-                Image(systemName: "lock.fill")
-                    .font(.caption.bold())
-                    .foregroundStyle(.white)
-                    .padding(6)
-                    .background(.black.opacity(0.45))
-                    .clipShape(Circle())
+    private func stopCardContent(
+        topic: Topic,
+        status: MapStopStatus,
+        worldTitle: String?,
+        worldEmoji: String?,
+        color: Color,
+        unlocked: Bool
+    ) -> some View {
+        VStack(alignment: .leading, spacing: 0) {
+            if let worldTitle, let worldEmoji {
+                HStack(spacing: 8) {
+                    Text(worldEmoji)
+                        .font(.title2)
+                    Text(worldTitle)
+                        .font(AppTypography.sectionTitle)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 18)
+                .padding(.vertical, 12)
+                .background(color.opacity(0.2))
             }
 
-            if status == .completed {
-                VStack {
-                    HStack {
-                        Spacer()
-                        Image(systemName: "star.fill")
-                            .font(.caption)
-                            .foregroundStyle(.yellow)
-                            .padding(4)
-                            .background(.black.opacity(0.35))
-                            .clipShape(Circle())
-                    }
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        Image(systemName: "checkmark.circle.fill")
-                            .font(.caption)
+            HStack(spacing: 16) {
+                ZStack {
+                    Circle()
+                        .fill(unlocked ? color : Color.gray.opacity(0.35))
+                        .frame(width: 56, height: 56)
+                    Image(systemName: topic.icon)
+                        .font(.title2)
+                        .foregroundStyle(unlocked ? .white : .secondary)
+                    if status == .locked {
+                        Image(systemName: "lock.fill")
+                            .font(.caption.bold())
                             .foregroundStyle(.white)
+                            .padding(5)
+                            .background(.black.opacity(0.5))
+                            .clipShape(Circle())
+                            .offset(x: 18, y: 18)
                     }
                 }
-                .frame(width: 80, height: 80)
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(topic.name)
+                        .font(AppTypography.sectionTitle)
+                        .foregroundStyle(unlocked ? .primary : .secondary)
+                        .multilineTextAlignment(.leading)
+                    Text(statusLabel(status))
+                        .font(AppTypography.caption)
+                        .foregroundStyle(.secondary)
+                }
+
+                Spacer(minLength: 8)
+
+                if unlocked {
+                    Image(systemName: "chevron.right.circle.fill")
+                        .font(.title2)
+                        .foregroundStyle(color)
+                }
+
+                if status == .completed {
+                    Image(systemName: "star.fill")
+                        .font(.title3)
+                        .foregroundStyle(.yellow)
+                }
             }
+            .padding(18)
         }
-        .onAppear {
-            if status == .current { pulse = true }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppTheme.card)
+        .clipShape(RoundedRectangle(cornerRadius: 22))
+        .overlay(
+            RoundedRectangle(cornerRadius: 22)
+                .stroke(
+                    status == .current ? color : Color.secondary.opacity(0.2),
+                    lineWidth: status == .current ? 3 : 1
+                )
+        )
+        .shadow(color: unlocked ? color.opacity(0.15) : .clear, radius: 8, y: 4)
+        .contentShape(RoundedRectangle(cornerRadius: 22))
+    }
+
+    private func statusLabel(_ status: MapStopStatus) -> String {
+        switch status {
+        case .locked: return "Locked — finish the stop before this one"
+        case .current: return "Ready to play!"
+        case .completed: return "Completed — tap to practice again"
         }
     }
 
-    private func worldLabel(title: String, emoji: String) -> some View {
-        HStack(spacing: 8) {
+    private func startEndNode(title: String, emoji: String) -> some View {
+        VStack(spacing: 8) {
             Text(emoji)
+                .font(.system(size: 48))
             Text(title)
-                .font(.headline)
-        }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 8)
-        .background(AppTheme.card.opacity(0.9))
-        .clipShape(Capsule())
-    }
-
-    private func startEndNode(title: String, emoji: String, isEnd: Bool) -> some View {
-        VStack(spacing: 6) {
-            Text(emoji)
-                .font(.largeTitle)
-            Text(title)
-                .font(.subheadline.bold())
+                .font(AppTypography.sectionTitle)
                 .multilineTextAlignment(.center)
         }
-        .padding()
+        .padding(.vertical, 12)
         .frame(maxWidth: .infinity)
     }
 
@@ -316,6 +313,7 @@ struct AdventureMapView: View {
                 }
                 .fill(AppTheme.color(hex: route.hillColor).opacity(0.35))
             }
+            .allowsHitTesting(false)
         }
     }
 
@@ -329,13 +327,6 @@ struct AdventureMapView: View {
             withAnimation(.spring()) {
                 proxy.scrollTo(current?.id ?? "start", anchor: .center)
             }
-        }
-    }
-
-    private func animateSparkyWalk() {
-        sparkyProgress = 0
-        withAnimation(.easeInOut(duration: 1.2)) {
-            sparkyProgress = 1
         }
     }
 }

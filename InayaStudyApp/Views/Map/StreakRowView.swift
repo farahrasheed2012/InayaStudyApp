@@ -4,6 +4,8 @@ struct StreakRowView: View {
     let currentStreak: Int
     let lastPracticed: Date
 
+    @ScaledMetric(relativeTo: .caption) private var dayCircleSize: CGFloat = 34
+
     private var weekDays: [Date] {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: .now)
@@ -15,7 +17,7 @@ struct StreakRowView: View {
             HStack(spacing: 4) {
                 Text("🔥")
                 Text("\(currentStreak)")
-                    .font(.title2.bold())
+                    .font(AppTypography.sectionTitle)
             }
 
             Spacer()
@@ -37,13 +39,13 @@ struct StreakRowView: View {
         return ZStack {
             Circle()
                 .fill(practiced ? Color.orange.opacity(0.25) : Color.secondary.opacity(0.12))
-                .frame(width: 28, height: 28)
+                .frame(width: dayCircleSize, height: dayCircleSize)
             if practiced {
                 Text("🔥")
-                    .font(.caption2)
+                    .font(AppTypography.caption)
             } else {
                 Text(shortWeekday(day))
-                    .font(.caption2.bold())
+                    .font(AppTypography.badge)
                     .foregroundStyle(.secondary)
             }
         }

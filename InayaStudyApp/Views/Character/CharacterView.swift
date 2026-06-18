@@ -4,6 +4,7 @@ struct CharacterView: View {
     var mood: SparkyMood
     var size: CGFloat = 72
     var speechText: String? = nil
+    var showSpeechBubble: Bool = true
     var onTap: (() -> Void)? = nil
 
     @Environment(\.colorScheme) private var colorScheme
@@ -17,11 +18,16 @@ struct CharacterView: View {
 
     var body: some View {
         VStack(spacing: 4) {
-            if let text = speechText ?? mood.speechBubble {
+            if showSpeechBubble, let text = speechText ?? mood.speechBubble {
                 Text(text)
-                    .font(.caption.bold())
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 6)
+                    .font(AppTypography.studyBody)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(5)
+                    .lineSpacing(4)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: 280)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 12)
                     .background(AppTheme.card)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                     .overlay(
@@ -40,6 +46,7 @@ struct CharacterView: View {
                 }
                 .accessibilityLabel("Sparky the robot")
         }
+        .fixedSize()
         .onAppear { startAnimations() }
         .onChange(of: mood) { _ in startAnimations() }
     }

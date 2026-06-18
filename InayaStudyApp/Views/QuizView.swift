@@ -40,6 +40,7 @@ struct QuizView: View {
                         topicLabel
                         questionCard(problem: problem)
                         answerArea(problem: problem)
+                        feedbackCard(problem: problem)
                     }
                     .padding()
                     .offset(x: slideOffset)
@@ -49,8 +50,7 @@ struct QuizView: View {
             hintButton
                 .padding()
         }
-        .frame(maxWidth: 430)
-        .frame(maxWidth: .infinity)
+        .fullWidthContent()
         .background(AppTheme.background.ignoresSafeArea())
         .navigationBarBackButtonHidden(true)
         .onChange(of: viewModel.currentIndex) { _ in
@@ -95,11 +95,11 @@ struct QuizView: View {
                 dismiss()
             } label: {
                 Label("Back", systemImage: "chevron.left")
-                    .font(.headline)
+                    .font(AppTypography.quizMeta)
             }
             Spacer()
             Text("Q \(min(viewModel.currentIndex + 1, questionCount)) of \(questionCount)")
-                .font(.subheadline.bold())
+                .font(AppTypography.quizMeta)
             Spacer()
             CharacterView(
                 mood: sparkyMood,
@@ -127,7 +127,7 @@ struct QuizView: View {
                         .animation(.easeOut(duration: 0.35), value: viewModel.progress)
                 }
             }
-            .frame(height: 14)
+            .frame(height: 18)
         }
     }
 
@@ -136,7 +136,7 @@ struct QuizView: View {
             Image(systemName: topic.icon)
                 .foregroundStyle(accent)
             Text(topic.name)
-                .font(.subheadline.bold())
+                .font(AppTypography.quizMeta)
                 .foregroundStyle(.secondary)
             Spacer()
         }
@@ -145,15 +145,13 @@ struct QuizView: View {
     private func questionCard(problem: Problem) -> some View {
         VStack(spacing: 16) {
             Text(problem.questionText)
-                .font(.system(size: 26, weight: .bold, design: .rounded))
-                .multilineTextAlignment(.center)
-                .largeReadable()
+                .questionText()
 
             if let visual = problem.visual {
                 ProblemVisualView(visual: visual)
             }
         }
-        .padding(20)
+        .padding(24)
         .frame(maxWidth: .infinity)
         .background(AppTheme.card)
         .clipShape(RoundedRectangle(cornerRadius: 20))
@@ -162,12 +160,39 @@ struct QuizView: View {
     }
 
     @ViewBuilder
+    private func feedbackCard(problem: Problem) -> some View {
+        if viewModel.showingFeedback {
+            VStack(spacing: 8) {
+                if viewModel.lastWasCorrect {
+                    Label("Great job!", systemImage: "checkmark.circle.fill")
+                        .font(AppTypography.cardTitle)
+                        .foregroundStyle(AppTheme.success)
+                    Text(viewModel.encouragement)
+                        .quizFeedback()
+                        .foregroundStyle(.secondary)
+                } else {
+                    Label("Let's learn this one", systemImage: "book.fill")
+                        .font(AppTypography.cardTitle)
+                        .foregroundStyle(accent)
+                    Text(TopicStudyGuide.explanation(for: problem, topic: topic))
+                        .quizFeedback()
+                }
+            }
+            .padding(20)
+            .frame(maxWidth: .infinity)
+            .background(viewModel.lastWasCorrect ? AppTheme.success.opacity(0.12) : accent.opacity(0.1))
+            .clipShape(RoundedRectangle(cornerRadius: 16))
+            .transition(.move(edge: .bottom).combined(with: .opacity))
+        }
+    }
+
+    @ViewBuilder
     private func answerArea(problem: Problem) -> some View {
         switch problem.answerType {
         case .multipleChoice:
             let choices = problem.choices ?? []
             let columns = [GridItem(.flexible()), GridItem(.flexible())]
-            LazyVGrid(columns: columns, spacing: 12) {
+            LazyVGrid(columns: columns, spacing: 14) {
                 ForEach(Array(choices.enumerated()), id: \.offset) { index, choice in
                     let label = ["A", "B", "C", "D"][min(index, 3)]
                     answerButton(label: label, text: choice, correctAnswer: problem.correctAnswer)
@@ -181,7 +206,7 @@ struct QuizView: View {
 
         case .tapSelection:
             let options = problem.tapOptions ?? problem.choices ?? []
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
+            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 14) {
                 ForEach(Array(options.enumerated()), id: \.offset) { index, option in
                     let label = ["A", "B", "C", "D"][min(index, 3)]
                     answerButton(label: label, text: option, correctAnswer: problem.correctAnswer)
@@ -211,20 +236,22 @@ struct QuizView: View {
                 withAnimation(.default.repeatCount(3, autoreverses: true)) { shakeWrong.toggle() }
             }
         } label: {
-            VStack(spacing: 8) {
+            VStack(spacing: 10) {
                 Text(label)
-                    .font(.caption.bold())
-                    .frame(width: 28, height: 28)
+                    .font(AppTypography.sectionTitle)
+                    .frame(width: 40, height: 40)
                     .background(accent.opacity(showing ? 0.2 : 0.15))
                     .foregroundStyle(accent)
                     .clipShape(Circle())
                 Text(text)
-                    .font(.body.bold())
+                    .font(AppTypography.answer)
                     .multilineTextAlignment(.center)
+                    .lineSpacing(4)
+                    .minimumScaleFactor(0.85)
                     .foregroundStyle(showing && (isCorrect || selected) ? .white : .primary)
             }
-            .padding()
-            .frame(maxWidth: .infinity, minHeight: 88)
+            .padding(16)
+            .frame(maxWidth: .infinity, minHeight: 112)
             .background(fill)
             .clipShape(RoundedRectangle(cornerRadius: 18))
             .overlay(
@@ -243,9 +270,9 @@ struct QuizView: View {
             Spacer()
             Button(action: showHint) {
                 Image(systemName: "lightbulb.fill")
-                    .font(.title3)
+                    .font(.title2)
                     .foregroundStyle(.yellow)
-                    .padding(12)
+                    .padding(16)
                     .background(AppTheme.card)
                     .clipShape(Circle())
             }

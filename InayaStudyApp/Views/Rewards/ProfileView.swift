@@ -39,7 +39,7 @@ struct ProfileView: View {
                 }
 
                 Text("Badge Collection")
-                    .font(.title2.bold())
+                    .font(AppTypography.sectionTitle)
 
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 100), spacing: 16)], spacing: 16) {
                     ForEach(topics) { topic in
@@ -48,8 +48,7 @@ struct ProfileView: View {
                 }
             }
             .padding()
-            .frame(maxWidth: 430)
-            .frame(maxWidth: .infinity)
+            .contentColumn()
         }
         .background(AppTheme.background.ignoresSafeArea())
         .navigationTitle("Badges")
@@ -86,7 +85,7 @@ struct ProfileView: View {
                     }
                 }
                 Text(topic.name)
-                    .font(.caption)
+                    .font(AppTypography.caption)
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
                     .foregroundStyle(earned == nil ? .secondary : .primary)
@@ -99,10 +98,10 @@ struct ProfileView: View {
     private func statCard(title: String, value: String) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(title)
-                .font(.caption2)
+                .font(AppTypography.caption)
                 .foregroundStyle(.secondary)
             Text(value)
-                .font(.title3.bold())
+                .font(AppTypography.cardTitle)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(10)

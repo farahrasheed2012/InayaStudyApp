@@ -2,19 +2,55 @@ import Foundation
 
 enum ScienceProblemGenerator {
     static func generate(topic: Topic, difficulty: Difficulty) -> Problem {
+        if topic.id == "sci3-mixed-review" {
+            let pool = TopicRegistry.scienceThirdGradePracticeTopics
+            let randomTopic = pool.randomElement() ?? topic
+            return generate(topic: randomTopic, difficulty: difficulty)
+        }
+
+        if topic.id == "sci2-mixed-review" {
+            let pool = TopicRegistry.scienceSecondGradePracticeTopics
+            let randomTopic = pool.randomElement() ?? topic
+            return generate(topic: randomTopic, difficulty: difficulty)
+        }
+
         switch topic.id {
         case "sci-matter-properties": return matterProperties(topic: topic, difficulty: difficulty)
         case "sci-matter-changes": return matterChanges(topic: topic, difficulty: difficulty)
+        case "sci-mixtures": return mixtures(topic: topic, difficulty: difficulty)
         case "sci-force-motion": return forceMotion(topic: topic, difficulty: difficulty)
         case "sci-energy-forms": return energyForms(topic: topic, difficulty: difficulty)
         case "sci-sound-light": return soundLight(topic: topic, difficulty: difficulty)
         case "sci-earth-materials": return earthMaterials(topic: topic, difficulty: difficulty)
         case "sci-sky-patterns": return skyPatterns(topic: topic, difficulty: difficulty)
+        case "sci-weather-seasons": return weatherSeasons(topic: topic, difficulty: difficulty)
+        case "sci-conservation": return conservation(topic: topic, difficulty: difficulty)
         case "sci-plant-structures": return plantStructures(topic: topic, difficulty: difficulty)
         case "sci-animal-needs": return animalNeeds(topic: topic, difficulty: difficulty)
         case "sci-life-cycles": return lifeCycles(topic: topic, difficulty: difficulty)
+        case "sci-food-chains": return foodChains(topic: topic, difficulty: difficulty)
         case "sci-habitats": return habitats(topic: topic, difficulty: difficulty)
         case "sci-science-tools": return scienceTools(topic: topic, difficulty: difficulty)
+        case "sci-scientific-method": return scientificMethod(topic: topic, difficulty: difficulty)
+        case "sci-scientists-work": return scientistsWork(topic: topic, difficulty: difficulty)
+        case "sci-vibration-sound": return vibrationSound(topic: topic, difficulty: difficulty)
+        case "sci-severe-weather": return severeWeather(topic: topic, difficulty: difficulty)
+        case "sci3-investigation": return sci3Investigation(topic: topic, difficulty: difficulty)
+        case "sci3-science-practices": return sci3SciencePractices(topic: topic, difficulty: difficulty)
+        case "sci3-matter-states": return sci3MatterStates(topic: topic, difficulty: difficulty)
+        case "sci3-force-magnets": return sci3ForceMagnets(topic: topic, difficulty: difficulty)
+        case "sci3-mechanical-energy": return sci3MechanicalEnergy(topic: topic, difficulty: difficulty)
+        case "sci3-everyday-energy": return sci3EverydayEnergy(topic: topic, difficulty: difficulty)
+        case "sci3-energy-circuits": return sci3EnergyCircuits(topic: topic, difficulty: difficulty)
+        case "sci3-earth-soil": return sci3EarthSoil(topic: topic, difficulty: difficulty)
+        case "sci3-conservation": return sci3Conservation(topic: topic, difficulty: difficulty)
+        case "sci3-sun-moon": return sci3SunMoon(topic: topic, difficulty: difficulty)
+        case "sci3-weather-climate": return sci3WeatherClimate(topic: topic, difficulty: difficulty)
+        case "sci3-ecosystems": return sci3Ecosystems(topic: topic, difficulty: difficulty)
+        case "sci3-fossils-changes": return sci3FossilsChanges(topic: topic, difficulty: difficulty)
+        case "sci3-growth-behavior": return sci3GrowthBehavior(topic: topic, difficulty: difficulty)
+        case "sci3-inherited-traits": return sci3InheritedTraits(topic: topic, difficulty: difficulty)
+        case "sci3-life-cycles": return sci3LifeCycles(topic: topic, difficulty: difficulty)
         default:
             return matterProperties(topic: topic, difficulty: difficulty)
         }
@@ -441,6 +477,360 @@ enum ScienceProblemGenerator {
     }
 
     // MARK: - Helpers
+
+    // MARK: - New 2nd Grade Science
+
+    private static func mixtures(topic: Topic, difficulty: Difficulty) -> Problem {
+        switch difficulty {
+        case .easy:
+            return mc(topic: topic, question: "Salt dissolved in water makes a ___",
+                      correct: "solution", wrong: ["mixture only", "solid", "gas"],
+                      funFact: "When salt dissolves, it spreads evenly in the water.")
+        case .medium:
+            return mc(topic: topic, question: "Sand stirred into water is a ___",
+                      correct: "mixture", wrong: ["solution", "compound", "element"],
+                      funFact: "Sand does not dissolve — you can still see the grains.")
+        default:
+            return mc(topic: topic, question: "Which can be separated by a filter?",
+                      correct: "sand and water", wrong: ["salt water", "sugar water", "juice"],
+                      funFact: "A filter catches solids but lets liquid through.")
+        }
+    }
+
+    private static func weatherSeasons(topic: Topic, difficulty: Difficulty) -> Problem {
+        switch difficulty {
+        case .easy:
+            return mc(topic: topic, question: "What do we wear when it is very cold?",
+                      correct: "coat", wrong: ["swimsuit", "sandals", "shorts"],
+                      funFact: "Weather changes what clothes we need.")
+        case .medium:
+            return mc(topic: topic, question: "Which season usually has the hottest weather in Texas?",
+                      correct: "summer", wrong: ["winter", "fall", "spring"],
+                      funFact: "Summer has longer, hotter days.")
+        default:
+            return mc(topic: topic, question: "Rain, snow, and sunshine are examples of ___",
+                      correct: "weather", wrong: ["seasons", "habitats", "food chains"],
+                      funFact: "Weather is what happens in the sky day to day.")
+        }
+    }
+
+    private static func foodChains(topic: Topic, difficulty: Difficulty) -> Problem {
+        switch difficulty {
+        case .easy:
+            return mc(topic: topic, question: "Grass → Rabbit → Fox. What is the rabbit?",
+                      correct: "consumer", wrong: ["producer", "decomposer", "sun"],
+                      visual: .foodChain(producer: "Grass", herbivore: "Rabbit", carnivore: "Fox"),
+                      funFact: "Animals that eat plants are consumers.")
+        case .medium:
+            return mc(topic: topic, question: "What do all food chains start with?",
+                      correct: "the Sun", wrong: ["a fox", "rocks", "water only"],
+                      funFact: "The Sun gives energy to plants.")
+        default:
+            return mc(topic: topic, question: "In a food chain, a plant is a ___",
+                      correct: "producer", wrong: ["carnivore", "decomposer", "predator"],
+                      visual: .foodChain(producer: "Grass", herbivore: "Deer", carnivore: "Wolf"),
+                      funFact: "Producers make food using sunlight.")
+        }
+    }
+
+    private static func scientificMethod(topic: Topic, difficulty: Difficulty) -> Problem {
+        switch difficulty {
+        case .easy:
+            return mc(topic: topic, question: "A scientist asks a question first. What comes next?",
+                      correct: "make a prediction", wrong: ["write the answer", "ignore data", "stop"],
+                      funFact: "Scientists predict what they think will happen.")
+        case .medium:
+            return mc(topic: topic, question: "Recording what you see in an experiment is called ___",
+                      correct: "observing", wrong: ["guessing", "sleeping", "skipping"],
+                      funFact: "Good scientists write down their observations.")
+        default:
+            return mc(topic: topic, question: "After an experiment, a scientist draws a ___",
+                      correct: "conclusion", wrong: ["song", "joke", "map only"],
+                      funFact: "A conclusion explains what the results mean.")
+        }
+    }
+
+    private static func scientistsWork(topic: Topic, difficulty: Difficulty) -> Problem {
+        switch difficulty {
+        case .easy:
+            return pick([
+                mc(topic: topic, question: "Scientists ask questions about the natural world. Is that science or a guess?",
+                   correct: "science", wrong: ["just a guess", "only art", "only history"],
+                   funFact: "Science uses evidence, not just opinions."),
+                mc(topic: topic, question: "Who studies stars and planets?",
+                   correct: "astronomer", wrong: ["chef", "pilot", "farmer only"],
+                   funFact: "Scientists specialize in different fields."),
+            ])
+        case .medium:
+            return pick([
+                mc(topic: topic, question: "Why should scientists write down their data?",
+                   correct: "to use evidence", wrong: ["to forget it", "to hide results", "to skip thinking"],
+                   funFact: "Records help others check and learn from experiments."),
+                mc(topic: topic, question: "Is it okay to change your answer when new evidence appears?",
+                   correct: "yes", wrong: ["no, never", "only on Fridays", "only if you are wrong on purpose"],
+                   funFact: "Good scientists update ideas when evidence changes."),
+            ])
+        default:
+            return mc(topic: topic, question: "Which choice follows safe and honest science?",
+                      correct: "report what you actually observed", wrong: ["change data to win", "skip safety goggles", "ignore unexpected results"],
+                      funFact: "Ethical science means being honest about what happened.")
+        }
+    }
+
+    private static func vibrationSound(topic: Topic, difficulty: Difficulty) -> Problem {
+        switch difficulty {
+        case .easy:
+            return pick([
+                mc(topic: topic, question: "When you pluck a guitar string, it ___ and makes sound.",
+                   correct: "vibrates", wrong: ["melts", "freezes", "dissolves"],
+                   funFact: "Vibration is a fast back-and-forth motion."),
+                mc(topic: topic, question: "A tuning fork makes sound because it ___",
+                   correct: "vibrates", wrong: ["reflects light", "absorbs water", "grows"],
+                   funFact: "Touch a ringing tuning fork gently — you can feel it buzz!"),
+            ])
+        case .medium:
+            return pick([
+                mc(topic: topic, question: "Tighter drum skin vibrates faster and makes a ___ sound.",
+                   correct: "higher", wrong: ["lower", "silent", "slower"],
+                   funFact: "Faster vibrations usually mean higher pitch."),
+                mc(topic: topic, question: "Sound travels through ___ to reach your ears.",
+                   correct: "air", wrong: ["empty space with no matter", "only rocks", "only water always"],
+                   funFact: "Sound needs matter to travel — air works great!"),
+            ])
+        default:
+            return mc(topic: topic, question: "If an object stops vibrating, the sound will ___",
+                      correct: "stop", wrong: ["get louder forever", "turn into light", "become a magnet"],
+                      funFact: "No vibration → no sound.")
+        }
+    }
+
+    private static func severeWeather(topic: Topic, difficulty: Difficulty) -> Problem {
+        switch difficulty {
+        case .easy:
+            return pick([
+                mc(topic: topic, question: "A spinning column of air that can damage buildings is a ___",
+                   correct: "tornado", wrong: ["rainbow", "breeze", "fog"],
+                   funFact: "Tornadoes are severe weather — go to a safe indoor room."),
+                mc(topic: topic, question: "Weather data can be shown on a ___",
+                   correct: "graph", wrong: ["recipe", "puzzle only", "song"],
+                   funFact: "Graphs help us see patterns in temperature and rain."),
+            ])
+        case .medium:
+            return pick([
+                mc(topic: topic, question: "Which severe storm has very strong winds and heavy rain near the ocean?",
+                   correct: "hurricane", wrong: ["blizzard in summer", "light drizzle", "morning dew"],
+                   funFact: "Hurricanes form over warm ocean water."),
+                mc(topic: topic, question: "On a weather graph, the tallest bar means the ___ value.",
+                   correct: "greatest", wrong: ["smallest", "zero always", "oldest"],
+                   funFact: "Compare bar heights to read data quickly."),
+            ])
+        default:
+            return pick([
+                mc(topic: topic, question: "Heavy snow and very cold wind for a long time is a ___",
+                   correct: "blizzard", wrong: ["heat wave", "drought", "sunny day"],
+                   funFact: "Severe weather looks different in different regions."),
+                mc(topic: topic, question: "Why do scientists measure and record daily weather?",
+                   correct: "to find patterns", wrong: ["to ignore seasons", "to stop rain", "to change the Sun"],
+                   funFact: "Patterns over time help predict weather."),
+            ])
+        }
+    }
+
+    private static func conservation(topic: Topic, difficulty: Difficulty) -> Problem {
+        switch difficulty {
+        case .easy:
+            return mc(topic: topic, question: "Recycling paper helps ___",
+                      correct: "save trees", wrong: ["waste water", "pollute air", "use more oil"],
+                      funFact: "Recycling gives materials a new life.")
+        case .medium:
+            return mc(topic: topic, question: "Which is a natural resource?",
+                      correct: "water", wrong: ["plastic toy", "metal spoon from factory", "paper cup"],
+                      funFact: "Natural resources come from Earth.")
+        default:
+            return mc(topic: topic, question: "Turning off lights when you leave saves ___",
+                      correct: "energy", wrong: ["gravity", "soil", "wind only"],
+                      funFact: "Saving energy helps the environment.")
+        }
+    }
+
+    // MARK: - 3rd Grade Science
+
+    private static func sci3Investigation(topic: Topic, difficulty: Difficulty) -> Problem {
+        mc(topic: topic, question: "In a fair test, you change only one ___",
+           correct: "variable", wrong: ["color of your shoes", "friend", "lunch"],
+           funFact: "Change one thing at a time to learn what causes the result.")
+    }
+
+    private static func sci3SciencePractices(topic: Topic, difficulty: Difficulty) -> Problem {
+        switch difficulty {
+        case .easy:
+            return pick([
+                mc(topic: topic, question: "Which tool measures length in science?",
+                   correct: "ruler", wrong: ["thermometer", "balance only", "stopwatch only"],
+                   funFact: "Scientists pick tools that match what they measure."),
+                mc(topic: topic, question: "Scientists share honest results so others can ___",
+                   correct: "learn from evidence", wrong: ["win a race", "ignore data", "skip safety"],
+                   funFact: "Science builds on evidence everyone can check."),
+            ])
+        case .medium:
+            return scientistsWork(topic: topic, difficulty: difficulty)
+        default:
+            return mc(topic: topic, question: "Why wear goggles during an experiment?",
+                      correct: "protect your eyes", wrong: ["look fashionable", "work slower", "hide results"],
+                      funFact: "Safety is part of good science.")
+        }
+    }
+
+    private static func sci3MechanicalEnergy(topic: Topic, difficulty: Difficulty) -> Problem {
+        switch difficulty {
+        case .easy:
+            return mc(topic: topic, question: "A rolling ball has ___ energy because it is moving.",
+                      correct: "mechanical", wrong: ["sound only", "light only", "magnetic"],
+                      funFact: "Moving objects have mechanical energy.")
+        case .medium:
+            return pick([
+                mc(topic: topic, question: "A bigger push usually makes a toy car move ___",
+                   correct: "farther", wrong: ["backward only", "slower always", "sideways only"],
+                   funFact: "More force can mean more speed and distance."),
+                mc(topic: topic, question: "A ramp helps a ball roll because of ___",
+                   correct: "gravity", wrong: ["magnetism", "sound", "light"],
+                   funFact: "Gravity pulls objects downhill."),
+            ])
+        default:
+            return mc(topic: topic, question: "If you stop pushing a scooter, it slows down because of ___",
+                      correct: "friction", wrong: ["photosynthesis", "evaporation", "magnetism"],
+                      funFact: "Friction opposes motion.")
+        }
+    }
+
+    private static func sci3EverydayEnergy(topic: Topic, difficulty: Difficulty) -> Problem {
+        switch difficulty {
+        case .easy:
+            return pick([
+                mc(topic: topic, question: "The Sun gives Earth ___ and light.",
+                   correct: "heat", wrong: ["gravity only", "magnetism", "sound"],
+                   funFact: "Thermal energy from the Sun warms our planet."),
+                soundLight(topic: topic, difficulty: .easy),
+            ])
+        case .medium:
+            return pick([
+                mc(topic: topic, question: "Touching a warm sidewalk shows ___ energy.",
+                   correct: "thermal", wrong: ["magnetic", "sound", "electrical only"],
+                   funFact: "Thermal energy is heat you can feel."),
+                energyForms(topic: topic, difficulty: .medium),
+            ])
+        default:
+            return soundLight(topic: topic, difficulty: .hard)
+        }
+    }
+
+    private static func sci3Conservation(topic: Topic, difficulty: Difficulty) -> Problem {
+        conservation(topic: topic, difficulty: difficulty)
+    }
+
+    private static func sci3FossilsChanges(topic: Topic, difficulty: Difficulty) -> Problem {
+        switch difficulty {
+        case .easy:
+            return mc(topic: topic, question: "A fossil is evidence of a living thing from the ___",
+                      correct: "past", wrong: ["future", "Moon", "kitchen"],
+                      funFact: "Fossils form over a very long time in rock.")
+        case .medium:
+            return pick([
+                mc(topic: topic, question: "A flood can ___ an ecosystem by adding water and moving soil.",
+                   correct: "change", wrong: ["freeze time", "stop the Sun", "remove gravity"],
+                   funFact: "Natural events can change habitats quickly."),
+                foodChains(topic: topic, difficulty: .medium),
+            ])
+        default:
+            return mc(topic: topic, question: "Scientists study fossils to learn how living things ___",
+                      correct: "changed over time", wrong: ["never lived", "only eat rocks", "live on the Moon"],
+                      funFact: "Fossils are clues about Earth's history.")
+        }
+    }
+
+    private static func sci3GrowthBehavior(topic: Topic, difficulty: Difficulty) -> Problem {
+        switch difficulty {
+        case .easy:
+            return mc(topic: topic, question: "Plants grow best with sunlight, water, and the right ___",
+                      correct: "temperature", wrong: ["television", "shoes", "magnet"],
+                      funFact: "Temperature affects how plants and animals grow.")
+        case .medium:
+            return pick([
+                mc(topic: topic, question: "Less rain in a region can cause plants to ___",
+                   correct: "grow slowly or die", wrong: ["grow instantly taller", "turn into metal", "stop needing roots"],
+                   funFact: "Precipitation affects plant survival."),
+                plantStructures(topic: topic, difficulty: .medium),
+            ])
+        default:
+            return mc(topic: topic, question: "Animals may migrate when seasons change because ___ changes.",
+                      correct: "temperature", wrong: ["the Moon's color", "gravity stops", "rocks melt"],
+                      funFact: "Behavior helps animals survive changing conditions.")
+        }
+    }
+
+    private static func sci3MatterStates(topic: Topic, difficulty: Difficulty) -> Problem {
+        matterProperties(topic: topic, difficulty: difficulty)
+    }
+
+    private static func sci3ForceMagnets(topic: Topic, difficulty: Difficulty) -> Problem {
+        switch difficulty {
+        case .easy:
+            return mc(topic: topic, question: "A magnet attracts ___",
+                      correct: "iron", wrong: ["wood", "plastic", "paper"],
+                      funFact: "Magnets stick to some metals like iron.")
+        default:
+            return forceMotion(topic: topic, difficulty: difficulty)
+        }
+    }
+
+    private static func sci3EnergyCircuits(topic: Topic, difficulty: Difficulty) -> Problem {
+        switch difficulty {
+        case .easy:
+            return mc(topic: topic, question: "A complete path for electricity is called a ___",
+                      correct: "circuit", wrong: ["magnet", "shadow", "habitat"],
+                      funFact: "Electricity flows through a closed circuit.")
+        default:
+            return energyForms(topic: topic, difficulty: difficulty)
+        }
+    }
+
+    private static func sci3EarthSoil(topic: Topic, difficulty: Difficulty) -> Problem {
+        earthMaterials(topic: topic, difficulty: difficulty)
+    }
+
+    private static func sci3SunMoon(topic: Topic, difficulty: Difficulty) -> Problem {
+        switch difficulty {
+        case .easy:
+            return mc(topic: topic, question: "Earth orbits around the ___",
+                      correct: "Sun", wrong: ["Moon", "Mars", "Jupiter"],
+                      funFact: "One year is one trip around the Sun.")
+        default:
+            return skyPatterns(topic: topic, difficulty: difficulty)
+        }
+    }
+
+    private static func sci3WeatherClimate(topic: Topic, difficulty: Difficulty) -> Problem {
+        weatherSeasons(topic: topic, difficulty: difficulty)
+    }
+
+    private static func sci3Ecosystems(topic: Topic, difficulty: Difficulty) -> Problem {
+        habitats(topic: topic, difficulty: difficulty)
+    }
+
+    private static func sci3InheritedTraits(topic: Topic, difficulty: Difficulty) -> Problem {
+        switch difficulty {
+        case .easy:
+            return mc(topic: topic, question: "Eye color passed from parents to child is a ___",
+                      correct: "inherited trait", wrong: ["learned skill", "weather pattern", "habitat"],
+                      funFact: "Traits you are born with are inherited.")
+        default:
+            return animalNeeds(topic: topic, difficulty: difficulty)
+        }
+    }
+
+    private static func sci3LifeCycles(topic: Topic, difficulty: Difficulty) -> Problem {
+        lifeCycles(topic: topic, difficulty: difficulty)
+    }
 
     private static func mc(
         topic: Topic,

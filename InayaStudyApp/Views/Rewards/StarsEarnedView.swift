@@ -9,62 +9,115 @@ struct StarsEarnedView: View {
     @State private var revealedStars = 0
     @State private var displayedScore = 0
     @State private var showButton = false
+    @State private var showReview = false
     @State private var sparkyMood: SparkyMood = .idle
 
     private var earnedStars: Int { viewModel.stars }
+    private var missed: [AnsweredProblem] { viewModel.answered.filter { !$0.isCorrect } }
 
     var body: some View {
-        ZStack {
-            RadialGradient(
-                colors: [Color.yellow.opacity(0.35), Color.white.opacity(0.05), .clear],
-                center: .center,
-                startRadius: 20,
-                endRadius: 320
-            )
-            .ignoresSafeArea()
+        ScrollView {
+            ZStack(alignment: .top) {
+                RadialGradient(
+                    colors: [Color.yellow.opacity(0.35), Color.white.opacity(0.05), .clear],
+                    center: .center,
+                    startRadius: 20,
+                    endRadius: 320
+                )
+                .frame(height: 280)
+                .allowsHitTesting(false)
 
-            VStack(spacing: 24) {
-                Text(Encouragement.resultsMessage(stars: earnedStars, subject: topic.subject, name: studentName))
-                    .font(.title2.bold())
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal)
+                VStack(spacing: 24) {
+                    Text(Encouragement.resultsMessage(stars: earnedStars, subject: topic.subject, name: studentName))
+                        .font(AppTypography.sectionTitle)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal)
+                        .padding(.top, 8)
 
-                CharacterView(mood: sparkyMood, size: 88)
+                    CharacterView(mood: sparkyMood, size: 88)
 
-                HStack(spacing: 16) {
-                    ForEach(0..<3, id: \.self) { index in
-                        starView(index: index)
+                    HStack(spacing: 16) {
+                        ForEach(0..<3, id: \.self) { index in
+                            starView(index: index)
+                        }
+                    }
+                    .padding(.vertical, 8)
+
+                    Text("\(displayedScore) / \(viewModel.answered.count) correct")
+                        .font(.system(.title, design: .rounded).weight(.bold))
+                        .monospacedDigit()
+
+                    Text("\(Int(viewModel.accuracy * 100))% accuracy")
+                        .font(AppTypography.bodyEmphasis)
+                        .foregroundStyle(.secondary)
+
+                    if !missed.isEmpty {
+                    Toggle("Review what to practice", isOn: $showReview)
+                        .font(AppTypography.studyBody)
+                        .padding(.horizontal)
+
+                        if showReview {
+                            VStack(alignment: .leading, spacing: 12) {
+                                Text("Questions to review")
+                                    .font(AppTypography.cardTitle)
+                                    .padding(.horizontal)
+
+                                ForEach(missed) { item in
+                                    reviewCard(item)
+                                }
+                            }
+                            .transition(.opacity)
+                        }
+                    }
+
+                    if showButton {
+                        Button(action: onContinue) {
+                            Text("Continue")
+                                .font(AppTypography.cardTitle)
+                                .frame(maxWidth: .infinity, minHeight: 56)
+                                .background(Color.accentColor)
+                                .foregroundStyle(.white)
+                                .clipShape(RoundedRectangle(cornerRadius: 18))
+                        }
+                        .buttonStyle(.plain)
+                        .padding(.horizontal, 32)
+                        .transition(.scale.combined(with: .opacity))
                     }
                 }
-                .padding(.vertical, 8)
-
-                Text("\(displayedScore) / \(viewModel.answered.count) correct")
-                    .font(.system(.title, design: .rounded).weight(.bold))
-                    .monospacedDigit()
-
-                Text("\(Int(viewModel.accuracy * 100))% accuracy")
-                    .font(.body)
-                    .foregroundStyle(.secondary)
-
-                if showButton {
-                    Button(action: onContinue) {
-                        Text("Continue")
-                            .font(.title3.bold())
-                            .frame(maxWidth: .infinity, minHeight: 56)
-                            .background(Color.accentColor)
-                            .foregroundStyle(.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 18))
-                    }
-                    .buttonStyle(.plain)
-                    .padding(.horizontal, 32)
-                    .transition(.scale.combined(with: .opacity))
-                }
+                .padding(.bottom, 24)
             }
-            .padding()
         }
+        .fullWidthContent()
         .background(AppTheme.background.ignoresSafeArea())
         .navigationBarBackButtonHidden(true)
         .onAppear { runSequence() }
+    }
+
+    private func reviewCard(_ item: AnsweredProblem) -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text(item.problem.questionText)
+                .font(AppTypography.studyBody)
+                .fixedSize(horizontal: false, vertical: true)
+
+            HStack(alignment: .top) {
+                Text("Your answer: \(item.userAnswer)")
+                    .font(AppTypography.quizMeta)
+                    .foregroundStyle(.secondary)
+                Spacer()
+                Text("Correct: \(item.problem.correctAnswer)")
+                    .font(AppTypography.quizMeta)
+                    .foregroundStyle(AppTheme.success)
+            }
+
+            Text(TopicStudyGuide.explanation(for: item.problem, topic: topic))
+                .quizFeedback()
+                .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding(20)
+        .background(AppTheme.card)
+        .clipShape(RoundedRectangle(cornerRadius: 14))
+        .padding(.horizontal)
     }
 
     @ViewBuilder

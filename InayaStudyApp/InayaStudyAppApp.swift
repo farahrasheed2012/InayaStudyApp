@@ -23,7 +23,7 @@ struct InayaStudyAppApp: App {
             .environmentObject(rewardsStore)
             .environmentObject(profileStore)
             #if targetEnvironment(macCatalyst)
-            .frame(minWidth: 430, minHeight: 700)
+            .frame(minWidth: 560, minHeight: 700)
             #endif
         }
     }

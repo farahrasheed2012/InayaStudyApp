@@ -5,14 +5,17 @@ struct AdventureNumpadView: View {
     var accent: Color
     var onSubmit: () -> Void
 
+  @ScaledMetric(relativeTo: .largeTitle) private var displaySize: CGFloat = 52
+  @ScaledMetric(relativeTo: .title2) private var keyMinHeight: CGFloat = 68
+
     private let rows = [["1", "2", "3"], ["4", "5", "6"], ["7", "8", "9"], [".", "0", "⌫"]]
 
     var body: some View {
         VStack(spacing: 12) {
             Text(text.isEmpty ? "?" : text)
-                .font(.system(size: 36, weight: .bold, design: .rounded))
+                .font(.system(size: displaySize, weight: .bold, design: .rounded))
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, 12)
+                .padding(.vertical, 14)
                 .background(AppTheme.card)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
                 .overlay(
@@ -30,8 +33,8 @@ struct AdventureNumpadView: View {
 
             Button(action: onSubmit) {
                 Text("Submit")
-                    .font(.title3.bold())
-                    .frame(maxWidth: .infinity, minHeight: 56)
+                    .font(AppTypography.sectionTitle)
+                    .frame(maxWidth: .infinity, minHeight: keyMinHeight)
                     .background(Color.green)
                     .foregroundStyle(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 16))
@@ -48,16 +51,13 @@ struct AdventureNumpadView: View {
             handle(key)
         } label: {
             Text(key)
-                .font(.title2.bold())
-                .frame(maxWidth: .infinity, minHeight: 54)
+                .font(AppTypography.sectionTitle)
+                .frame(maxWidth: .infinity, minHeight: keyMinHeight)
                 .background(AppTheme.card)
                 .clipShape(Circle())
                 .overlay(Circle().stroke(accent.opacity(0.25), lineWidth: 2))
         }
         .buttonStyle(.plain)
-        #if targetEnvironment(macCatalyst)
-        .scaleEffect(1)
-        #endif
     }
 
     private func handle(_ key: String) {

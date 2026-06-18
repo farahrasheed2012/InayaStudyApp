@@ -23,10 +23,46 @@ enum AppTheme {
     }
 }
 
+/// Kid-friendly rounded typography — sized for comfortable reading.
+enum AppTypography {
+    static let hero = Font.system(.largeTitle, design: .rounded).weight(.bold)
+    static let question = Font.system(.title, design: .rounded).weight(.bold)
+    static let sectionTitle = Font.system(.title2, design: .rounded).weight(.bold)
+    static let cardTitle = Font.system(.title3, design: .rounded).weight(.bold)
+    static let answer = Font.system(.title2, design: .rounded).weight(.semibold)
+    static let studyBody = Font.system(.title3, design: .rounded).weight(.medium)
+    static let quizMeta = Font.system(.title3, design: .rounded).weight(.semibold)
+    static let pickerOption = Font.system(.title3, design: .rounded).weight(.semibold)
+    static let body = Font.system(.body, design: .rounded)
+    static let bodyEmphasis = Font.system(.body, design: .rounded).weight(.semibold)
+    static let label = Font.system(.headline, design: .rounded).weight(.semibold)
+    static let caption = Font.system(.subheadline, design: .rounded)
+    static let badge = Font.system(.headline, design: .rounded).weight(.bold)
+    static let chip = Font.system(.title3, design: .rounded).weight(.semibold)
+}
+
 struct TopicAccent {
     let topic: Topic
 
     var color: Color { AppTheme.color(hex: topic.color) }
+}
+
+private struct ContentColumnModifier: ViewModifier {
+    @Environment(\.horizontalSizeClass) private var sizeClass
+
+    func body(content: Content) -> some View {
+        content
+            .padding(.horizontal, sizeClass == .regular ? 32 : 20)
+            .frame(maxWidth: .infinity)
+    }
+}
+
+private struct FullWidthContentModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding(.horizontal, 20)
+            .frame(maxWidth: .infinity, alignment: .top)
+    }
 }
 
 extension View {
@@ -41,9 +77,40 @@ extension View {
         )
     }
 
+    /// Fills available width with comfortable side padding.
+    func contentColumn() -> some View {
+        modifier(ContentColumnModifier())
+    }
+
+    /// Study / guide screens — edge-to-edge content, no narrow column.
+    func fullWidthContent() -> some View {
+        modifier(FullWidthContentModifier())
+    }
+
+    func questionText() -> some View {
+        font(AppTypography.question)
+            .multilineTextAlignment(.center)
+            .lineSpacing(8)
+            .minimumScaleFactor(0.85)
+            .fixedSize(horizontal: false, vertical: true)
+    }
+
+    func studyText() -> some View {
+        font(AppTypography.studyBody)
+            .lineSpacing(8)
+            .fixedSize(horizontal: false, vertical: true)
+    }
+
     func largeReadable() -> some View {
-        font(.title3)
-            .minimumScaleFactor(0.8)
-            .dynamicTypeSize(...DynamicTypeSize.accessibility3)
+        font(AppTypography.studyBody)
+            .lineSpacing(6)
+            .minimumScaleFactor(0.9)
+    }
+
+    func quizFeedback() -> some View {
+        font(AppTypography.studyBody)
+            .multilineTextAlignment(.center)
+            .lineSpacing(8)
+            .fixedSize(horizontal: false, vertical: true)
     }
 }

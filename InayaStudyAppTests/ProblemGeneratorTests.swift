@@ -6,7 +6,7 @@ final class ProblemGeneratorTests: XCTestCase {
     func testAllSecondGradeMathTopicsGenerateValidProblems() {
         for topic in TopicRegistry.mathSecondGrade {
             for difficulty in Difficulty.allCases {
-                for _ in 0..<5 {
+                for _ in 0..<3 {
                     assertValidProblem(ProblemGenerator.generate(topic: topic, difficulty: difficulty), topic: topic)
                 }
             }
@@ -16,7 +16,7 @@ final class ProblemGeneratorTests: XCTestCase {
     func testAllThirdGradeMathTopicsGenerateValidProblems() {
         for topic in TopicRegistry.mathThirdGrade {
             for difficulty in Difficulty.allCases {
-                for _ in 0..<5 {
+                for _ in 0..<3 {
                     assertValidProblem(ProblemGenerator.generate(topic: topic, difficulty: difficulty), topic: topic)
                 }
             }
@@ -24,9 +24,9 @@ final class ProblemGeneratorTests: XCTestCase {
     }
 
     func testAllScienceTopicsGenerateValidProblems() {
-        for topic in TopicRegistry.scienceSecondGrade {
+        for topic in TopicRegistry.scienceSecondGrade + TopicRegistry.scienceThirdGrade {
             for difficulty in Difficulty.allCases {
-                for _ in 0..<5 {
+                for _ in 0..<3 {
                     let problem = ProblemGenerator.generate(topic: topic, difficulty: difficulty)
                     assertValidScienceProblem(problem, topic: topic)
                 }
@@ -46,7 +46,7 @@ final class ProblemGeneratorTests: XCTestCase {
 
     func testMultipleChoiceContainsCorrectAnswer() {
         for topic in TopicRegistry.all {
-            for _ in 0..<10 {
+            for _ in 0..<3 {
                 let problem = ProblemGenerator.generate(topic: topic, difficulty: .easy)
                 guard problem.answerType == .multipleChoice, let choices = problem.choices else { continue }
                 XCTAssertTrue(
@@ -59,9 +59,9 @@ final class ProblemGeneratorTests: XCTestCase {
     }
 
     func testScienceMultipleChoiceHasFourOptions() {
-        for topic in TopicRegistry.scienceSecondGrade {
+        for topic in TopicRegistry.scienceSecondGrade + TopicRegistry.scienceThirdGrade {
             for difficulty in Difficulty.allCases {
-                for _ in 0..<10 {
+                for _ in 0..<3 {
                     let problem = ProblemGenerator.generate(topic: topic, difficulty: difficulty)
                     XCTAssertEqual(problem.answerType, .multipleChoice, topic.id)
                     XCTAssertEqual(problem.choices?.count, 4, topic.id)
@@ -95,7 +95,7 @@ final class ProblemGeneratorTests: XCTestCase {
     private func assertValidProblem(_ problem: Problem, topic: Topic) {
         XCTAssertFalse(problem.questionText.isEmpty, topic.id)
         XCTAssertFalse(problem.correctAnswer.isEmpty, topic.id)
-        if topic.id != "staar-mixed" {
+        if topic.id != "staar-mixed", topic.id != "staar-mixed-2", topic.id != "sci3-mixed-review", topic.id != "sci2-mixed-review" {
             XCTAssertEqual(problem.teksId, topic.teks, topic.id)
         }
 

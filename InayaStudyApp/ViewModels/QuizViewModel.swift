@@ -72,7 +72,7 @@ final class QuizViewModel: ObservableObject {
         lastWasCorrect = correct
         encouragement = correct
             ? Encouragement.random(for: topic.subject)
-            : wrongAnswerMessage(for: problem)
+            : TopicStudyGuide.explanation(for: problem, topic: topic)
         answered.append(AnsweredProblem(id: problem.id, problem: problem, userAnswer: trimmed, isCorrect: correct))
         showingFeedback = true
 
@@ -85,8 +85,9 @@ final class QuizViewModel: ObservableObject {
         }
 
         advanceTask?.cancel()
+        let pause: UInt64 = correct ? 1_500_000_000 : 2_500_000_000
         advanceTask = Task {
-            try? await Task.sleep(nanoseconds: 1_500_000_000)
+            try? await Task.sleep(nanoseconds: pause)
             guard !Task.isCancelled else { return }
             await MainActor.run { self.advance() }
         }
@@ -105,18 +106,12 @@ final class QuizViewModel: ObservableObject {
         showingFeedback = false
         selectedAnswer = nil
         userInput = ""
+        encouragement = ""
         if currentIndex + 1 >= problems.count {
             isComplete = true
         } else {
             currentIndex += 1
         }
-    }
-
-    private func wrongAnswerMessage(for problem: Problem) -> String {
-        if let fact = problem.funFact {
-            return "The answer is \(problem.correctAnswer). \(fact)"
-        }
-        return "The answer is \(problem.correctAnswer)"
     }
 
     func finish(progressStore: ProgressStore) {
