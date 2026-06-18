@@ -749,27 +749,24 @@ enum GameContent {
             target = grade == .second ? Int.random(in: 10...30) : Int.random(in: 20...60)
             let a = Int.random(in: 1..<target)
             let b = target - a
-            var nums = Set([a, b])
+            var nums = [a, b]
+            if a == b { nums.append(a) }
             while nums.count < 8 {
-                nums.insert(Int.random(in: 1...max(target, 12)))
+                nums.append(Int.random(in: 1...max(target, 12)))
             }
-            meteors = Array(nums).shuffled()
+            meteors = nums.shuffled()
         case .multiply:
             target = [12, 18, 24, 30, 36, 48, 56, 72].randomElement()!
-            var pairs: [(Int, Int)] = []
-            for a in 2...12 {
-                for b in a...12 where a * b == target {
-                    pairs.append((a, b))
-                }
-            }
+            let pairs = (2...12).flatMap { a in
+                (a...12).map { b in (a, b) }
+            }.filter { $0.0 * $0.1 == target }
             let pair = pairs.randomElement() ?? (2, target / 2)
-            var meteorList = [pair.0, pair.1]
-            var extras = Set<Int>()
-            while meteorList.count + extras.count < 8 {
-                extras.insert(Int.random(in: 2...12))
+            var nums = [pair.0, pair.1]
+            if pair.0 == pair.1 { nums.append(pair.0) }
+            while nums.count < 8 {
+                nums.append(Int.random(in: 2...12))
             }
-            meteorList.append(contentsOf: extras)
-            meteors = meteorList.shuffled()
+            meteors = nums.shuffled()
         }
         return MeteorRound(target: target, operation: op, meteors: meteors)
     }
