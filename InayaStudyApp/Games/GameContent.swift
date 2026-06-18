@@ -542,4 +542,424 @@ enum GameContent {
             funnyWrong: ["Open meadow": "Bats need dark caves!", "Ocean": "Bats can't swim!", "Arctic": "Too bright and cold!"]
         ),
     ]
+
+    // MARK: - Tier 2 games
+
+    struct ShadowRound {
+        let silhouette: String
+        let prompt: String
+        let correct: String
+        let choices: [String]
+    }
+
+    static func shadowRound(grade: Grade, round: Int) -> ShadowRound {
+        let pool = grade == .second ? secondShadowRounds : thirdShadowRounds
+        return pool[(round - 1) % pool.count]
+    }
+
+    private static let secondShadowRounds: [ShadowRound] = [
+        ShadowRound(silhouette: "🌳", prompt: "What plant is this?", correct: "Oak tree", choices: ["Oak tree", "Cactus", "Seaweed", "Moss"]),
+        ShadowRound(silhouette: "🦋", prompt: "Whose shadow?", correct: "Butterfly", choices: ["Butterfly", "Bird", "Bee", "Dragonfly"]),
+        ShadowRound(silhouette: "🌻", prompt: "Name this plant part", correct: "Flower", choices: ["Flower", "Root", "Stem", "Leaf"]),
+        ShadowRound(silhouette: "🐸", prompt: "Which animal?", correct: "Frog", choices: ["Frog", "Fish", "Turtle", "Lizard"]),
+        ShadowRound(silhouette: "🍎", prompt: "What grows on trees?", correct: "Apple", choices: ["Apple", "Carrot", "Potato", "Corn"]),
+        ShadowRound(silhouette: "🐛", prompt: "Life cycle stage?", correct: "Caterpillar", choices: ["Caterpillar", "Egg", "Adult butterfly", "Seed"]),
+        ShadowRound(silhouette: "🌵", prompt: "Desert plant?", correct: "Cactus", choices: ["Cactus", "Fern", "Moss", "Algae"]),
+        ShadowRound(silhouette: "🐟", prompt: "Lives in water?", correct: "Fish", choices: ["Fish", "Robin", "Rabbit", "Snake"]),
+    ]
+
+    private static let thirdShadowRounds: [ShadowRound] = [
+        ShadowRound(silhouette: "🦆", prompt: "Webbed feet help swim — who?", correct: "Duck", choices: ["Duck", "Owl", "Hawk", "Eagle"]),
+        ShadowRound(silhouette: "🐪", prompt: "Stores water in desert?", correct: "Camel", choices: ["Camel", "Penguin", "Frog", "Salmon"]),
+        ShadowRound(silhouette: "🦎", prompt: "Camouflage in sand?", correct: "Lizard", choices: ["Lizard", "Polar bear", "Whale", "Bat"]),
+        ShadowRound(silhouette: "🌿", prompt: "Makes food from sunlight?", correct: "Plant", choices: ["Plant", "Rock", "Cloud", "Metal"]),
+        ShadowRound(silhouette: "🍄", prompt: "Breaks down dead things?", correct: "Mushroom", choices: ["Mushroom", "Grass", "Hawk", "Sun"]),
+        ShadowRound(silhouette: "🐧", prompt: "Thick feathers for cold?", correct: "Penguin", choices: ["Penguin", "Camel", "Lizard", "Butterfly"]),
+        ShadowRound(silhouette: "🦅", prompt: "Sharp talons for hunting?", correct: "Eagle", choices: ["Eagle", "Rabbit", "Deer", "Grasshopper"]),
+        ShadowRound(silhouette: "🐢", prompt: "Hard shell protection?", correct: "Turtle", choices: ["Turtle", "Jellyfish", "Worm", "Frog"]),
+    ]
+
+    struct BubbleRound {
+        let prompt: String
+        let correctAnswers: Set<Int>
+        let bubbles: [Int]
+    }
+
+    static func bubbleRound(grade: Grade) -> BubbleRound {
+        let (prompt, answer) = mathProblem(grade: grade)
+        if grade == .third, Bool.random() {
+            let factor = Int.random(in: 2...6)
+            let multiples = (1...4).map { factor * $0 }
+            return BubbleRound(
+                prompt: "Pop all multiples of \(factor)",
+                correctAnswers: Set(multiples),
+                bubbles: (multiples + mathDistractors(correct: answer, grade: grade)).shuffled()
+            )
+        }
+        var bubbles = Set([answer])
+        while bubbles.count < 6 {
+            bubbles.insert(answer + Int.random(in: -15...15))
+        }
+        return BubbleRound(
+            prompt: prompt + " = ?",
+            correctAnswers: [answer],
+            bubbles: Array(bubbles).shuffled()
+        )
+    }
+
+    struct FrogFlyRound {
+        let question: String
+        let insects: [(label: String, isCorrect: Bool)]
+    }
+
+    static func frogFlyRound(grade: Grade, round: Int) -> FrogFlyRound {
+        let pool = grade == .second ? secondFrogFly : thirdFrogFly
+        return pool[(round - 1) % pool.count]
+    }
+
+    private static let secondFrogFly: [FrogFlyRound] = [
+        FrogFlyRound(question: "Which is living?", insects: [("Rock", false), ("Tree", true), ("Chair", false), ("Pencil", false)]),
+        FrogFlyRound(question: "Which is a liquid?", insects: [("Ice", false), ("Steam", false), ("Water", true), ("Wood", false)]),
+        FrogFlyRound(question: "Which needs sunlight?", insects: [("Flower", true), ("Rock", false), ("Toy", false), ("Sand", false)]),
+        FrogFlyRound(question: "Which has babies?", insects: [("Dog", true), ("Cloud", false), ("Stone", false), ("Air", false)]),
+        FrogFlyRound(question: "Which is a gas?", insects: [("Juice", false), ("Air", true), ("Milk", false), ("Honey", false)]),
+        FrogFlyRound(question: "Which grows?", insects: [("Seed", true), ("Glass", false), ("Metal", false), ("Plastic", false)]),
+        FrogFlyRound(question: "Which breathes?", insects: [("Fish", true), ("Rock", false), ("Water", false), ("Soil", false)]),
+        FrogFlyRound(question: "Which is nonliving?", insects: [("Butterfly", false), ("Sun", false), ("Book", true), ("Bird", false)]),
+        FrogFlyRound(question: "Which is solid?", insects: [("Rain", false), ("Steam", false), ("Rock", true), ("Juice", false)]),
+        FrogFlyRound(question: "Which changes with seasons?", insects: [("Tree", true), ("Gold", false), ("Diamond", false), ("Glass", false)]),
+    ]
+
+    private static let thirdFrogFly: [FrogFlyRound] = [
+        FrogFlyRound(question: "Which is a decomposer?", insects: [("Mushroom", true), ("Grass", false), ("Hawk", false), ("Rabbit", false)]),
+        FrogFlyRound(question: "Which is a producer?", insects: [("Algae", true), ("Fox", false), ("Snake", false), ("Wolf", false)]),
+        FrogFlyRound(question: "Which is a consumer?", insects: [("Corn", false), ("Deer", true), ("Sun", false), ("Rock", false)]),
+        FrogFlyRound(question: "Webbed feet help ___?", insects: [("Swimming", true), ("Flying high", false), ("Digging", false), ("Climbing trees", false)]),
+        FrogFlyRound(question: "Thick fur helps in ___?", insects: [("Cold places", true), ("Desert heat", false), ("Deep ocean", false), ("Rain only", false)]),
+        FrogFlyRound(question: "Gills help fish ___?", insects: [("Breathe underwater", true), ("Fly", false), ("Climb", false), ("Hibernate", false)]),
+        FrogFlyRound(question: "Camouflage helps animals ___?", insects: [("Hide", true), ("Swim faster", false), ("Grow taller", false), ("Make food", false)]),
+        FrogFlyRound(question: "Migration means animals ___?", insects: [("Travel seasonally", true), ("Sleep all day", false), ("Change color", false), ("Grow roots", false)]),
+        FrogFlyRound(question: "A food chain starts with ___?", insects: [("Sun", true), ("Lion", false), ("Mushroom", false), ("Rock", false)]),
+        FrogFlyRound(question: "Pollinators help plants ___?", insects: [("Make seeds", true), ("Grow rocks", false), ("Freeze", false), ("Sink", false)]),
+    ]
+
+    struct PotionRound {
+        let goal: String
+        let ingredients: [String]
+        let correctSet: Set<String>
+        let minPick: Int
+        let maxPick: Int
+        let failMessage: String
+    }
+
+    static func potionRound(grade: Grade, round: Int) -> PotionRound {
+        let pool = grade == .second ? secondPotions : thirdPotions
+        return pool[(round - 1) % pool.count]
+    }
+
+    private static let secondPotions: [PotionRound] = [
+        PotionRound(goal: "Brew a solid potion", ingredients: ["Ice", "Rock", "Water", "Steam", "Wood", "Juice"], correctSet: ["Ice", "Rock", "Wood"], minPick: 2, maxPick: 3, failMessage: "Oops! That fizzed into a puddle!"),
+        PotionRound(goal: "Brew a liquid potion", ingredients: ["Milk", "Sand", "Rain", "Air", "Metal", "Honey"], correctSet: ["Milk", "Rain", "Honey"], minPick: 2, maxPick: 3, failMessage: "Poof! Wrong state of matter!"),
+        PotionRound(goal: "Mix a gas potion", ingredients: ["Steam", "Oxygen", "Juice", "Ice", "Rock", "Oil"], correctSet: ["Steam", "Oxygen"], minPick: 2, maxPick: 2, failMessage: "Bubble bubble — not a gas!"),
+        PotionRound(goal: "Make a flexible mix", ingredients: ["Rubber band", "Glass", "Clay", "Paper", "Diamond", "Water"], correctSet: ["Rubber band", "Clay", "Paper"], minPick: 2, maxPick: 3, failMessage: "Too stiff! Try something bendy."),
+        PotionRound(goal: "Make a shiny mix", ingredients: ["Foil", "Cotton", "Coin", "Feather", "Mirror", "Sand"], correctSet: ["Foil", "Coin", "Mirror"], minPick: 2, maxPick: 3, failMessage: "Dull reaction! Pick shinier things."),
+        PotionRound(goal: "Make a rough mix", ingredients: ["Sandpaper", "Silk", "Bark", "Glass", "Velvet", "Gravel"], correctSet: ["Sandpaper", "Bark", "Gravel"], minPick: 2, maxPick: 3, failMessage: "Too smooth! Rough it up."),
+        PotionRound(goal: "Dissolve in water", ingredients: ["Salt", "Sand", "Sugar", "Rock", "Food coloring", "Pebble"], correctSet: ["Salt", "Sugar", "Food coloring"], minPick: 2, maxPick: 3, failMessage: "Nothing dissolved — try again!"),
+        PotionRound(goal: "Float on water", ingredients: ["Cork", "Coin", "Wood chip", "Metal bolt", "Leaf", "Stone"], correctSet: ["Cork", "Wood chip", "Leaf"], minPick: 2, maxPick: 3, failMessage: "Splash! Those sank."),
+    ]
+
+    private static let thirdPotions: [PotionRound] = [
+        PotionRound(goal: "Mix a solution", ingredients: ["Salt water", "Sand", "Sugar water", "Oil", "Gravel", "Pepper"], correctSet: ["Salt water", "Sugar water"], minPick: 2, maxPick: 2, failMessage: "Separated layers — not a solution!"),
+        PotionRound(goal: "Make a mixture", ingredients: ["Trail mix", "Pure gold", "Salad", "Distilled water", "Iron", "Oxygen gas"], correctSet: ["Trail mix", "Salad"], minPick: 1, maxPick: 2, failMessage: "Too pure! Mix different things."),
+        PotionRound(goal: "Conduct electricity", ingredients: ["Copper wire", "Plastic", "Salt water", "Rubber", "Iron nail", "Wood"], correctSet: ["Copper wire", "Salt water", "Iron nail"], minPick: 2, maxPick: 3, failMessage: "No spark! Pick conductors."),
+        PotionRound(goal: "Insulate heat", ingredients: ["Wool", "Metal pan", "Foam", "Aluminum foil", "Cotton", "Steel"], correctSet: ["Wool", "Foam", "Cotton"], minPick: 2, maxPick: 3, failMessage: "Too hot to handle!"),
+        PotionRound(goal: "Magnetic mix", ingredients: ["Iron filings", "Plastic", "Nickel", "Wood", "Cobalt", "Paper"], correctSet: ["Iron filings", "Nickel", "Cobalt"], minPick: 2, maxPick: 3, failMessage: "No pull! Try magnetic metals."),
+        PotionRound(goal: "Absorb water", ingredients: ["Sponge", "Wax", "Paper towel", "Plastic wrap", "Cotton", "Glass"], correctSet: ["Sponge", "Paper towel", "Cotton"], minPick: 2, maxPick: 3, failMessage: "Water rolled right off!"),
+        PotionRound(goal: "Repel water", ingredients: ["Wax", "Oil", "Paper", "Feather coating", "Sand", "Salt"], correctSet: ["Wax", "Oil", "Feather coating"], minPick: 2, maxPick: 3, failMessage: "Got soggy! Pick water-repellent items."),
+        PotionRound(goal: "Recycle pile", ingredients: ["Aluminum can", "Banana peel", "Glass bottle", "Styrofoam", "Newspaper", "Battery"], correctSet: ["Aluminum can", "Glass bottle", "Newspaper"], minPick: 2, maxPick: 3, failMessage: "Trash mix-up! Sort again."),
+    ]
+
+    enum UnderwaterZone: String, CaseIterable {
+        case surface, reef, deep
+
+        var title: String {
+            switch self {
+            case .surface: return "Surface"
+            case .reef: return "Coral Reef"
+            case .deep: return "Deep Sea"
+            }
+        }
+
+        var emoji: String {
+            switch self {
+            case .surface: return "🌊"
+            case .reef: return "🪸"
+            case .deep: return "🌑"
+            }
+        }
+
+        var creature: String {
+            switch self {
+            case .surface: return "🐬"
+            case .reef: return "🐠"
+            case .deep: return "🐙"
+            }
+        }
+    }
+
+    static func underwaterQuestion(grade: Grade, zone: UnderwaterZone, round: Int) -> (question: String, choices: [String], correct: String) {
+        if round % 2 == 0 || zone == .surface {
+            let (prompt, answer) = mathProblem(grade: grade)
+            return (prompt + " = ?", numericChoices(correct: answer), "\(answer)")
+        }
+        let science = grade == .second ? secondUnderwaterScience : thirdUnderwaterScience
+        let index = ((round + zone.hashValue) % science.count + science.count) % science.count
+        let pick = science[index]
+        return (pick.0, pick.1.shuffled(), pick.2)
+    }
+
+    private static let secondUnderwaterScience: [(String, [String], String)] = [
+        ("Fish breathe with ___?", ["Gills", "Lungs", "Leaves", "Wings"], "Gills"),
+        ("Coral lives in the ___?", ["Ocean", "Desert", "Arctic", "Cave"], "Ocean"),
+        ("Whales are ___?", ["Mammals", "Fish", "Insects", "Rocks"], "Mammals"),
+    ]
+
+    private static let thirdUnderwaterScience: [(String, [String], String)] = [
+        ("Algae is a ___?", ["Producer", "Consumer", "Decomposer", "Mineral"], "Producer"),
+        ("Deep sea animals often ___?", ["Glow", "Fly", "Grow leaves", "Lay eggs on land"], "Glow"),
+        ("Ocean currents move ___?", ["Water", "Rocks", "Clouds", "Trees"], "Water"),
+    ]
+
+    // MARK: - Tier 3 games
+
+    enum MeteorOperation { case add, multiply }
+
+    struct MeteorRound {
+        let target: Int
+        let operation: MeteorOperation
+        let meteors: [Int]
+    }
+
+    static func meteorRound(grade: Grade, round: Int) -> MeteorRound {
+        let op: MeteorOperation = grade == .second ? .add : (round % 2 == 0 ? .multiply : .add)
+        let target: Int
+        let meteors: [Int]
+        switch op {
+        case .add:
+            target = grade == .second ? Int.random(in: 10...30) : Int.random(in: 20...60)
+            let a = Int.random(in: 1..<target)
+            let b = target - a
+            var nums = Set([a, b])
+            while nums.count < 8 {
+                nums.insert(Int.random(in: 1...max(target, 12)))
+            }
+            meteors = Array(nums).shuffled()
+        case .multiply:
+            target = [12, 18, 24, 30, 36, 48, 56, 72].randomElement()!
+            var pairs: [(Int, Int)] = []
+            for a in 2...12 {
+                for b in a...12 where a * b == target {
+                    pairs.append((a, b))
+                }
+            }
+            let pair = pairs.randomElement() ?? (2, target / 2)
+            var meteorList = [pair.0, pair.1]
+            var extras = Set<Int>()
+            while meteorList.count + extras.count < 8 {
+                extras.insert(Int.random(in: 2...12))
+            }
+            meteorList.append(contentsOf: extras)
+            meteors = meteorList.shuffled()
+        }
+        return MeteorRound(target: target, operation: op, meteors: meteors)
+    }
+
+    struct MysteryCase {
+        let title: String
+        let intro: String
+        let culprit: String
+        let clues: [(chapter: String, question: String, choices: [String], correct: String, reveal: String)]
+    }
+
+    static func mysteryCase(grade: Grade) -> MysteryCase {
+        let pool = grade == .second ? secondMysteries : thirdMysteries
+        return pool.randomElement()!
+    }
+
+    private static let secondMysteries: [MysteryCase] = [
+        MysteryCase(
+            title: "Wilting Garden",
+            intro: "Plants in the school garden are dying. Follow the clues!",
+            culprit: "Too much salt in soil",
+            clues: [
+                ("Clue 1", "8 + 5 = ?", ["12", "13", "14", "15"], "13", "The soil tester reads 13 — very salty!"),
+                ("Clue 2", "Plants need ___ to make food.", ["Sunlight", "Rocks", "Plastic", "Metal"], "Sunlight", "Sun is fine — look elsewhere."),
+                ("Clue 3", "20 − 7 = ?", ["11", "12", "13", "14"], "13", "Watering can holds 13 cups — someone over-salted!"),
+                ("Clue 4", "Salt in soil makes plants ___?", ["Wilt", "Grow taller", "Turn blue", "Fly"], "Wilt", "Salt poisoned the roots!"),
+                ("Clue 5", "Fix: wash soil with ___?", ["Fresh water", "More salt", "Paint", "Sand only"], "Fresh water", "Case solved! Rinse the salt away."),
+            ]
+        ),
+        MysteryCase(
+            title: "Dry Pond",
+            intro: "The pond dried up overnight. What happened?",
+            culprit: "Broken water cycle",
+            clues: [
+                ("Clue 1", "6 × 2 = ?", ["10", "12", "14", "16"], "12", "12 hours since rain — too long!"),
+                ("Clue 2", "Evaporation turns water into ___?", ["Gas", "Rock", "Metal", "Wood"], "Gas", "Water vapor escaped."),
+                ("Clue 3", "15 + 9 = ?", ["22", "23", "24", "25"], "24", "Sprinkler ran 24 hours — pipe burst!"),
+                ("Clue 4", "Clouds bring ___?", ["Rain", "Rocks", "Fire", "Salt"], "Rain", "No rain clouds formed."),
+                ("Clue 5", "Fix the broken ___?", ["Sprinkler pipe", "Tree branch", "Bench", "Flag"], "Sprinkler pipe", "Water cycle restored!"),
+            ]
+        ),
+    ]
+
+    private static let thirdMysteries: [MysteryCase] = [
+        MysteryCase(
+            title: "Sick Fish Tank",
+            intro: "Fish are gasping at the surface. Investigate!",
+            culprit: "Low oxygen",
+            clues: [
+                ("Clue 1", "7 × 4 = ?", ["26", "28", "30", "32"], "28", "Filter off for 28 hours!"),
+                ("Clue 2", "Fish get oxygen from ___?", ["Water", "Rocks", "Glass", "Plastic plants"], "Water", "Water needs oxygen too."),
+                ("Clue 3", "Algae overgrowth uses up ___?", ["Oxygen", "Sunlight only", "Glass", "Gravel color"], "Oxygen", "Too much algae!"),
+                ("Clue 4", "48 ÷ 6 = ?", ["6", "7", "8", "9"], "8", "8 fish — all struggling."),
+                ("Clue 5", "Clean tank and run ___?", ["Filter & aerator", "Heater only", "More fish", "Food"], "Filter & aerator", "Oxygen restored!"),
+            ]
+        ),
+        MysteryCase(
+            title: "Forest Fire Clue",
+            intro: "Smoke in the woods — but no lightning. Why?",
+            culprit: "Campfire left burning",
+            clues: [
+                ("Clue 1", "9 × 3 = ?", ["24", "27", "30", "33"], "27", "Campers left 27 minutes ago."),
+                ("Clue 2", "Fire needs oxygen, fuel, and ___?", ["Heat", "Water", "Ice", "Wind only"], "Heat", "Embers still hot!"),
+                ("Clue 3", "56 − 18 = ?", ["36", "38", "40", "42"], "38", "38°C — embers still burning."),
+                ("Clue 4", "Best way to put out campfire?", ["Water & stir dirt", "Blow on it", "Add wood", "Walk away"], "Water & stir dirt", "Always douse campfires!"),
+                ("Clue 5", "Who left the fire?", ["Careless campers", "Birds", "Rain", "Moon"], "Careless campers", "Mystery solved — stay safe!"),
+            ]
+        ),
+    ]
+
+    enum TimeEra: String, CaseIterable {
+        case egypt, rome, medieval
+
+        var title: String {
+            switch self {
+            case .egypt: return "Ancient Egypt"
+            case .rome: return "Roman Market"
+            case .medieval: return "Medieval Fair"
+            }
+        }
+
+        var emoji: String {
+            switch self {
+            case .egypt: return "🏺"
+            case .rome: return "🏛️"
+            case .medieval: return "🏰"
+            }
+        }
+    }
+
+    static func timeTravelerQuestion(grade: Grade, era: TimeEra, round: Int) -> (question: String, choices: [String], correct: String) {
+        let pool: [(TimeEra, String, [String], String)]
+        if grade == .second {
+            pool = [
+                (.egypt, "3 cubits + 2 cubits = ? cubits", ["4", "5", "6", "7"], "5"),
+                (.egypt, "10 grain sacks − 4 = ?", ["5", "6", "7", "8"], "6"),
+                (.rome, "2 coins + 3 coins = ? coins", ["4", "5", "6", "7"], "5"),
+                (.rome, "12 grapes ÷ 3 baskets = ?", ["3", "4", "5", "6"], "4"),
+                (.medieval, "5 apples + 4 apples = ?", ["7", "8", "9", "10"], "9"),
+                (.medieval, "20 pennies − 8 = ?", ["10", "11", "12", "13"], "12"),
+            ]
+        } else {
+            pool = [
+                (.egypt, "A pyramid step is 3 ft. Four steps = ? ft", ["10", "11", "12", "13"], "12"),
+                (.egypt, "6 scrolls × 2 scribes = ? copies", ["10", "11", "12", "13"], "12"),
+                (.rome, "4 denarii × 3 loaves = ? denarii", ["10", "11", "12", "13"], "12"),
+                (.rome, "48 soldiers ÷ 6 tents = ? per tent", ["6", "7", "8", "9"], "8"),
+                (.medieval, "3 knights × 5 shields = ? shields", ["12", "14", "15", "16"], "15"),
+                (.medieval, "100 yards of cloth − 37 = ?", ["61", "62", "63", "64"], "63"),
+            ]
+        }
+        let eraPool = pool.filter { $0.0 == era }
+        let pick = eraPool[(round - 1) % eraPool.count]
+        return (pick.1, pick.2.shuffled(), pick.3)
+    }
+
+    struct TerrariumPiece: Identifiable, Hashable {
+        let id: String
+        let label: String
+        let emoji: String
+        let kind: String // producer, consumer, terrain
+    }
+
+    static let terrariumPieces: [TerrariumPiece] = [
+        TerrariumPiece(id: "grass", label: "Grass", emoji: "🌿", kind: "producer"),
+        TerrariumPiece(id: "moss", label: "Moss", emoji: "🪴", kind: "producer"),
+        TerrariumPiece(id: "fern", label: "Fern", emoji: "🌱", kind: "producer"),
+        TerrariumPiece(id: "ladybug", label: "Ladybug", emoji: "🐞", kind: "consumer"),
+        TerrariumPiece(id: "snail", label: "Snail", emoji: "🐌", kind: "consumer"),
+        TerrariumPiece(id: "frog", label: "Frog", emoji: "🐸", kind: "consumer"),
+        TerrariumPiece(id: "soil", label: "Soil", emoji: "🪨", kind: "terrain"),
+        TerrariumPiece(id: "water", label: "Pond", emoji: "💧", kind: "terrain"),
+        TerrariumPiece(id: "log", label: "Log", emoji: "🪵", kind: "terrain"),
+    ]
+
+    static func terrariumQuestion(grade: Grade, round: Int) -> (question: String, choices: [String], correct: String, reward: TerrariumPiece) {
+        let piece = terrariumPieces[(round - 1) % terrariumPieces.count]
+        if grade == .second {
+            let qs: [(String, [String], String)] = [
+                ("Plants are ___?", ["Producers", "Consumers", "Rocks", "Gases"], "Producers"),
+                ("Animals that eat plants are ___?", ["Consumers", "Producers", "Sun", "Water"], "Consumers"),
+                ("Soil is ___?", ["Terrain", "Producer", "Consumer", "Sky"], "Terrain"),
+            ]
+            let q = qs[(round - 1) % qs.count]
+            return (q.0, q.1.shuffled(), q.2, piece)
+        }
+        let qs: [(String, [String], String)] = [
+            ("Balance needs more ___ than consumers.", ["Producers", "Rocks", "Plastic", "Metal"], "Producers"),
+            ("A food web needs a ___?", ["Producer", "Car", "Cloud only", "Plastic"], "Producer"),
+            ("Decomposers return nutrients to ___?", ["Soil", "Sky", "Space", "Ice only"], "Soil"),
+        ]
+        let q = qs[(round - 1) % qs.count]
+        return (q.0, q.1.shuffled(), q.2, piece)
+    }
+
+    struct TownBuilding: Identifiable, Hashable {
+        let id: String
+        let label: String
+        let emoji: String
+        let lumber: Int
+        let bricks: Int
+        let glass: Int
+    }
+
+    static let townBuildings: [TownBuilding] = [
+        TownBuilding(id: "house", label: "House", emoji: "🏠", lumber: 2, bricks: 1, glass: 0),
+        TownBuilding(id: "park", label: "Park", emoji: "🌳", lumber: 1, bricks: 0, glass: 0),
+        TownBuilding(id: "shop", label: "Shop", emoji: "🏪", lumber: 1, bricks: 2, glass: 1),
+        TownBuilding(id: "school", label: "School", emoji: "🏫", lumber: 2, bricks: 2, glass: 2),
+        TownBuilding(id: "library", label: "Library", emoji: "📚", lumber: 1, bricks: 1, glass: 2),
+    ]
+
+    static func townBuilderProblem(grade: Grade, round: Int) -> (question: String, choices: [String], correct: String, lumber: Int, bricks: Int, glass: Int) {
+        if grade == .second {
+            let problems: [(String, Int, (Int, Int, Int))] = [
+                ("Mia has 5 apples and buys 3 more. Total?", 8, (1, 0, 0)),
+                ("A board is 12 inches. Cut off 4. Left?", 8, (2, 0, 0)),
+                ("Tom has 15¢ and spends 7¢. Left?", 8, (0, 1, 0)),
+                ("3 windows + 2 windows = ?", 5, (0, 0, 1)),
+            ]
+            let p = problems[(round - 1) % problems.count]
+            return (p.0, numericChoices(correct: p.1), "\(p.1)", p.2.0, p.2.1, p.2.2)
+        }
+        let problems: [(String, Int, (Int, Int, Int))] = [
+            ("A park needs 24 feet of fence. Already have 16. Need?", 8, (1, 1, 0)),
+            ("4 rooms × 3 windows = ? windows", 12, (0, 0, 2)),
+            ("$5 + $3 + $2 = ?", 10, (2, 1, 0)),
+            ("48 bricks ÷ 6 walls = ? per wall", 8, (0, 2, 1)),
+        ]
+        let p = problems[(round - 1) % problems.count]
+        return (p.0, numericChoices(correct: p.1), "\(p.1)", p.2.0, p.2.1, p.2.2)
+    }
 }

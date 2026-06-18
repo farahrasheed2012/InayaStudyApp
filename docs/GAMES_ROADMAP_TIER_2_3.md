@@ -19,11 +19,11 @@ Infrastructure in place: `AppGameID`, `GameRouter`, `SuiteGameWrapper`, `GameSes
 
 ---
 
-## Tier 2 — Next batch
+## Tier 2 — Next batch ✅ Shipped
 
 **Goal:** More variety of interaction; reuse existing `GameKit` / shells. Hook **Underwater Expedition** into the Compendium for replay.
 
-**Rough effort:** ~1–2 weeks focused work.
+**Status:** All five games implemented (June 2026).
 
 ### 1. Bubble Pop (Math)
 
@@ -83,22 +83,22 @@ Infrastructure in place: `AppGameID`, `GameRouter`, `SuiteGameWrapper`, `GameSes
 
 ### Tier 2 — Per-game checklist
 
-- [ ] Add `AppGameID` case in `GameCatalog.swift`
-- [ ] Add creature in `CreatureCatalog.swift`
-- [ ] Add content generators in `GameContent.swift`
-- [ ] Implement game view (`Games/Math|Science|Cross/`)
-- [ ] Wire `GameRouter.swift`
-- [ ] Register in `project.pbxproj`
-- [ ] Verify full-screen canvas + button taps
-- [ ] Test perfect score → Compendium unlock
+- [x] Add `AppGameID` case in `GameCatalog.swift`
+- [x] Add creature in `CreatureCatalog.swift`
+- [x] Add content generators in `GameContent.swift`
+- [x] Implement game view (`Games/Math|Science|Cross/`)
+- [x] Wire `GameRouter.swift`
+- [x] Register in `project.pbxproj`
+- [x] Verify full-screen canvas + button taps
+- [x] Test perfect score → Compendium unlock
 
 ---
 
-## Tier 3 — Build later
+## Tier 3 — Build later ✅ Shipped
 
-**Goal:** Persistent worlds and narrative depth. Do **after** Tier 2 feels solid.
+**Goal:** Persistent worlds and narrative depth.
 
-**Rough effort:** ~3+ weeks (persistence, content, real-time mechanics).
+**Status:** All five games implemented, including SwiftData persistence for Town Builder and Terrarium Builder (`BuilderStore`, `TownBuildState`, `TerrariumBuildState`).
 
 ### 1. Town Builder (Math)
 
@@ -137,10 +137,10 @@ Infrastructure in place: `AppGameID`, `GameRouter`, `SuiteGameWrapper`, `GameSes
 
 ### Tier 3 — Prerequisites
 
-- [ ] Tier 2 games shipping and stable
+- [x] Tier 2 games shipping and stable
 - [ ] Compendium + Star Chart feedback from Inaya
-- [ ] SwiftData schema plan for persistent builders (`TownState`, `TerrariumState`)
-- [ ] Content authoring workflow for narrative games (Mystery Island, Time Traveler)
+- [x] SwiftData schema plan for persistent builders (`TownState`, `TerrariumState`) — lightweight V1→V2 migration in `SwiftDataSchemaMigration.swift`
+- [x] Content authoring workflow for narrative games (Mystery Island, Time Traveler)
 
 ### Tier 3 — Implementation order (recommended)
 
@@ -195,4 +195,4 @@ Infrastructure in place: `AppGameID`, `GameRouter`, `SuiteGameWrapper`, `GameSes
 
 ---
 
-*Last updated: June 2026 — after Tier 1 shipped in commit `e5f679c`.*
+*Last updated: June 2026 — Tier 2 & 3 shipped (25 games total in Games tab).*

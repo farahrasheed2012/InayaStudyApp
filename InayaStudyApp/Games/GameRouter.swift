@@ -35,6 +35,26 @@ enum GameRouter {
                 BossBattleGame(grade: grade, onComplete: { _ in })
             case .mathDuel:
                 MathDuelGame(grade: grade, onComplete: { _ in })
+            case .bubblePop:
+                BubblePopGame(grade: grade, onComplete: { _ in })
+            case .frogFly:
+                FrogFlyGame(grade: grade, onComplete: { _ in })
+            case .shadowMatch:
+                ShadowMatchGame(grade: grade, onComplete: { _ in })
+            case .underwaterExpedition:
+                UnderwaterExpeditionGame(grade: grade, onComplete: { _ in })
+            case .potionLab:
+                PotionLabGame(grade: grade, onComplete: { _ in })
+            case .meteorMath:
+                MeteorMathGame(grade: grade, onComplete: { _ in })
+            case .mysteryIsland:
+                MysteryIslandGame(grade: grade, onComplete: { _ in })
+            case .timeTraveler:
+                TimeTravelerGame(grade: grade, onComplete: { _ in })
+            case .terrariumBuilder:
+                TerrariumBuilderGame(grade: grade, onComplete: { _ in })
+            case .townBuilder:
+                TownBuilderGame(grade: grade, onComplete: { _ in })
             }
         }
     }

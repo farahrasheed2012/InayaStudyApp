@@ -43,6 +43,26 @@ enum CreatureCatalog {
             return CreatureDefinition(id: "rescue-rabbit", name: "Rescue Rabbit", emoji: "🐰", funFact: "Rabbits find their way home through meadows!", gameID: gameID)
         case .mathDuel:
             return CreatureDefinition(id: "duel-dragon", name: "Duel Dragon", emoji: "🐲", funFact: "Two players, one problem — may the fastest win!", gameID: gameID)
+        case .bubblePop:
+            return CreatureDefinition(id: "bubble-blowfish", name: "Bubble Blowfish", emoji: "🐡", funFact: "Blowfish puff up with bubbles — pop the right answers!", gameID: gameID)
+        case .frogFly:
+            return CreatureDefinition(id: "fly-catcher-frog", name: "Fly Catcher Frog", emoji: "🐸", funFact: "Frogs snap up insects — catch the science vocab!", gameID: gameID)
+        case .shadowMatch:
+            return CreatureDefinition(id: "shadow-owl", name: "Shadow Owl", emoji: "🦉", funFact: "Owls see shapes in the dark — match the silhouette!", gameID: gameID)
+        case .underwaterExpedition:
+            return CreatureDefinition(id: "reef-ray", name: "Reef Ray", emoji: "🐠", funFact: "Rays glide through coral reefs on underwater adventures!", gameID: gameID)
+        case .potionLab:
+            return CreatureDefinition(id: "potion-platypus", name: "Potion Platypus", emoji: "🦫", funFact: "Platypuses mix river water — you mix science ingredients!", gameID: gameID)
+        case .meteorMath:
+            return CreatureDefinition(id: "meteor-mole", name: "Meteor Mole", emoji: "🌠", funFact: "Moles dig fast — blast meteors before they hit Earth!", gameID: gameID)
+        case .mysteryIsland:
+            return CreatureDefinition(id: "mystery-monkey", name: "Mystery Monkey", emoji: "🐒", funFact: "Monkeys love puzzles — solve clues to crack the case!", gameID: gameID)
+        case .timeTraveler:
+            return CreatureDefinition(id: "time-turtle", name: "Time Turtle", emoji: "🐢", funFact: "Turtles have been around for ages — travel through time!", gameID: gameID)
+        case .terrariumBuilder:
+            return CreatureDefinition(id: "terrarium-toad", name: "Terrarium Toad", emoji: "🐸", funFact: "Toads balance ecosystems — build a balanced terrarium!", gameID: gameID)
+        case .townBuilder:
+            return CreatureDefinition(id: "town-beaver", name: "Town Beaver", emoji: "🦫", funFact: "Beavers build towns by rivers — plan your own!", gameID: gameID)
         }
     }
 

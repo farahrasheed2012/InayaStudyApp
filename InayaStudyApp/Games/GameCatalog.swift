@@ -16,6 +16,16 @@ enum AppGameID: String, CaseIterable, Identifiable, Hashable {
     case dailyChallenge
     case bossBattle
     case mathDuel
+    case bubblePop
+    case frogFly
+    case shadowMatch
+    case underwaterExpedition
+    case potionLab
+    case meteorMath
+    case mysteryIsland
+    case timeTraveler
+    case terrariumBuilder
+    case townBuilder
 
     var id: String { rawValue }
 
@@ -36,6 +46,16 @@ enum AppGameID: String, CaseIterable, Identifiable, Hashable {
         case .dailyChallenge: return "Daily Challenge"
         case .bossBattle: return "Boss Battle"
         case .mathDuel: return "Math Duel"
+        case .bubblePop: return "Bubble Pop"
+        case .frogFly: return "Frog Fly"
+        case .shadowMatch: return "Shadow Match"
+        case .underwaterExpedition: return "Underwater Expedition"
+        case .potionLab: return "Potion Lab"
+        case .meteorMath: return "Meteor Math"
+        case .mysteryIsland: return "Mystery Island"
+        case .timeTraveler: return "Time Traveler"
+        case .terrariumBuilder: return "Terrarium Builder"
+        case .townBuilder: return "Town Builder"
         }
     }
 
@@ -56,16 +76,28 @@ enum AppGameID: String, CaseIterable, Identifiable, Hashable {
         case .dailyChallenge: return "flame.fill"
         case .bossBattle: return "shield.lefthalf.filled"
         case .mathDuel: return "person.2.fill"
+        case .bubblePop: return "bubble.left.and.bubble.right.fill"
+        case .frogFly: return "leaf.fill"
+        case .shadowMatch: return "moon.fill"
+        case .underwaterExpedition: return "water.waves"
+        case .potionLab: return "flask.fill"
+        case .meteorMath: return "sparkles"
+        case .mysteryIsland: return "map.fill"
+        case .timeTraveler: return "clock.fill"
+        case .terrariumBuilder: return "leaf.circle.fill"
+        case .townBuilder: return "building.2.fill"
         }
     }
 
     var scope: GameSubjectScope {
         switch self {
-        case .numberNinja, .coinCollector, .fractionFeast, .timesBingo, .numberLineJump, .patternPuzzler, .mathDuel:
+        case .numberNinja, .coinCollector, .fractionFeast, .timesBingo, .numberLineJump, .patternPuzzler, .mathDuel,
+             .bubblePop, .meteorMath, .timeTraveler, .townBuilder:
             return .math
-        case .sortIt, .foodWebBuilder, .weatherWatcher, .habitatMatch, .animalRescue:
+        case .sortIt, .foodWebBuilder, .weatherWatcher, .habitatMatch, .animalRescue,
+             .frogFly, .shadowMatch, .potionLab, .terrariumBuilder:
             return .science
-        case .quizShow, .dailyChallenge, .bossBattle:
+        case .quizShow, .dailyChallenge, .bossBattle, .underwaterExpedition, .mysteryIsland:
             return .both
         }
     }
@@ -96,6 +128,16 @@ enum AppGameID: String, CaseIterable, Identifiable, Hashable {
         case .dailyChallenge: return "Streak Keeper"
         case .bossBattle: return "Boss Slayer"
         case .mathDuel: return "Duel Champion"
+        case .bubblePop: return "Bubble Master"
+        case .frogFly: return "Fly Catcher"
+        case .shadowMatch: return "Shadow Sleuth"
+        case .underwaterExpedition: return "Deep Diver"
+        case .potionLab: return "Potion Brewer"
+        case .meteorMath: return "Meteor Blaster"
+        case .mysteryIsland: return "Island Detective"
+        case .timeTraveler: return "Time Explorer"
+        case .terrariumBuilder: return "Eco Architect"
+        case .townBuilder: return "Town Planner"
         }
     }
 
@@ -116,6 +158,16 @@ enum AppGameID: String, CaseIterable, Identifiable, Hashable {
         case .dailyChallenge: return 1
         case .bossBattle: return 5
         case .mathDuel: return 10
+        case .bubblePop: return 12
+        case .frogFly: return 10
+        case .shadowMatch: return 8
+        case .underwaterExpedition: return 9
+        case .potionLab: return 8
+        case .meteorMath: return 12
+        case .mysteryIsland: return 5
+        case .timeTraveler: return 9
+        case .terrariumBuilder: return 8
+        case .townBuilder: return 8
         }
     }
 

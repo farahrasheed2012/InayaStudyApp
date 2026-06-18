@@ -102,7 +102,20 @@
 		MPB091 /* InayaStudyApp/Games/Science/HabitatMatchGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF091 /* InayaStudyApp/Games/Science/HabitatMatchGame.swift */; };
 		MPB092 /* InayaStudyApp/Games/Science/AnimalRescueGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF092 /* InayaStudyApp/Games/Science/AnimalRescueGame.swift */; };
 		MPB093 /* InayaStudyApp/Games/Cross/MathDuelGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF093 /* InayaStudyApp/Games/Cross/MathDuelGame.swift */; };
+		MPB094 /* InayaStudyApp/Services/BuilderStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF094 /* InayaStudyApp/Services/BuilderStore.swift */; };
+		MPB095 /* InayaStudyApp/Games/Math/BubblePopGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF095 /* InayaStudyApp/Games/Math/BubblePopGame.swift */; };
+		MPB096 /* InayaStudyApp/Games/Science/FrogFlyGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF096 /* InayaStudyApp/Games/Science/FrogFlyGame.swift */; };
+		MPB097 /* InayaStudyApp/Games/Science/ShadowMatchGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF097 /* InayaStudyApp/Games/Science/ShadowMatchGame.swift */; };
+		MPB098 /* InayaStudyApp/Games/Science/PotionLabGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF098 /* InayaStudyApp/Games/Science/PotionLabGame.swift */; };
+		MPB099 /* InayaStudyApp/Games/Cross/UnderwaterExpeditionGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF099 /* InayaStudyApp/Games/Cross/UnderwaterExpeditionGame.swift */; };
+		MPB101 /* InayaStudyApp/Games/Math/MeteorMathGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF101 /* InayaStudyApp/Games/Math/MeteorMathGame.swift */; };
+		MPB110 /* InayaStudyApp/Games/Cross/MysteryIslandGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF102 /* InayaStudyApp/Games/Cross/MysteryIslandGame.swift */; };
+		MPB111 /* InayaStudyApp/Games/Math/TimeTravelerGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF103 /* InayaStudyApp/Games/Math/TimeTravelerGame.swift */; };
+		MPB112 /* InayaStudyApp/Games/Science/TerrariumBuilderGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF104 /* InayaStudyApp/Games/Science/TerrariumBuilderGame.swift */; };
+		MPB113 /* InayaStudyApp/Games/Math/TownBuilderGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF105 /* InayaStudyApp/Games/Math/TownBuilderGame.swift */; };
+		MPB115 /* InayaStudyApp/Services/SwiftDataSchemaMigration.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF115 /* InayaStudyApp/Services/SwiftDataSchemaMigration.swift */; };
 		MPB201 /* InayaStudyAppTests/ScienceProblemGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF201 /* InayaStudyAppTests/ScienceProblemGeneratorTests.swift */; };
+		MPB202 /* InayaStudyAppTests/GameContentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF202 /* InayaStudyAppTests/GameContentTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,7 +226,20 @@
 		MPF091 /* InayaStudyApp/Games/Science/HabitatMatchGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Science/HabitatMatchGame.swift; sourceTree = SOURCE_ROOT; };
 		MPF092 /* InayaStudyApp/Games/Science/AnimalRescueGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Science/AnimalRescueGame.swift; sourceTree = SOURCE_ROOT; };
 		MPF093 /* InayaStudyApp/Games/Cross/MathDuelGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Cross/MathDuelGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF094 /* InayaStudyApp/Services/BuilderStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Services/BuilderStore.swift; sourceTree = SOURCE_ROOT; };
+		MPF095 /* InayaStudyApp/Games/Math/BubblePopGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Math/BubblePopGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF096 /* InayaStudyApp/Games/Science/FrogFlyGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Science/FrogFlyGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF097 /* InayaStudyApp/Games/Science/ShadowMatchGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Science/ShadowMatchGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF098 /* InayaStudyApp/Games/Science/PotionLabGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Science/PotionLabGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF099 /* InayaStudyApp/Games/Cross/UnderwaterExpeditionGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Cross/UnderwaterExpeditionGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF101 /* InayaStudyApp/Games/Math/MeteorMathGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Math/MeteorMathGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF102 /* InayaStudyApp/Games/Cross/MysteryIslandGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Cross/MysteryIslandGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF103 /* InayaStudyApp/Games/Math/TimeTravelerGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Math/TimeTravelerGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF104 /* InayaStudyApp/Games/Science/TerrariumBuilderGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Science/TerrariumBuilderGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF105 /* InayaStudyApp/Games/Math/TownBuilderGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Math/TownBuilderGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF115 /* InayaStudyApp/Services/SwiftDataSchemaMigration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Services/SwiftDataSchemaMigration.swift; sourceTree = SOURCE_ROOT; };
 		MPF201 /* InayaStudyAppTests/ScienceProblemGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyAppTests/ScienceProblemGeneratorTests.swift; sourceTree = SOURCE_ROOT; };
+		MPF202 /* InayaStudyAppTests/GameContentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyAppTests/GameContentTests.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +287,7 @@
 				MPF011 /* InayaStudyApp/Services/ProgressStore.swift */,
 				MPF071 /* InayaStudyApp/Services/GameSessionStore.swift */,
 				MPF063 /* InayaStudyApp/Services/ProgressMigration.swift */,
+				MPF115 /* InayaStudyApp/Services/SwiftDataSchemaMigration.swift */,
 				MPF012 /* InayaStudyApp/Services/SettingsStore.swift */,
 				MPF013 /* InayaStudyApp/Services/RewardsStore.swift */,
 				MPF014 /* InayaStudyApp/Services/UserProfileStore.swift */,
@@ -310,6 +337,17 @@
 				MPF091 /* InayaStudyApp/Games/Science/HabitatMatchGame.swift */,
 				MPF092 /* InayaStudyApp/Games/Science/AnimalRescueGame.swift */,
 				MPF093 /* InayaStudyApp/Games/Cross/MathDuelGame.swift */,
+				MPF094 /* InayaStudyApp/Services/BuilderStore.swift */,
+				MPF095 /* InayaStudyApp/Games/Math/BubblePopGame.swift */,
+				MPF096 /* InayaStudyApp/Games/Science/FrogFlyGame.swift */,
+				MPF097 /* InayaStudyApp/Games/Science/ShadowMatchGame.swift */,
+				MPF098 /* InayaStudyApp/Games/Science/PotionLabGame.swift */,
+				MPF099 /* InayaStudyApp/Games/Cross/UnderwaterExpeditionGame.swift */,
+				MPF101 /* InayaStudyApp/Games/Math/MeteorMathGame.swift */,
+				MPF102 /* InayaStudyApp/Games/Cross/MysteryIslandGame.swift */,
+				MPF103 /* InayaStudyApp/Games/Math/TimeTravelerGame.swift */,
+				MPF104 /* InayaStudyApp/Games/Science/TerrariumBuilderGame.swift */,
+				MPF105 /* InayaStudyApp/Games/Math/TownBuilderGame.swift */,
 				MPF035 /* InayaStudyApp/Views/QuizView.swift */,
 				MPF066 /* InayaStudyApp/Views/Quiz/DifficultyNudgeBanner.swift */,
 				MPF065 /* InayaStudyApp/Views/Quiz/QuizCountdownTimer.swift */,
@@ -349,6 +387,7 @@
 			children = (
 				MPF200 /* InayaStudyAppTests/ProblemGeneratorTests.swift */,
 				MPF201 /* InayaStudyAppTests/ScienceProblemGeneratorTests.swift */,
+				MPF202 /* InayaStudyAppTests/GameContentTests.swift */,
 			);
 			name = InayaStudyAppTests;
 			sourceTree = "<group>";
@@ -551,6 +590,18 @@
 				MPB091 /* InayaStudyApp/Games/Science/HabitatMatchGame.swift in Sources */,
 				MPB092 /* InayaStudyApp/Games/Science/AnimalRescueGame.swift in Sources */,
 				MPB093 /* InayaStudyApp/Games/Cross/MathDuelGame.swift in Sources */,
+				MPB094 /* InayaStudyApp/Services/BuilderStore.swift in Sources */,
+				MPB095 /* InayaStudyApp/Games/Math/BubblePopGame.swift in Sources */,
+				MPB096 /* InayaStudyApp/Games/Science/FrogFlyGame.swift in Sources */,
+				MPB097 /* InayaStudyApp/Games/Science/ShadowMatchGame.swift in Sources */,
+				MPB098 /* InayaStudyApp/Games/Science/PotionLabGame.swift in Sources */,
+				MPB099 /* InayaStudyApp/Games/Cross/UnderwaterExpeditionGame.swift in Sources */,
+				MPB101 /* InayaStudyApp/Games/Math/MeteorMathGame.swift in Sources */,
+				MPB110 /* InayaStudyApp/Games/Cross/MysteryIslandGame.swift in Sources */,
+				MPB111 /* InayaStudyApp/Games/Math/TimeTravelerGame.swift in Sources */,
+				MPB112 /* InayaStudyApp/Games/Science/TerrariumBuilderGame.swift in Sources */,
+				MPB113 /* InayaStudyApp/Games/Math/TownBuilderGame.swift in Sources */,
+				MPB115 /* InayaStudyApp/Services/SwiftDataSchemaMigration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,6 +611,7 @@
 			files = (
 				MPB200 /* InayaStudyAppTests/ProblemGeneratorTests.swift in Sources */,
 				MPB201 /* InayaStudyAppTests/ScienceProblemGeneratorTests.swift in Sources */,
+				MPB202 /* InayaStudyAppTests/GameContentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

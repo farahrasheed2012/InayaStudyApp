@@ -223,6 +223,82 @@ final class CollectedCreature {
     var grade: GradeLevel { GradeLevel(rawValue: gradeRaw) ?? .second }
 }
 
+@Model
+final class TownBuildState {
+    @Attribute(.unique) var key: String
+    var lumber: Int
+    var bricks: Int
+    var glass: Int
+    var placedBuildingsJSON: String
+    var lastUpdated: Date
+
+    init(
+        key: String,
+        lumber: Int = 0,
+        bricks: Int = 0,
+        glass: Int = 0,
+        placedBuildingsJSON: String = "[]",
+        lastUpdated: Date = .now
+    ) {
+        self.key = key
+        self.lumber = lumber
+        self.bricks = bricks
+        self.glass = glass
+        self.placedBuildingsJSON = placedBuildingsJSON
+        self.lastUpdated = lastUpdated
+    }
+
+    var placedBuildings: [String] {
+        get {
+            (try? JSONDecoder().decode([String].self, from: Data(placedBuildingsJSON.utf8))) ?? []
+        }
+        set {
+            if let data = try? JSONEncoder().encode(newValue),
+               let str = String(data: data, encoding: .utf8) {
+                placedBuildingsJSON = str
+            }
+        }
+    }
+}
+
+@Model
+final class TerrariumBuildState {
+    @Attribute(.unique) var key: String
+    var plants: Int
+    var animals: Int
+    var terrain: Int
+    var placedItemsJSON: String
+    var lastUpdated: Date
+
+    init(
+        key: String,
+        plants: Int = 0,
+        animals: Int = 0,
+        terrain: Int = 0,
+        placedItemsJSON: String = "[]",
+        lastUpdated: Date = .now
+    ) {
+        self.key = key
+        self.plants = plants
+        self.animals = animals
+        self.terrain = terrain
+        self.placedItemsJSON = placedItemsJSON
+        self.lastUpdated = lastUpdated
+    }
+
+    var placedItems: [String] {
+        get {
+            (try? JSONDecoder().decode([String].self, from: Data(placedItemsJSON.utf8))) ?? []
+        }
+        set {
+            if let data = try? JSONEncoder().encode(newValue),
+               let str = String(data: data, encoding: .utf8) {
+                placedItemsJSON = str
+            }
+        }
+    }
+}
+
 enum SwiftDataSchema {
     static let models: [any PersistentModel.Type] = [
         SessionRecord.self,
@@ -234,5 +310,7 @@ enum SwiftDataSchema {
         DailyChallengeStreak.self,
         BossBattleState.self,
         CollectedCreature.self,
+        TownBuildState.self,
+        TerrariumBuildState.self,
     ]
 }
