@@ -7,6 +7,7 @@ struct InayaStudyAppApp: App {
 
     @StateObject private var settings = SettingsStore.shared
     @StateObject private var progressStore: ProgressStore
+    @StateObject private var gameStore: GameSessionStore
     @StateObject private var rewardsStore = RewardsStore()
     @StateObject private var profileStore = UserProfileStore.shared
 
@@ -20,7 +21,9 @@ struct InayaStudyAppApp: App {
             fatalError("Failed to create ModelContainer: \(error)")
         }
         container = builtContainer
-        _progressStore = StateObject(wrappedValue: ProgressStore(modelContext: builtContainer.mainContext))
+        let context = builtContainer.mainContext
+        _progressStore = StateObject(wrappedValue: ProgressStore(modelContext: context))
+        _gameStore = StateObject(wrappedValue: GameSessionStore(modelContext: context))
     }
 
     var body: some Scene {
@@ -35,6 +38,7 @@ struct InayaStudyAppApp: App {
                 }
             }
             .environmentObject(progressStore)
+            .environmentObject(gameStore)
             .environmentObject(settings)
             .environmentObject(rewardsStore)
             .environmentObject(profileStore)

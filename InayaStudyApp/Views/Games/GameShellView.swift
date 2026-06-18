@@ -19,13 +19,12 @@ struct GameShellView<Content: View>: View {
                 .padding(.horizontal)
                 .padding(.bottom, 10)
 
-            ScrollView {
-                content()
-                    .padding()
-            }
+            content()
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                .padding(.horizontal, 20)
+                .padding(.bottom, 16)
         }
-        .fullWidthContent()
-        .background(AppTheme.background.ignoresSafeArea())
+        .gameScreenCanvas()
     }
 
     private var header: some View {
@@ -45,7 +44,7 @@ struct GameShellView<Content: View>: View {
                         .font(.caption)
                 }
             }
-            CharacterView(mood: sparkyMood, size: 48, speechText: sparkySpeech)
+            CharacterView(mood: sparkyMood, size: 48, speechText: sparkySpeech, showSpeechBubble: false)
         }
         .padding(.horizontal)
         .padding(.top, 8)
@@ -53,16 +52,11 @@ struct GameShellView<Content: View>: View {
     }
 
     private var progressBar: some View {
-        GeometryReader { geo in
-            ZStack(alignment: .leading) {
-                Capsule().fill(Color.secondary.opacity(0.15))
-                Capsule()
-                    .fill(accent)
-                    .frame(width: geo.size.width * CGFloat(min(round, totalRounds)) / CGFloat(totalRounds))
-                    .animation(.easeOut(duration: 0.35), value: round)
-            }
-        }
-        .frame(height: 14)
+        GameProgressBar(
+            progress: Double(min(round, totalRounds)) / Double(max(totalRounds, 1)),
+            accent: accent
+        )
+        .animation(.easeOut(duration: 0.35), value: round)
     }
 }
 
@@ -132,7 +126,7 @@ struct GameCompleteView: View {
             .padding(.bottom, 24)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(AppTheme.background.ignoresSafeArea())
+        .gameScreenCanvas()
         .onAppear {
             if score >= 3 {
                 SoundEffects.playCelebration()

@@ -14,6 +14,12 @@ struct RootView: View {
             .tag(AppTab.adventure)
 
             NavigationStack {
+                GamesHubView()
+            }
+            .tabItem { Label(AppTab.games.title, systemImage: AppTab.games.icon) }
+            .tag(AppTab.games)
+
+            NavigationStack {
                 ProfileView()
             }
             .tabItem { Label(AppTab.badges.title, systemImage: AppTab.badges.icon) }
@@ -29,11 +35,12 @@ struct RootView: View {
 }
 
 enum AppTab: String, CaseIterable, Identifiable {
-    case adventure, badges, settings
+    case adventure, games, badges, settings
     var id: String { rawValue }
     var title: String {
         switch self {
         case .adventure: return "Adventure"
+        case .games: return "Games"
         case .badges: return "Badges"
         case .settings: return "Settings"
         }
@@ -41,6 +48,7 @@ enum AppTab: String, CaseIterable, Identifiable {
     var icon: String {
         switch self {
         case .adventure: return "map.fill"
+        case .games: return "gamecontroller.fill"
         case .badges: return "rosette"
         case .settings: return "gearshape.fill"
         }

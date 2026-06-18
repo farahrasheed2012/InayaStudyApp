@@ -113,4 +113,19 @@ extension View {
             .lineSpacing(8)
             .fixedSize(horizontal: false, vertical: true)
     }
+
+    /// Full-screen backdrop that must not steal taps from buttons and controls above it.
+    func appScreenBackground() -> some View {
+        background {
+            AppTheme.background
+                .ignoresSafeArea()
+                .allowsHitTesting(false)
+        }
+    }
+
+    /// Game screens fill the device and keep the themed background edge-to-edge.
+    func gameScreenCanvas(alignment: Alignment = .top) -> some View {
+        frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
+            .appScreenBackground()
+    }
 }

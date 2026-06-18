@@ -4,8 +4,6 @@ struct TopicGamesMenuView: View {
     let topic: Topic
 
     @EnvironmentObject private var profileStore: UserProfileStore
-    @State private var showGame = false
-    @State private var gameToLaunch: TopicGameKind = .sparkyMatch
 
     private var accent: Color { TopicAccent(topic: topic).color }
     private var games: [TopicGameKind] { TopicGameRegistry.games(for: topic) }
@@ -20,10 +18,7 @@ struct TopicGamesMenuView: View {
                 )
 
                 ForEach(games) { game in
-                    Button {
-                        gameToLaunch = game
-                        showGame = true
-                    } label: {
+                    NavigationLink(value: game) {
                         gameCard(game)
                     }
                     .buttonStyle(.plain)
@@ -32,13 +27,14 @@ struct TopicGamesMenuView: View {
             .padding(20)
         }
         .fullWidthContent()
-        .background(AppTheme.background.ignoresSafeArea())
+        .appScreenBackground()
         .navigationTitle("Play to Learn")
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
-        .navigationDestination(isPresented: $showGame) {
-            TopicGameViews.root(for: gameToLaunch, topic: topic)
+        .navigationDestination(for: TopicGameKind.self) { game in
+            TopicGameViews.root(for: game, topic: topic)
+                .appScreenBackground()
         }
     }
 

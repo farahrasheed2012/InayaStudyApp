@@ -8,10 +8,18 @@ struct StudyWithSparkyView: View {
     @State private var exampleProblems: [Problem] = []
     @State private var revealedExamples: Set<Int> = []
     @State private var sparkyMood: SparkyMood = .thinking
+    @State private var navigateToPractice = false
 
     private var guide: TopicGuideContent { TopicStudyGuide.guide(for: topic) }
     private var accent: Color { TopicAccent(topic: topic).color }
     private var totalPages: Int { 2 + exampleProblems.count }
+
+    init(topic: Topic) {
+        self.topic = topic
+        _exampleProblems = State(initialValue: (0..<2).map { _ in
+            ProblemGenerator.generate(topic: topic, difficulty: .easy)
+        })
+    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -27,8 +35,13 @@ struct StudyWithSparkyView: View {
             }
             .tabViewStyle(.page(indexDisplayMode: .always))
             .animation(.easeInOut, value: page)
-
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+        .safeAreaInset(edge: .bottom, spacing: 0) {
             navButtons
+                .padding(.horizontal, 20)
+                .padding(.vertical, 12)
+                .background(AppTheme.background.shadow(color: .black.opacity(0.06), radius: 8, y: -2))
         }
         .fullWidthContent()
         .background(AppTheme.background.ignoresSafeArea())
@@ -36,10 +49,10 @@ struct StudyWithSparkyView: View {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
+        .navigationDestination(isPresented: $navigateToPractice) {
+            SessionSetupView(topic: topic)
+        }
         .onAppear {
-            exampleProblems = (0..<2).map { _ in
-                ProblemGenerator.generate(topic: topic, difficulty: .easy)
-            }
             sparkyMood = .thinking
         }
         .onChange(of: page) { _ in
@@ -81,17 +94,24 @@ struct StudyWithSparkyView: View {
                 .controlSize(.large)
             }
             Spacer()
-            Button(page < totalPages - 1 ? "Next →" : "Ready to Practice! ⭐️") {
-                if page < totalPages - 1 {
+            if page < totalPages - 1 {
+                Button("Next →") {
                     withAnimation { page += 1 }
                 }
+                .font(AppTypography.cardTitle)
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+                .tint(accent)
+            } else {
+                Button("Ready to Practice! ⭐️") {
+                    navigateToPractice = true
+                }
+                .font(AppTypography.cardTitle)
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+                .tint(accent)
             }
-            .font(AppTypography.cardTitle)
-            .buttonStyle(.borderedProminent)
-            .controlSize(.large)
-            .tint(accent)
         }
-        .padding(.vertical, 16)
     }
 
     private var guidePage: some View {

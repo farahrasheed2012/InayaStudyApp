@@ -75,6 +75,33 @@
 		MPB064 /* InayaStudyApp/Views/Quiz/ReviewMissesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF064 /* InayaStudyApp/Views/Quiz/ReviewMissesView.swift */; };
 		MPB065 /* InayaStudyApp/Views/Quiz/QuizCountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF065 /* InayaStudyApp/Views/Quiz/QuizCountdownTimer.swift */; };
 		MPB066 /* InayaStudyApp/Views/Quiz/DifficultyNudgeBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF066 /* InayaStudyApp/Views/Quiz/DifficultyNudgeBanner.swift */; };
+		MPB067 /* InayaStudyApp/Games/GameKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF067 /* InayaStudyApp/Games/GameKit.swift */; };
+		MPB068 /* InayaStudyApp/Games/GameCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF068 /* InayaStudyApp/Games/GameCatalog.swift */; };
+		MPB069 /* InayaStudyApp/Games/GameContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF069 /* InayaStudyApp/Games/GameContent.swift */; };
+		MPB070 /* InayaStudyApp/Games/SuiteGameShell.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF070 /* InayaStudyApp/Games/SuiteGameShell.swift */; };
+		MPB085 /* InayaStudyApp/Games/GameProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF085 /* InayaStudyApp/Games/GameProgressBar.swift */; };
+		MPB071 /* InayaStudyApp/Services/GameSessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF071 /* InayaStudyApp/Services/GameSessionStore.swift */; };
+		MPB072 /* InayaStudyApp/Views/Games/GamesHubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF072 /* InayaStudyApp/Views/Games/GamesHubView.swift */; };
+		MPB073 /* InayaStudyApp/Games/GameRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF073 /* InayaStudyApp/Games/GameRouter.swift */; };
+		MPB074 /* InayaStudyApp/Games/Math/NumberNinjaGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF074 /* InayaStudyApp/Games/Math/NumberNinjaGame.swift */; };
+		MPB075 /* InayaStudyApp/Games/Math/CoinCollectorGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF075 /* InayaStudyApp/Games/Math/CoinCollectorGame.swift */; };
+		MPB076 /* InayaStudyApp/Games/Math/FractionFeastGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF076 /* InayaStudyApp/Games/Math/FractionFeastGame.swift */; };
+		MPB077 /* InayaStudyApp/Games/Math/TimesBingoGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF077 /* InayaStudyApp/Games/Math/TimesBingoGame.swift */; };
+		MPB078 /* InayaStudyApp/Games/Math/NumberLineJumpGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF078 /* InayaStudyApp/Games/Math/NumberLineJumpGame.swift */; };
+		MPB079 /* InayaStudyApp/Games/Science/SortItGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF079 /* InayaStudyApp/Games/Science/SortItGame.swift */; };
+		MPB080 /* InayaStudyApp/Games/Science/FoodWebBuilderGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF080 /* InayaStudyApp/Games/Science/FoodWebBuilderGame.swift */; };
+		MPB081 /* InayaStudyApp/Games/Science/WeatherWatcherGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF081 /* InayaStudyApp/Games/Science/WeatherWatcherGame.swift */; };
+		MPB082 /* InayaStudyApp/Games/Cross/QuizShowGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF082 /* InayaStudyApp/Games/Cross/QuizShowGame.swift */; };
+		MPB083 /* InayaStudyApp/Games/Cross/DailyChallengeGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF083 /* InayaStudyApp/Games/Cross/DailyChallengeGame.swift */; };
+		MPB084 /* InayaStudyApp/Games/Cross/BossBattleGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF084 /* InayaStudyApp/Games/Cross/BossBattleGame.swift */; };
+		MPB086 /* InayaStudyApp/Data/CreatureCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF086 /* InayaStudyApp/Data/CreatureCatalog.swift */; };
+		MPB087 /* InayaStudyApp/Helpers/StarChartHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF087 /* InayaStudyApp/Helpers/StarChartHelper.swift */; };
+		MPB088 /* InayaStudyApp/Views/Collection/StarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF088 /* InayaStudyApp/Views/Collection/StarChartView.swift */; };
+		MPB089 /* InayaStudyApp/Views/Collection/CreatureCompendiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF089 /* InayaStudyApp/Views/Collection/CreatureCompendiumView.swift */; };
+		MPB090 /* InayaStudyApp/Games/Math/PatternPuzzlerGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF090 /* InayaStudyApp/Games/Math/PatternPuzzlerGame.swift */; };
+		MPB091 /* InayaStudyApp/Games/Science/HabitatMatchGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF091 /* InayaStudyApp/Games/Science/HabitatMatchGame.swift */; };
+		MPB092 /* InayaStudyApp/Games/Science/AnimalRescueGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF092 /* InayaStudyApp/Games/Science/AnimalRescueGame.swift */; };
+		MPB093 /* InayaStudyApp/Games/Cross/MathDuelGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF093 /* InayaStudyApp/Games/Cross/MathDuelGame.swift */; };
 		MPB201 /* InayaStudyAppTests/ScienceProblemGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF201 /* InayaStudyAppTests/ScienceProblemGeneratorTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -159,6 +186,33 @@
 		MPF064 /* InayaStudyApp/Views/Quiz/ReviewMissesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Quiz/ReviewMissesView.swift; sourceTree = SOURCE_ROOT; };
 		MPF065 /* InayaStudyApp/Views/Quiz/QuizCountdownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Quiz/QuizCountdownTimer.swift; sourceTree = SOURCE_ROOT; };
 		MPF066 /* InayaStudyApp/Views/Quiz/DifficultyNudgeBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Quiz/DifficultyNudgeBanner.swift; sourceTree = SOURCE_ROOT; };
+		MPF067 /* InayaStudyApp/Games/GameKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/GameKit.swift; sourceTree = SOURCE_ROOT; };
+		MPF068 /* InayaStudyApp/Games/GameCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/GameCatalog.swift; sourceTree = SOURCE_ROOT; };
+		MPF069 /* InayaStudyApp/Games/GameContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/GameContent.swift; sourceTree = SOURCE_ROOT; };
+		MPF070 /* InayaStudyApp/Games/SuiteGameShell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/SuiteGameShell.swift; sourceTree = SOURCE_ROOT; };
+		MPF085 /* InayaStudyApp/Games/GameProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/GameProgressBar.swift; sourceTree = SOURCE_ROOT; };
+		MPF071 /* InayaStudyApp/Services/GameSessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Services/GameSessionStore.swift; sourceTree = SOURCE_ROOT; };
+		MPF072 /* InayaStudyApp/Views/Games/GamesHubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Games/GamesHubView.swift; sourceTree = SOURCE_ROOT; };
+		MPF073 /* InayaStudyApp/Games/GameRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/GameRouter.swift; sourceTree = SOURCE_ROOT; };
+		MPF074 /* InayaStudyApp/Games/Math/NumberNinjaGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Math/NumberNinjaGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF075 /* InayaStudyApp/Games/Math/CoinCollectorGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Math/CoinCollectorGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF076 /* InayaStudyApp/Games/Math/FractionFeastGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Math/FractionFeastGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF077 /* InayaStudyApp/Games/Math/TimesBingoGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Math/TimesBingoGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF078 /* InayaStudyApp/Games/Math/NumberLineJumpGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Math/NumberLineJumpGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF079 /* InayaStudyApp/Games/Science/SortItGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Science/SortItGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF080 /* InayaStudyApp/Games/Science/FoodWebBuilderGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Science/FoodWebBuilderGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF081 /* InayaStudyApp/Games/Science/WeatherWatcherGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Science/WeatherWatcherGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF082 /* InayaStudyApp/Games/Cross/QuizShowGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Cross/QuizShowGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF083 /* InayaStudyApp/Games/Cross/DailyChallengeGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Cross/DailyChallengeGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF084 /* InayaStudyApp/Games/Cross/BossBattleGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Cross/BossBattleGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF086 /* InayaStudyApp/Data/CreatureCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Data/CreatureCatalog.swift; sourceTree = SOURCE_ROOT; };
+		MPF087 /* InayaStudyApp/Helpers/StarChartHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Helpers/StarChartHelper.swift; sourceTree = SOURCE_ROOT; };
+		MPF088 /* InayaStudyApp/Views/Collection/StarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Collection/StarChartView.swift; sourceTree = SOURCE_ROOT; };
+		MPF089 /* InayaStudyApp/Views/Collection/CreatureCompendiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Collection/CreatureCompendiumView.swift; sourceTree = SOURCE_ROOT; };
+		MPF090 /* InayaStudyApp/Games/Math/PatternPuzzlerGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Math/PatternPuzzlerGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF091 /* InayaStudyApp/Games/Science/HabitatMatchGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Science/HabitatMatchGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF092 /* InayaStudyApp/Games/Science/AnimalRescueGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Science/AnimalRescueGame.swift; sourceTree = SOURCE_ROOT; };
+		MPF093 /* InayaStudyApp/Games/Cross/MathDuelGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Games/Cross/MathDuelGame.swift; sourceTree = SOURCE_ROOT; };
 		MPF201 /* InayaStudyAppTests/ScienceProblemGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyAppTests/ScienceProblemGeneratorTests.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -205,6 +259,7 @@
 				MPF009 /* InayaStudyApp/Services/ProblemGenerator.swift */,
 				MPF010 /* InayaStudyApp/Services/ScienceProblemGenerator.swift */,
 				MPF011 /* InayaStudyApp/Services/ProgressStore.swift */,
+				MPF071 /* InayaStudyApp/Services/GameSessionStore.swift */,
 				MPF063 /* InayaStudyApp/Services/ProgressMigration.swift */,
 				MPF012 /* InayaStudyApp/Services/SettingsStore.swift */,
 				MPF013 /* InayaStudyApp/Services/RewardsStore.swift */,
@@ -229,6 +284,32 @@
 				MPF032 /* InayaStudyApp/Views/Games/NumberHopGameView.swift */,
 				MPF033 /* InayaStudyApp/Views/Games/LifeCycleLineupGameView.swift */,
 				MPF034 /* InayaStudyApp/Views/Games/TopicGamesMenuView.swift */,
+				MPF072 /* InayaStudyApp/Views/Games/GamesHubView.swift */,
+				MPF067 /* InayaStudyApp/Games/GameKit.swift */,
+				MPF068 /* InayaStudyApp/Games/GameCatalog.swift */,
+				MPF069 /* InayaStudyApp/Games/GameContent.swift */,
+				MPF070 /* InayaStudyApp/Games/SuiteGameShell.swift */,
+				MPF085 /* InayaStudyApp/Games/GameProgressBar.swift */,
+				MPF073 /* InayaStudyApp/Games/GameRouter.swift */,
+				MPF074 /* InayaStudyApp/Games/Math/NumberNinjaGame.swift */,
+				MPF075 /* InayaStudyApp/Games/Math/CoinCollectorGame.swift */,
+				MPF076 /* InayaStudyApp/Games/Math/FractionFeastGame.swift */,
+				MPF077 /* InayaStudyApp/Games/Math/TimesBingoGame.swift */,
+				MPF078 /* InayaStudyApp/Games/Math/NumberLineJumpGame.swift */,
+				MPF079 /* InayaStudyApp/Games/Science/SortItGame.swift */,
+				MPF080 /* InayaStudyApp/Games/Science/FoodWebBuilderGame.swift */,
+				MPF081 /* InayaStudyApp/Games/Science/WeatherWatcherGame.swift */,
+				MPF082 /* InayaStudyApp/Games/Cross/QuizShowGame.swift */,
+				MPF083 /* InayaStudyApp/Games/Cross/DailyChallengeGame.swift */,
+				MPF084 /* InayaStudyApp/Games/Cross/BossBattleGame.swift */,
+				MPF086 /* InayaStudyApp/Data/CreatureCatalog.swift */,
+				MPF087 /* InayaStudyApp/Helpers/StarChartHelper.swift */,
+				MPF088 /* InayaStudyApp/Views/Collection/StarChartView.swift */,
+				MPF089 /* InayaStudyApp/Views/Collection/CreatureCompendiumView.swift */,
+				MPF090 /* InayaStudyApp/Games/Math/PatternPuzzlerGame.swift */,
+				MPF091 /* InayaStudyApp/Games/Science/HabitatMatchGame.swift */,
+				MPF092 /* InayaStudyApp/Games/Science/AnimalRescueGame.swift */,
+				MPF093 /* InayaStudyApp/Games/Cross/MathDuelGame.swift */,
 				MPF035 /* InayaStudyApp/Views/QuizView.swift */,
 				MPF066 /* InayaStudyApp/Views/Quiz/DifficultyNudgeBanner.swift */,
 				MPF065 /* InayaStudyApp/Views/Quiz/QuizCountdownTimer.swift */,
@@ -443,6 +524,33 @@
 				MPB064 /* InayaStudyApp/Views/Quiz/ReviewMissesView.swift in Sources */,
 				MPB065 /* InayaStudyApp/Views/Quiz/QuizCountdownTimer.swift in Sources */,
 				MPB066 /* InayaStudyApp/Views/Quiz/DifficultyNudgeBanner.swift in Sources */,
+				MPB067 /* InayaStudyApp/Games/GameKit.swift in Sources */,
+				MPB068 /* InayaStudyApp/Games/GameCatalog.swift in Sources */,
+				MPB069 /* InayaStudyApp/Games/GameContent.swift in Sources */,
+				MPB070 /* InayaStudyApp/Games/SuiteGameShell.swift in Sources */,
+				MPB085 /* InayaStudyApp/Games/GameProgressBar.swift in Sources */,
+				MPB071 /* InayaStudyApp/Services/GameSessionStore.swift in Sources */,
+				MPB072 /* InayaStudyApp/Views/Games/GamesHubView.swift in Sources */,
+				MPB073 /* InayaStudyApp/Games/GameRouter.swift in Sources */,
+				MPB074 /* InayaStudyApp/Games/Math/NumberNinjaGame.swift in Sources */,
+				MPB075 /* InayaStudyApp/Games/Math/CoinCollectorGame.swift in Sources */,
+				MPB076 /* InayaStudyApp/Games/Math/FractionFeastGame.swift in Sources */,
+				MPB077 /* InayaStudyApp/Games/Math/TimesBingoGame.swift in Sources */,
+				MPB078 /* InayaStudyApp/Games/Math/NumberLineJumpGame.swift in Sources */,
+				MPB079 /* InayaStudyApp/Games/Science/SortItGame.swift in Sources */,
+				MPB080 /* InayaStudyApp/Games/Science/FoodWebBuilderGame.swift in Sources */,
+				MPB081 /* InayaStudyApp/Games/Science/WeatherWatcherGame.swift in Sources */,
+				MPB082 /* InayaStudyApp/Games/Cross/QuizShowGame.swift in Sources */,
+				MPB083 /* InayaStudyApp/Games/Cross/DailyChallengeGame.swift in Sources */,
+				MPB084 /* InayaStudyApp/Games/Cross/BossBattleGame.swift in Sources */,
+				MPB086 /* InayaStudyApp/Data/CreatureCatalog.swift in Sources */,
+				MPB087 /* InayaStudyApp/Helpers/StarChartHelper.swift in Sources */,
+				MPB088 /* InayaStudyApp/Views/Collection/StarChartView.swift in Sources */,
+				MPB089 /* InayaStudyApp/Views/Collection/CreatureCompendiumView.swift in Sources */,
+				MPB090 /* InayaStudyApp/Games/Math/PatternPuzzlerGame.swift in Sources */,
+				MPB091 /* InayaStudyApp/Games/Science/HabitatMatchGame.swift in Sources */,
+				MPB092 /* InayaStudyApp/Games/Science/AnimalRescueGame.swift in Sources */,
+				MPB093 /* InayaStudyApp/Games/Cross/MathDuelGame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
