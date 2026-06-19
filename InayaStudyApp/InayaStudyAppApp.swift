@@ -14,10 +14,16 @@ struct InayaStudyAppApp: App {
 
     init() {
         let builtContainer: ModelContainer
-        do {
-            builtContainer = try SwiftDataStoreFactory.makeContainer()
-        } catch {
-            fatalError("Failed to create ModelContainer: \(error)")
+        if let container = try? SwiftDataStoreFactory.makeContainer() {
+            builtContainer = container
+        } else if let fallback = try? ModelContainer(
+            for: Schema(SwiftDataSchema.models),
+            configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+        ) {
+            assertionFailure("SwiftData persistent store unavailable; using in-memory fallback.")
+            builtContainer = fallback
+        } else {
+            fatalError("SwiftData models could not be loaded.")
         }
         container = builtContainer
         let context = builtContainer.mainContext

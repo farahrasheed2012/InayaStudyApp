@@ -50,7 +50,8 @@ struct ProfileView: View {
             .padding()
             .contentColumn()
         }
-        .background(AppTheme.background.ignoresSafeArea())
+        .appScreenBackground()
+        .preferredColorScheme(.light)
         .navigationTitle("Badges")
         .sheet(item: $selectedBadge) { badge in
             if let topic = TopicRegistry.topic(id: badge.topicId) {
@@ -62,9 +63,13 @@ struct ProfileView: View {
                         .foregroundStyle(.secondary)
                     Text("\(Int(badge.accuracy * 100))% accuracy · \(badge.stars) stars")
                     Button("Done") { selectedBadge = nil }
+                        .buttonStyle(.borderedProminent)
                         .padding(.top)
                 }
-                .padding()
+                .padding(24)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .appScreenBackground()
+                .preferredColorScheme(.light)
                 .presentationDetents([.medium])
             }
         }
@@ -77,10 +82,11 @@ struct ProfileView: View {
         } label: {
             VStack(spacing: 8) {
                 ZStack {
-                    HexBadgeView(topic: topic)
-                        .opacity(earned == nil ? 0.25 : 1)
+                    HexBadgeView(topic: topic, compact: true)
+                        .opacity(earned == nil ? 0.35 : 1)
                     if earned == nil {
                         Image(systemName: "lock.fill")
+                            .font(.title3)
                             .foregroundStyle(.secondary)
                     }
                 }
@@ -90,8 +96,11 @@ struct ProfileView: View {
                     .lineLimit(2)
                     .foregroundStyle(earned == nil ? .secondary : .primary)
             }
+            .padding(12)
+            .frame(maxWidth: .infinity, minHeight: 130)
+            .appSurfaceCard(cornerRadius: 18)
         }
-        .buttonStyle(.plain)
+        .appTappableStyle()
         .disabled(earned == nil)
     }
 
@@ -104,8 +113,7 @@ struct ProfileView: View {
                 .font(AppTypography.cardTitle)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(10)
-        .background(AppTheme.card)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .padding(12)
+        .appSurfaceCard(cornerRadius: 14)
     }
 }

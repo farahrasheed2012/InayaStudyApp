@@ -60,7 +60,7 @@ struct MeteorMathGame: View, GameScene {
                                     .foregroundStyle(selectedIndices.contains(index) ? .white : .primary)
                                     .clipShape(Circle())
                             }
-                            .buttonStyle(.plain)
+                            .appTappableStyle()
                             .position(
                                 x: geo.size.width * xFrac,
                                 y: geo.size.height * (0.15 + meteorProgress * 0.7)
@@ -69,7 +69,6 @@ struct MeteorMathGame: View, GameScene {
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .onAppear { animateMeteors() }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
@@ -83,8 +82,14 @@ struct MeteorMathGame: View, GameScene {
         animateMeteors()
     }
 
+    private func fallDuration() -> Double {
+        let base = grade == .second ? 11.0 : 9.5
+        let minimum = grade == .second ? 7.0 : 6.0
+        return max(base - Double(score) * 0.03, minimum)
+    }
+
     private func animateMeteors() {
-        let duration = max(3.0 - Double(score) * 0.1, 1.5)
+        let duration = fallDuration()
         withAnimation(.linear(duration: duration)) {
             meteorProgress = 1
         }

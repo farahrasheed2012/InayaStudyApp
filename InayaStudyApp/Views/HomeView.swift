@@ -102,7 +102,7 @@ struct HomeView: View {
             }
             .topicCardStyle(color: .orange)
         }
-        .buttonStyle(.plain)
+        .appTappableStyle()
     }
 
     private func gradeSubtitle(_ grade: GradeLevel) -> String {
@@ -128,7 +128,7 @@ struct HomeView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .topicCardStyle(color: cardColor(for: grade))
         }
-        .buttonStyle(.plain)
+        .appTappableStyle()
     }
 
     private func cardColor(for grade: GradeLevel) -> Color {

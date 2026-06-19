@@ -146,7 +146,7 @@ struct SuiteGameCompleteView: View {
                         .foregroundStyle(.white)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                 }
-                .buttonStyle(.plain)
+                .appTappableStyle()
                 Button("Back to games") { dismiss() }
                     .font(AppTypography.bodyEmphasis)
                     .foregroundStyle(.secondary)
@@ -208,7 +208,7 @@ struct GameChoiceGrid: View {
                         )
                         .contentShape(RoundedRectangle(cornerRadius: 14))
                 }
-                .buttonStyle(.plain)
+                .appTappableStyle()
                 .accessibilityLabel("Answer \(choice)")
             }
         }

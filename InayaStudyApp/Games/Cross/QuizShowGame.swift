@@ -105,7 +105,7 @@ struct QuizShowGame: View, GameScene {
                 )
                 .contentShape(RoundedRectangle(cornerRadius: 10))
         }
-        .buttonStyle(.plain)
+        .appTappableStyle()
         .disabled(isAnswered)
         .accessibilityLabel("\(category), \(points) points\(isAnswered ? (wasCorrect ? ", correct" : ", incorrect") : "")")
     }
@@ -138,7 +138,7 @@ struct QuizShowGame: View, GameScene {
                 activeRound = nil
             }
             .font(AppTypography.bodyEmphasis)
-            .buttonStyle(.plain)
+            .appTappableStyle()
             .padding(.horizontal, 20)
             .padding(.vertical, 12)
             .background(AppTheme.card)

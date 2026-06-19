@@ -285,7 +285,7 @@ struct QuizView: View {
             .scaleEffect(selected && !showing ? 0.95 : 1)
             .modifier(ShakeEffect(animating: selected && showing && !isCorrect && shakeWrong))
         }
-        .buttonStyle(.plain)
+        .appTappableStyle()
         .disabled(viewModel.showingFeedback)
     }
 
@@ -300,7 +300,7 @@ struct QuizView: View {
                     .background(AppTheme.card)
                     .clipShape(Circle())
             }
-            .buttonStyle(.plain)
+            .appTappableStyle()
         }
     }
 
@@ -322,7 +322,12 @@ struct QuizView: View {
     }
 
     private func dismissToMap() {
+        showStars = false
+        showReviewMisses = false
         dismiss()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            NotificationCenter.default.post(name: .quizSessionCompletePop, object: nil)
+        }
     }
 
     private func proceedToResults() {
@@ -342,6 +347,12 @@ struct QuizView: View {
         showBadge = earned
         if !earned { showStars = true }
     }
+}
+
+extension Notification.Name {
+    /// Posted after quiz results; SessionSetup pops itself, then may chain to topic hub.
+    static let quizSessionCompletePop = Notification.Name("InayaStudyApp.quizSessionCompletePop")
+    static let topicHubPop = Notification.Name("InayaStudyApp.topicHubPop")
 }
 
 private struct ShakeEffect: GeometryEffect {

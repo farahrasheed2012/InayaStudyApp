@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SessionSetupView: View {
     let topic: Topic
+    @Environment(\.dismiss) private var dismiss
     @State private var difficulty: Difficulty = SettingsStore.shared.defaultDifficulty
     @State private var questionCount = SettingsStore.shared.defaultQuestionCount
     @State private var startQuiz = false
@@ -43,7 +44,7 @@ struct SessionSetupView: View {
                             .stroke(accent.opacity(0.35), lineWidth: 2)
                     )
                 }
-                .buttonStyle(.plain)
+                .appTappableStyle()
 
                 setupSection(title: "Difficulty") {
                     VStack(spacing: 12) {
@@ -86,7 +87,7 @@ struct SessionSetupView: View {
                         .foregroundStyle(.white)
                         .clipShape(RoundedRectangle(cornerRadius: 18))
                 }
-                .buttonStyle(.plain)
+                .appTappableStyle()
                 .padding(.top, 4)
             }
             .padding(20)
@@ -99,6 +100,13 @@ struct SessionSetupView: View {
         #endif
         .navigationDestination(isPresented: $startQuiz) {
             QuizView(topic: topic, difficulty: difficulty, questionCount: questionCount)
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .quizSessionCompletePop)) { _ in
+            startQuiz = false
+            dismiss()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                NotificationCenter.default.post(name: .topicHubPop, object: nil)
+            }
         }
     }
 
@@ -135,6 +143,6 @@ struct SessionSetupView: View {
                         .stroke(isSelected ? accent : Color.secondary.opacity(0.25), lineWidth: isSelected ? 2.5 : 1)
                 )
         }
-        .buttonStyle(.plain)
+        .appTappableStyle()
     }
 }

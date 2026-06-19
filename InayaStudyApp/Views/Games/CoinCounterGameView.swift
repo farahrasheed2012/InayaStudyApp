@@ -93,7 +93,7 @@ struct CoinCounterGameView: View {
                 .background(accent)
                 .foregroundStyle(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 14))
-                .buttonStyle(.plain)
+                .appTappableStyle()
                 .padding(.top, 8)
         }
         .padding(20)

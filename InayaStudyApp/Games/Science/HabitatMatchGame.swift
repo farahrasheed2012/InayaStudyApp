@@ -96,7 +96,7 @@ struct HabitatMatchGame: View, GameScene {
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .contentShape(RoundedRectangle(cornerRadius: 12))
         }
-        .buttonStyle(.plain)
+        .appTappableStyle()
         .disabled(isMatched)
     }
 
@@ -131,7 +131,7 @@ struct HabitatMatchGame: View, GameScene {
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .contentShape(RoundedRectangle(cornerRadius: 12))
         }
-        .buttonStyle(.plain)
+        .appTappableStyle()
     }
 
     private func loadRound() {

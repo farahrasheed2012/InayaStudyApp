@@ -4,6 +4,7 @@ struct TopicActivityHubView: View {
     let topic: Topic
 
     @EnvironmentObject private var profileStore: UserProfileStore
+    @Environment(\.dismiss) private var dismiss
     private var accent: Color { TopicAccent(topic: topic).color }
 
     var body: some View {
@@ -43,7 +44,7 @@ struct TopicActivityHubView: View {
                             color: accent
                         )
                     }
-                    .buttonStyle(.plain)
+                    .appTappableStyle()
 
                     NavigationLink {
                         TopicGamesMenuView(topic: topic)
@@ -55,7 +56,7 @@ struct TopicActivityHubView: View {
                             color: AppTheme.color(hex: "9B59B6")
                         )
                     }
-                    .buttonStyle(.plain)
+                    .appTappableStyle()
 
                     NavigationLink {
                         SessionSetupView(topic: topic)
@@ -67,7 +68,7 @@ struct TopicActivityHubView: View {
                             color: .yellow.opacity(0.9)
                         )
                     }
-                    .buttonStyle(.plain)
+                    .appTappableStyle()
                 }
             }
             .padding(20)
@@ -78,6 +79,9 @@ struct TopicActivityHubView: View {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
+        .onReceive(NotificationCenter.default.publisher(for: .topicHubPop)) { _ in
+            dismiss()
+        }
     }
 
     private func hubButton(title: String, subtitle: String, icon: String, color: Color) -> some View {

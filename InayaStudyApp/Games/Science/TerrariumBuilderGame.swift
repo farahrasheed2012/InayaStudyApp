@@ -124,7 +124,7 @@ struct TerrariumBuilderGame: View, GameScene {
                             .background(canPlace ? AppTheme.card : Color.gray.opacity(0.2))
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
-                        .buttonStyle(.plain)
+                        .appTappableStyle()
                         .disabled(!canPlace)
                     }
                 }
@@ -136,7 +136,7 @@ struct TerrariumBuilderGame: View, GameScene {
                 .background(accent)
                 .foregroundStyle(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 14))
-                .buttonStyle(.plain)
+                .appTappableStyle()
         }
     }
 

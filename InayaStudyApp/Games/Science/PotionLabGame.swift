@@ -62,7 +62,7 @@ struct PotionLabGame: View, GameScene {
                                 .background(selected.contains(item) ? accent.opacity(0.35) : AppTheme.card)
                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                         }
-                        .buttonStyle(.plain)
+                        .appTappableStyle()
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
@@ -73,7 +73,7 @@ struct PotionLabGame: View, GameScene {
                     .background(accent)
                     .foregroundStyle(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 14))
-                    .buttonStyle(.plain)
+                    .appTappableStyle()
                     .disabled(selected.count < potion.minPick)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)

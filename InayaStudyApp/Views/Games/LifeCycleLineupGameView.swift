@@ -164,7 +164,7 @@ struct LifeCycleLineupGameView: View {
                         .stroke(accent.opacity(alreadyPicked ? 0.1 : 0.35), lineWidth: 2)
                 )
         }
-        .buttonStyle(.plain)
+        .appTappableStyle()
         .disabled(alreadyPicked || showingFeedback)
     }
 
@@ -201,7 +201,7 @@ struct LifeCycleLineupGameView: View {
                 .background(accent)
                 .foregroundStyle(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 14))
-                .buttonStyle(.plain)
+                .appTappableStyle()
                 .padding(.top, 8)
         }
         .padding(20)

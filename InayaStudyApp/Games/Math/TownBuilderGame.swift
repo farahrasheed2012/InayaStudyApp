@@ -116,14 +116,14 @@ struct TownBuilderGame: View, GameScene {
                     .background(canAfford ? AppTheme.card : Color.gray.opacity(0.2))
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
-                .buttonStyle(.plain)
+                .appTappableStyle()
                 .disabled(!canAfford)
             }
 
             Button("Skip to next problem") { advance() }
                 .font(AppTypography.bodyEmphasis)
                 .foregroundStyle(.secondary)
-                .buttonStyle(.plain)
+                .appTappableStyle()
         }
     }
 

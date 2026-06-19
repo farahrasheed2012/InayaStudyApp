@@ -94,7 +94,7 @@ struct SortItGame: View, GameScene {
                 .foregroundStyle(.secondary)
             ForEach(categories) { cat in
                 Button(cat.title) { sort(card, toward: cat) }
-                    .buttonStyle(.plain)
+                    .appTappableStyle()
                     .font(AppTypography.label)
                     .frame(maxWidth: .infinity, minHeight: 44)
                     .background(AppTheme.card)

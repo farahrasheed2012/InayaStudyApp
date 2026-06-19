@@ -39,7 +39,7 @@ struct AdventureNumpadView: View {
                     .foregroundStyle(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 16))
             }
-            .buttonStyle(.plain)
+            .appTappableStyle()
             .disabled(text.trimmingCharacters(in: .whitespaces).isEmpty)
         }
     }
@@ -57,7 +57,7 @@ struct AdventureNumpadView: View {
                 .clipShape(Circle())
                 .overlay(Circle().stroke(accent.opacity(0.25), lineWidth: 2))
         }
-        .buttonStyle(.plain)
+        .appTappableStyle()
     }
 
     private func handle(_ key: String) {

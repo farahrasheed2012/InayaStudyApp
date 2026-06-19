@@ -140,7 +140,7 @@ struct MathDuelGame: View, GameScene {
                         .overlay(RoundedRectangle(cornerRadius: 12).stroke(color.opacity(0.5), lineWidth: 2))
                         .contentShape(RoundedRectangle(cornerRadius: 12))
                 }
-                .buttonStyle(.plain)
+                .appTappableStyle()
                 .disabled(roundLocked)
             }
         }

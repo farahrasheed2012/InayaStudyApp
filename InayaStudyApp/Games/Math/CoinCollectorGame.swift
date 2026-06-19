@@ -65,7 +65,7 @@ struct CoinCollectorGame: View, GameScene {
                     .background(accent)
                     .foregroundStyle(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 16))
-                    .buttonStyle(.plain)
+                    .appTappableStyle()
                     .accessibilityLabel("Submit coin total")
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
@@ -90,7 +90,7 @@ struct CoinCollectorGame: View, GameScene {
             .background(AppTheme.card)
             .clipShape(Circle())
         }
-        .buttonStyle(.plain)
+        .appTappableStyle()
         .accessibilityLabel("Add \(coinLabel(cents))")
     }
 

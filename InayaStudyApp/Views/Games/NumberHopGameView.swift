@@ -126,7 +126,7 @@ struct NumberHopGameView: View {
                                                     .stroke(accent.opacity(0.35), lineWidth: 2)
                                             )
                                     }
-                                    .buttonStyle(.plain)
+                                    .appTappableStyle()
                                 }
                             }
                         }
@@ -168,7 +168,7 @@ struct NumberHopGameView: View {
                 .background(accent)
                 .foregroundStyle(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 14))
-                .buttonStyle(.plain)
+                .appTappableStyle()
                 .padding(.top, 8)
         }
         .padding(20)

@@ -39,25 +39,25 @@ struct RewardBadgeView: View {
                         Label("Share", systemImage: "square.and.arrow.up")
                             .font(.headline)
                             .frame(maxWidth: .infinity, minHeight: 48)
-                            .background(AppTheme.card)
-                            .clipShape(RoundedRectangle(cornerRadius: 14))
+                            .appSurfaceCard(cornerRadius: 14)
                     }
 
                     Button(action: onDismiss) {
                         Text("Awesome!")
                             .font(.headline)
                             .frame(maxWidth: .infinity, minHeight: 48)
-                            .background(TopicAccent(topic: topic).color)
+                            .background(AppTheme.color(hex: "5B8DEF"))
                             .foregroundStyle(.white)
                             .clipShape(RoundedRectangle(cornerRadius: 14))
                     }
-                    .buttonStyle(.plain)
+                    .appTappableStyle()
                 }
                 .padding(.horizontal)
             }
             .padding()
         }
-        .background(AppTheme.background.ignoresSafeArea())
+        .appScreenBackground()
+        .preferredColorScheme(.light)
         .onAppear {
             SoundEffects.playBadgeUnlocked()
             Haptics.badgeUnlocked()
@@ -71,19 +71,42 @@ struct RewardBadgeView: View {
 
 struct HexBadgeView: View {
     let topic: Topic
+    var compact: Bool = false
+
+    private var accent: Color { TopicAccent(topic: topic).color }
+    private var size: CGFloat { compact ? 72 : 120 }
+    private var iconFont: Font { compact ? .title2 : .largeTitle }
 
     var body: some View {
         ZStack {
             HexagonShape()
-                .fill(TopicAccent(topic: topic).color.opacity(0.25))
-                .frame(width: 120, height: 120)
+                .fill(
+                    LinearGradient(
+                        colors: [.white, AppTheme.color(hex: "F8FBFF")],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
+                .shadow(color: accent.opacity(0.15), radius: compact ? 4 : 8, y: compact ? 2 : 4)
+
             HexagonShape()
-                .stroke(Color.yellow, lineWidth: 4)
-                .frame(width: 120, height: 120)
-            Image(systemName: topic.icon)
-                .font(.largeTitle)
-                .foregroundStyle(TopicAccent(topic: topic).color)
+                .stroke(Color.yellow.opacity(0.85), lineWidth: compact ? 2.5 : 3.5)
+
+            HexagonShape()
+                .scale(compact ? 0.82 : 0.85)
+                .stroke(accent.opacity(0.35), lineWidth: compact ? 1.5 : 2)
+
+            ZStack {
+                Circle()
+                    .fill(accent.opacity(0.12))
+                    .frame(width: size * 0.52, height: size * 0.52)
+                Image(systemName: topic.icon)
+                    .font(iconFont)
+                    .foregroundStyle(accent)
+                    .symbolRenderingMode(.hierarchical)
+            }
         }
+        .frame(width: size, height: size)
     }
 }
 

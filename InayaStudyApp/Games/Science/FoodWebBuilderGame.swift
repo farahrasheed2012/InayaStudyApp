@@ -58,7 +58,7 @@ struct FoodWebBuilderGame: View, GameScene {
                                 .background(dragFrom == org.id ? accent.opacity(0.3) : AppTheme.card)
                                 .clipShape(RoundedRectangle(cornerRadius: 12))
                             }
-                            .buttonStyle(.plain)
+                            .appTappableStyle()
                             .accessibilityLabel(org.label)
                         }
                     }
@@ -78,7 +78,7 @@ struct FoodWebBuilderGame: View, GameScene {
                     .background(accent)
                     .foregroundStyle(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 14))
-                    .buttonStyle(.plain)
+                    .appTappableStyle()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }

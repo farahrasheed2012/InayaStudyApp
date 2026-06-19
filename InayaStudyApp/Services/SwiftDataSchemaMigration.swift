@@ -1,5 +1,6 @@
 import Foundation
 import SwiftData
+import os
 
 // MARK: - Schema versions
 
@@ -49,33 +50,65 @@ enum InayaSchemaMigrationPlan: SchemaMigrationPlan {
 // MARK: - Container factory
 
 enum SwiftDataStoreFactory {
-    private static let recoveryAttemptedKey = "swiftdata.store.recoveryAttempted"
+    private static let logger = Logger(subsystem: "com.inaya.studyapp", category: "SwiftData")
+    private static let storeFileName = "InayaStudy.store"
 
     static func makeContainer() throws -> ModelContainer {
         let schema = Schema(versionedSchema: InayaSchemaV2.self)
-        let configuration = ModelConfiguration(isStoredInMemoryOnly: false)
+
         do {
-            return try ModelContainer(
-                for: schema,
-                migrationPlan: InayaSchemaMigrationPlan.self,
-                configurations: configuration
-            )
+            return try openPersistentContainer(schema: schema)
         } catch {
-            guard !UserDefaults.standard.bool(forKey: recoveryAttemptedKey) else {
-                throw error
+            logger.error("Persistent SwiftData store failed to open: \(String(describing: error), privacy: .public)")
+            try deleteAllKnownStoreFiles()
+            do {
+                return try openPersistentContainer(schema: schema)
+            } catch {
+                logger.error("SwiftData store failed after reset; using in-memory store: \(String(describing: error), privacy: .public)")
+                return try inMemoryContainer(schema: schema)
             }
-            UserDefaults.standard.set(true, forKey: recoveryAttemptedKey)
-            try deleteStoreFiles(for: configuration)
-            return try ModelContainer(
-                for: schema,
-                migrationPlan: InayaSchemaMigrationPlan.self,
-                configurations: configuration
-            )
         }
     }
 
-    private static func deleteStoreFiles(for configuration: ModelConfiguration) throws {
-        let base = configuration.url
+    private static func openPersistentContainer(schema: Schema) throws -> ModelContainer {
+        let configuration = ModelConfiguration(
+            schema: schema,
+            url: persistentStoreURL(),
+            allowsSave: true
+        )
+        return try ModelContainer(
+            for: schema,
+            migrationPlan: InayaSchemaMigrationPlan.self,
+            configurations: configuration
+        )
+    }
+
+    private static func inMemoryContainer(schema: Schema) throws -> ModelContainer {
+        try ModelContainer(
+            for: schema,
+            migrationPlan: InayaSchemaMigrationPlan.self,
+            configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+        )
+    }
+
+    private static func persistentStoreURL() -> URL {
+        let appSupport = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+        return appSupport.appendingPathComponent(storeFileName, isDirectory: false)
+    }
+
+    /// Removes the current store and legacy unversioned `default.store` files.
+    private static func deleteAllKnownStoreFiles() throws {
+        let appSupport = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+        let bases = [
+            persistentStoreURL(),
+            appSupport.appendingPathComponent("default.store", isDirectory: false),
+        ]
+        for base in bases {
+            try deleteStoreFamily(at: base)
+        }
+    }
+
+    private static func deleteStoreFamily(at base: URL) throws {
         let urls = [
             base,
             URL(fileURLWithPath: base.path + "-wal"),

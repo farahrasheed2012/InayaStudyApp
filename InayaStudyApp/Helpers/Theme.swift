@@ -21,6 +21,42 @@ enum AppTheme {
         }
         return Color(red: Double(r) / 255, green: Double(g) / 255, blue: Double(b) / 255)
     }
+
+    /// Default adventure-map sky (2nd grade math route).
+    static let defaultSkyTop = "87CEEB"
+    static let defaultSkyBottom = "E0F7FA"
+    static let defaultHillColor = "7CB342"
+}
+
+/// Soft sky + hills backdrop — matches the Adventure map tab.
+struct AppSkyBackground: View {
+    var skyTop: String = AppTheme.defaultSkyTop
+    var skyBottom: String = AppTheme.defaultSkyBottom
+    var hillColor: String = AppTheme.defaultHillColor
+
+    var body: some View {
+        ZStack {
+            LinearGradient(
+                colors: [AppTheme.color(hex: skyTop), AppTheme.color(hex: skyBottom)],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            GeometryReader { geo in
+                Path { path in
+                    path.move(to: CGPoint(x: 0, y: geo.size.height * 0.55))
+                    path.addQuadCurve(
+                        to: CGPoint(x: geo.size.width, y: geo.size.height * 0.65),
+                        control: CGPoint(x: geo.size.width * 0.5, y: geo.size.height * 0.45)
+                    )
+                    path.addLine(to: CGPoint(x: geo.size.width, y: geo.size.height))
+                    path.addLine(to: CGPoint(x: 0, y: geo.size.height))
+                    path.closeSubpath()
+                }
+                .fill(AppTheme.color(hex: hillColor).opacity(0.35))
+            }
+            .allowsHitTesting(false)
+        }
+    }
 }
 
 /// Kid-friendly rounded typography — sized for comfortable reading.
@@ -66,6 +102,13 @@ private struct FullWidthContentModifier: ViewModifier {
 }
 
 extension View {
+    /// Soft white card for content sitting on the sky background.
+    func appSurfaceCard(cornerRadius: CGFloat = 16) -> some View {
+        background(Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+            .shadow(color: .black.opacity(0.06), radius: 6, y: 3)
+    }
+
     func topicCardStyle(color: Color) -> some View {
         padding()
         .frame(maxWidth: .infinity, minHeight: 120, alignment: .leading)
@@ -115,9 +158,13 @@ extension View {
     }
 
     /// Full-screen backdrop that must not steal taps from buttons and controls above it.
-    func appScreenBackground() -> some View {
+    func appScreenBackground(
+        skyTop: String = AppTheme.defaultSkyTop,
+        skyBottom: String = AppTheme.defaultSkyBottom,
+        hillColor: String = AppTheme.defaultHillColor
+    ) -> some View {
         background {
-            AppTheme.background
+            AppSkyBackground(skyTop: skyTop, skyBottom: skyBottom, hillColor: hillColor)
                 .ignoresSafeArea()
                 .allowsHitTesting(false)
         }
@@ -127,5 +174,15 @@ extension View {
     func gameScreenCanvas(alignment: Alignment = .top) -> some View {
         frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
             .appScreenBackground()
+    }
+
+    /// Custom-styled buttons and NavigationLinks — `.plain` swallows clicks on Mac Catalyst.
+    @ViewBuilder
+    func appTappableStyle() -> some View {
+        #if targetEnvironment(macCatalyst)
+        buttonStyle(.borderless)
+        #else
+        buttonStyle(.plain)
+        #endif
     }
 }

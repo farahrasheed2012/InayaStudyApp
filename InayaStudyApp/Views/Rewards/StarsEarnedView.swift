@@ -113,8 +113,13 @@ struct StarsEarnedView: View {
                                 .background(Color.accentColor)
                                 .foregroundStyle(.white)
                                 .clipShape(RoundedRectangle(cornerRadius: 18))
+                                .contentShape(RoundedRectangle(cornerRadius: 18))
                         }
-                        .buttonStyle(.plain)
+                        #if targetEnvironment(macCatalyst)
+                        .buttonStyle(.borderless)
+                        #else
+                        .appTappableStyle()
+                        #endif
                         .padding(.horizontal, 32)
                         .transition(.scale.combined(with: .opacity))
                     }

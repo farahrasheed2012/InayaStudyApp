@@ -118,7 +118,7 @@ struct SparkyMatchGameView: View {
             .clipShape(RoundedRectangle(cornerRadius: 16))
             .overlay(RoundedRectangle(cornerRadius: 16).stroke(accent.opacity(0.3), lineWidth: 2))
         }
-        .buttonStyle(.plain)
+        .appTappableStyle()
         .disabled(showingFeedback)
     }
 
@@ -143,7 +143,7 @@ struct SparkyMatchGameView: View {
                 .background(accent)
                 .foregroundStyle(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 14))
-                .buttonStyle(.plain)
+                .appTappableStyle()
                 .padding(.top, 8)
         }
         .padding(20)

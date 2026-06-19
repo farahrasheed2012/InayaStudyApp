@@ -56,7 +56,7 @@ struct TimesBingoGame: View, GameScene {
                                     }
                                 }
                         }
-                        .buttonStyle(.plain)
+                        .appTappableStyle()
                         .accessibilityLabel("Cell \(value)")
                     }
                 }

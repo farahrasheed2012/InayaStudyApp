@@ -30,7 +30,7 @@ struct GamesHubView: View {
                         NavigationLink(value: game) {
                             gameCard(game)
                         }
-                        .buttonStyle(.plain)
+                        .appTappableStyle()
                     }
                 }
             }
@@ -38,6 +38,7 @@ struct GamesHubView: View {
             .padding(.vertical, 16)
         }
         .appScreenBackground()
+        .preferredColorScheme(.light)
         .navigationTitle("Games")
         .navigationDestination(for: AppGameID.self) { game in
             GameRouter.view(for: game, grade: grade)
@@ -61,7 +62,7 @@ struct GamesHubView: View {
                     tint: AppTheme.star
                 )
             }
-            .buttonStyle(.plain)
+            .appTappableStyle()
 
             NavigationLink(value: CollectionLink.compendium) {
                 collectionCard(
@@ -71,7 +72,7 @@ struct GamesHubView: View {
                     tint: AppTheme.color(hex: "2ECC71")
                 )
             }
-            .buttonStyle(.plain)
+            .appTappableStyle()
         }
     }
 
@@ -113,7 +114,7 @@ struct GamesHubView: View {
                 .foregroundStyle(grade == value ? .white : .primary)
                 .clipShape(Capsule())
         }
-        .buttonStyle(.plain)
+        .appTappableStyle()
     }
 
     private var dailyChallengeLink: some View {
@@ -151,7 +152,7 @@ struct GamesHubView: View {
             )
             .contentShape(RoundedRectangle(cornerRadius: 18))
         }
-        .buttonStyle(.plain)
+        .appTappableStyle()
         .accessibilityLabel("Today's daily challenge")
     }
 
@@ -162,7 +163,7 @@ struct GamesHubView: View {
             NavigationLink(value: AppGameID.bossBattle) {
                 bossBattleCard(unlocked: true, sessionsUntil: status.sessionsUntil)
             }
-            .buttonStyle(.plain)
+            .appTappableStyle()
             .accessibilityLabel("Boss battle unlocked")
         } else {
             bossBattleCard(unlocked: false, sessionsUntil: status.sessionsUntil)

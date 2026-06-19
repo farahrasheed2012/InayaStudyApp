@@ -37,7 +37,7 @@ struct CreatureCompendiumView: View {
                             } label: {
                                 creatureCell(emoji: creature.emoji, name: creature.name, locked: false)
                             }
-                            .buttonStyle(.plain)
+                            .appTappableStyle()
                         }
                     }
                 }

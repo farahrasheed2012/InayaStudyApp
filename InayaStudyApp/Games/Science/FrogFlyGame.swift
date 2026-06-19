@@ -69,7 +69,7 @@ struct FrogFlyGame: View, GameScene {
                                     .background(AppTheme.card)
                                     .clipShape(RoundedRectangle(cornerRadius: 12))
                                 }
-                                .buttonStyle(.plain)
+                                .appTappableStyle()
                             }
                         }
                         .offset(x: insectOffset)

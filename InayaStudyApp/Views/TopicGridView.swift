@@ -32,7 +32,7 @@ struct TopicGridView: View {
                         }
                         .topicCardStyle(color: TopicAccent(topic: topic).color)
                     }
-                    .buttonStyle(.plain)
+                    .appTappableStyle()
                 }
             }
             .padding()

@@ -73,7 +73,7 @@ struct BubblePopGame: View, GameScene {
                 .clipShape(Circle())
                 .overlay(Circle().stroke(.white.opacity(0.6), lineWidth: 2))
         }
-        .buttonStyle(.plain)
+        .appTappableStyle()
         .position(x: size.width * xFrac, y: yOffset)
     }
 
@@ -84,8 +84,14 @@ struct BubblePopGame: View, GameScene {
         animateBubbles()
     }
 
+    private func riseDuration() -> Double {
+        let base = grade == .second ? 10.0 : 8.5
+        let minimum = grade == .second ? 6.5 : 5.5
+        return max(base - Double(score) * 0.03, minimum)
+    }
+
     private func animateBubbles() {
-        let duration = max(2.8 - Double(score) * 0.08, 1.4)
+        let duration = riseDuration()
         for index in bubbleRound.bubbles.indices {
             withAnimation(.linear(duration: duration)) {
                 if bubbleProgress.indices.contains(index) {

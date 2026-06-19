@@ -20,6 +20,8 @@ struct SettingsTabView: View {
             }
         }
         .navigationTitle("Settings")
+        .appScreenBackground()
+        .preferredColorScheme(.light)
     }
 
     private var pinGate: some View {
@@ -51,7 +53,6 @@ struct SettingsTabView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(AppTheme.background.ignoresSafeArea())
     }
 
     private var settingsForm: some View {
@@ -105,6 +106,7 @@ struct SettingsTabView: View {
                 }
             }
         }
+        .scrollContentBackground(.hidden)
         .confirmationDialog("Reset all practice history?", isPresented: $showResetConfirm, titleVisibility: .visible) {
             Button("Reset", role: .destructive) {
                 progressStore.resetAll()

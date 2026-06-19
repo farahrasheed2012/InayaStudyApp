@@ -100,7 +100,7 @@ struct GameCompleteView: View {
                         .foregroundStyle(.white)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                 }
-                .buttonStyle(.plain)
+                .appTappableStyle()
 
                 NavigationLink {
                     SessionSetupView(topic: topic)
@@ -116,7 +116,7 @@ struct GameCompleteView: View {
                                 .stroke(accent.opacity(0.4), lineWidth: 2)
                         )
                 }
-                .buttonStyle(.plain)
+                .appTappableStyle()
 
                 Button("Back to topic") { dismiss() }
                     .font(AppTypography.bodyEmphasis)

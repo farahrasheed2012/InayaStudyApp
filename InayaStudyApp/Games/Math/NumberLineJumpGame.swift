@@ -68,7 +68,7 @@ struct NumberLineJumpGame: View, GameScene {
                                     check(tick)
                                 }
                                 .font(AppTypography.caption)
-                                .buttonStyle(.plain)
+                                .appTappableStyle()
                                 .accessibilityLabel("Number \(tick)")
                             }
                             .frame(width: 44)

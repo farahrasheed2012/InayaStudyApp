@@ -21,7 +21,7 @@ struct TopicGamesMenuView: View {
                     NavigationLink(value: game) {
                         gameCard(game)
                     }
-                    .buttonStyle(.plain)
+                    .appTappableStyle()
                 }
             }
             .padding(20)

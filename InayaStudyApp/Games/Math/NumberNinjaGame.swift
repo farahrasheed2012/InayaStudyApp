@@ -106,7 +106,7 @@ struct NumberNinjaGame: View, GameScene {
     }
 
     private func animateBlock() {
-        let duration = max(2.5 - Double(score / 5) * 0.2, 1.2)
+        let duration = max(9.0 - Double(score / 5) * 0.15, 5.5)
         withAnimation(.linear(duration: duration)) {
             blockProgress = 1
         }
@@ -137,7 +137,7 @@ struct NumberNinjaGame: View, GameScene {
                 }
             }
         } else {
-            withAnimation { blockProgress = min(1, blockProgress + 0.18) }
+            withAnimation { blockProgress = min(1, blockProgress + 0.08) }
             sparkyMood = .encouraging
             SoundEffects.playIncorrect()
             Haptics.error()

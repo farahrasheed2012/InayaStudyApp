@@ -124,7 +124,7 @@ struct AdventureMapView: View {
                 .foregroundStyle(subject == value ? .white : .primary)
                 .clipShape(Capsule())
         }
-        .buttonStyle(.plain)
+        .appTappableStyle()
     }
 
     private func gradePill(_ value: GradeLevel) -> some View {
@@ -138,7 +138,7 @@ struct AdventureMapView: View {
                 .background(grade == value ? Color.blue.opacity(0.2) : AppTheme.card)
                 .clipShape(Capsule())
         }
-        .buttonStyle(.plain)
+        .appTappableStyle()
     }
 
     private var mapContent: some View {
@@ -200,7 +200,7 @@ struct AdventureMapView: View {
                 } label: {
                     content
                 }
-                .buttonStyle(.plain)
+                .appTappableStyle()
             } else {
                 content
             }
