@@ -108,9 +108,7 @@ struct QuizView: View {
                 showStars = true
             }
         }
-        #if targetEnvironment(macCatalyst)
         .quizKeyboardShortcuts(viewModel: viewModel, onHint: showHint)
-        #endif
     }
 
     private var topBar: some View {
@@ -224,7 +222,11 @@ struct QuizView: View {
             }
 
         case .numberEntry:
-            AdventureNumpadView(text: $viewModel.userInput, accent: accent) {
+            AdventureNumpadView(
+                text: $viewModel.userInput,
+                accent: accent,
+                questionIndex: viewModel.currentIndex
+            ) {
                 submitIfReady()
             }
 
