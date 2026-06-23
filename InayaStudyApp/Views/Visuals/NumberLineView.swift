@@ -1,32 +1,32 @@
 import SwiftUI
 
 struct NumberLineView: View {
-    let min: Int
-    let max: Int
+    let rangeMin: Int
+    let rangeMax: Int
     let marked: [Int]
 
     private let horizontalPadding: CGFloat = 24
 
     private var isUnitFractionLine: Bool {
-        min == 0 && max == 100
+        rangeMin == 0 && rangeMax == 100
     }
 
     private var tickValues: [Int] {
         if isUnitFractionLine {
             return [0, 25, 50, 75, 100]
         }
-        let range = max - min
-        guard range > 0 else { return [min, max] }
+        let range = rangeMax - rangeMin
+        guard range > 0 else { return [rangeMin, rangeMax] }
         let step = tickStep(for: range)
         var values: [Int] = []
-        var value = (min / step) * step
-        if value < min { value += step }
-        while value <= max {
+        var value = (rangeMin / step) * step
+        if value < rangeMin { value += step }
+        while value <= rangeMax {
             values.append(value)
             value += step
         }
-        if values.first != min { values.insert(min, at: 0) }
-        if values.last != max { values.append(max) }
+        if values.first != rangeMin { values.insert(rangeMin, at: 0) }
+        if values.last != rangeMax { values.append(rangeMax) }
         return values
     }
 
@@ -64,10 +64,10 @@ struct NumberLineView: View {
     }
 
     private func xPosition(for value: Int, width: CGFloat) -> CGFloat {
-        let range = CGFloat(max - min)
+        let range = CGFloat(rangeMax - rangeMin)
         guard range > 0 else { return width / 2 }
         let usable = width - horizontalPadding * 2
-        return horizontalPadding + (CGFloat(value - min) / range) * usable
+        return horizontalPadding + (CGFloat(value - rangeMin) / range) * usable
     }
 
     private func tickStep(for range: Int) -> Int {
@@ -100,7 +100,7 @@ struct NumberLineView: View {
         if isUnitFractionLine {
             return "Number line from 0 to 1"
         }
-        return "Number line from \(min) to \(max)"
+        return "Number line from \(rangeMin) to \(rangeMax)"
     }
 
     private var markedAccessibilityValue: String {

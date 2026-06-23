@@ -10,7 +10,7 @@ struct ProblemVisualView: View {
         case .coins(let coins):
             CoinRowView(coins: coins)
         case .numberLine(let min, let max, let marked):
-            NumberLineView(min: min, max: max, marked: marked)
+            NumberLineView(rangeMin: min, rangeMax: max, marked: marked)
         case .array(let rows, let cols):
             ArrayGridView(rows: rows, cols: cols)
         case .fractionCircle(let num, let denom):

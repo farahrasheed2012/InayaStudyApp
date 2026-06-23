@@ -88,8 +88,8 @@ struct NumberHopGameView: View {
                                 .multilineTextAlignment(.center)
 
                             NumberLineView(
-                                min: max(0, challenge.start - challenge.step),
-                                max: challenge.answer + challenge.step * 2,
+                                rangeMin: max(0, challenge.start - challenge.step),
+                                rangeMax: challenge.answer + challenge.step * 2,
                                 marked: [challenge.start]
                             )
                             .frame(height: 90)
