@@ -554,7 +554,13 @@ enum GameContent {
 
     static func shadowRound(grade: Grade, round: Int) -> ShadowRound {
         let pool = grade == .second ? secondShadowRounds : thirdShadowRounds
-        return pool[(round - 1) % pool.count]
+        let data = pool[(round - 1) % pool.count]
+        return ShadowRound(
+            silhouette: data.silhouette,
+            prompt: data.prompt,
+            correct: data.correct,
+            choices: data.choices.shuffled()
+        )
     }
 
     private static let secondShadowRounds: [ShadowRound] = [

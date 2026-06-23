@@ -56,6 +56,51 @@ enum ScienceProblemGenerator {
         }
     }
 
+    /// Builds a quiz session with varied questions, cycling difficulties when a topic has a small bank.
+    static func generateSession(topic: Topic, difficulty: Difficulty, count: Int) -> [Problem] {
+        var unique: [String: Problem] = [:]
+        for level in Difficulty.allCases {
+            for _ in 0..<30 {
+                let problem = generate(topic: topic, difficulty: level)
+                unique[problem.questionText] = problem
+            }
+        }
+
+        var pool = Array(unique.values).shuffled()
+        if pool.isEmpty {
+            pool = [generate(topic: topic, difficulty: difficulty)]
+        }
+
+        return (0..<count).map { index in
+            freshCopy(pool[index % pool.count])
+        }
+    }
+
+    private static func freshCopy(_ problem: Problem) -> Problem {
+        let reshuffledChoices: [String]?
+        if let choices = problem.choices {
+            let wrong = choices.filter { $0 != problem.correctAnswer }
+            reshuffledChoices = ProblemGenerator.multipleChoiceOptions(
+                correct: problem.correctAnswer,
+                distractors: wrong
+            )
+        } else {
+            reshuffledChoices = nil
+        }
+
+        return Problem(
+            questionText: problem.questionText,
+            visual: problem.visual,
+            answerType: problem.answerType,
+            correctAnswer: problem.correctAnswer,
+            choices: reshuffledChoices,
+            hint: problem.hint,
+            teksId: problem.teksId,
+            tapOptions: problem.tapOptions,
+            funFact: problem.funFact
+        )
+    }
+
     // MARK: - Matter & Properties
 
     private static func matterProperties(topic: Topic, difficulty: Difficulty) -> Problem {
@@ -307,29 +352,50 @@ enum ScienceProblemGenerator {
     private static func plantStructures(topic: Topic, difficulty: Difficulty) -> Problem {
         switch difficulty {
         case .easy:
-            return mc(
-                topic: topic,
-                question: "Which part of a plant absorbs water from the soil?",
-                correct: "roots",
-                wrong: ["leaves", "flowers", "fruit"],
-                funFact: "Roots soak up water from the soil like a sponge!"
-            )
+            return pick([
+                mc(topic: topic, question: "Which part of a plant absorbs water from the soil?",
+                   correct: "roots", wrong: ["leaves", "flowers", "fruit"],
+                   funFact: "Roots soak up water from the soil like a sponge!"),
+                mc(topic: topic, question: "Green leaves help a plant make ___",
+                   correct: "food", wrong: ["rocks", "metal", "magnets"],
+                   funFact: "Leaves use sunlight to make food."),
+                mc(topic: topic, question: "Flowers often help a plant make ___",
+                   correct: "seeds", wrong: ["soil", "water", "wind only"],
+                   funFact: "Many flowers lead to seeds."),
+                mc(topic: topic, question: "The stem supports the plant and moves ___",
+                   correct: "water", wrong: ["only sound", "only magnets", "only shadows"],
+                   funFact: "Stems carry water to leaves."),
+            ])
         case .medium:
-            return mc(
-                topic: topic,
-                question: "Leaves use sunlight, water, and air to make ___ for the plant.",
-                correct: "food",
-                wrong: ["seeds", "soil", "rocks"],
-                funFact: "Leaves are like tiny food factories for the plant."
-            )
+            return pick([
+                mc(topic: topic, question: "Leaves use sunlight, water, and air to make ___ for the plant.",
+                   correct: "food", wrong: ["seeds", "soil", "rocks"],
+                   funFact: "Leaves are like tiny food factories for the plant."),
+                mc(topic: topic, question: "Which plant part takes in carbon dioxide from the air?",
+                   correct: "leaves", wrong: ["roots", "rocks", "magnets"],
+                   funFact: "Leaves have tiny openings for gases."),
+                mc(topic: topic, question: "Seeds grow into new ___",
+                   correct: "plants", wrong: ["rocks", "circuits", "magnets"],
+                   funFact: "A seed contains a tiny new plant."),
+                mc(topic: topic, question: "Roots anchor the plant in the ___",
+                   correct: "soil", wrong: ["sky", "Sun", "Moon"],
+                   funFact: "Roots hold plants steady."),
+            ])
         case .hard:
-            return mc(
-                topic: topic,
-                question: "If a plant's roots were removed, what would most likely happen?",
-                correct: "It could not get water",
-                wrong: ["It would grow faster", "It would make more flowers", "It would grow taller"],
-                funFact: "Without roots, a plant cannot drink water from the soil."
-            )
+            return pick([
+                mc(topic: topic, question: "If a plant's roots were removed, what would most likely happen?",
+                   correct: "It could not get water", wrong: ["It would grow faster", "It would make more flowers", "It would grow taller"],
+                   funFact: "Without roots, a plant cannot drink water from the soil."),
+                mc(topic: topic, question: "If a plant gets no sunlight, it cannot make enough ___",
+                   correct: "food", wrong: ["gravity", "magnetism", "sound"],
+                   funFact: "Sunlight powers photosynthesis."),
+                mc(topic: topic, question: "Cutting all the leaves off would reduce the plant's ability to ___",
+                   correct: "make food", wrong: ["orbit Earth", "become metal", "create magnets"],
+                   funFact: "Leaves are the main food-making part."),
+                mc(topic: topic, question: "A fruit often protects the plant's ___",
+                   correct: "seeds", wrong: ["roots", "soil", "circuit"],
+                   funFact: "Fruits help spread seeds."),
+            ])
         }
     }
 
@@ -338,29 +404,50 @@ enum ScienceProblemGenerator {
     private static func animalNeeds(topic: Topic, difficulty: Difficulty) -> Problem {
         switch difficulty {
         case .easy:
-            return mc(
-                topic: topic,
-                question: "All animals need ___",
-                correct: "food, water, air, and shelter",
-                wrong: ["only food and water", "sunlight and soil", "only air"],
-                funFact: "Animals need food, water, air, and a safe place to live."
-            )
+            return pick([
+                mc(topic: topic, question: "All animals need ___",
+                   correct: "food, water, air, and shelter", wrong: ["only food and water", "sunlight and soil", "only air"],
+                   funFact: "Animals need food, water, air, and a safe place to live."),
+                mc(topic: topic, question: "Fish breathe underwater using ___",
+                   correct: "gills", wrong: ["roots", "wings", "magnets"],
+                   funFact: "Gills take oxygen from water."),
+                mc(topic: topic, question: "Birds use ___ to fly.",
+                   correct: "wings", wrong: ["gills", "roots", "petals"],
+                   funFact: "Wings help birds move through air."),
+                mc(topic: topic, question: "A safe place to live is called ___",
+                   correct: "shelter", wrong: ["a fraction", "a magnet", "a circuit"],
+                   funFact: "Shelter protects animals from weather and predators."),
+            ])
         case .medium:
-            return mc(
-                topic: topic,
-                question: "A polar bear has thick white fur. The white fur helps it ___",
-                correct: "hide in snow",
-                wrong: ["stay cool in heat", "fly", "breathe underwater"],
-                funFact: "White fur camouflages polar bears in the snowy Arctic."
-            )
+            return pick([
+                mc(topic: topic, question: "A polar bear has thick white fur. The white fur helps it ___",
+                   correct: "hide in snow", wrong: ["stay cool in heat", "fly", "breathe underwater"],
+                   funFact: "White fur camouflages polar bears in the snowy Arctic."),
+                mc(topic: topic, question: "A camel stores fat in its hump for energy in the ___",
+                   correct: "desert", wrong: ["ocean", "rainforest", "Arctic ice"],
+                   funFact: "Camels survive long trips without much water."),
+                mc(topic: topic, question: "Sharp teeth help a lion ___",
+                   correct: "eat meat", wrong: ["photosynthesize", "fly", "breathe underwater"],
+                   funFact: "Body parts match what animals eat."),
+                mc(topic: topic, question: "Blubber helps whales stay warm in cold ___",
+                   correct: "water", wrong: ["desert sand", "outer space", "caves only"],
+                   funFact: "Fat layers insulate animals."),
+            ])
         case .hard:
-            return mc(
-                topic: topic,
-                question: "Which body part helps a duck swim in water?",
-                correct: "webbed feet",
-                wrong: ["sharp claws", "long tail", "antlers"],
-                funFact: "Webbed feet work like paddles to push ducks through water."
-            )
+            return pick([
+                mc(topic: topic, question: "Which body part helps a duck swim in water?",
+                   correct: "webbed feet", wrong: ["sharp claws", "long tail", "antlers"],
+                   funFact: "Webbed feet work like paddles to push ducks through water."),
+                mc(topic: topic, question: "If an animal loses its habitat, it may not find enough ___",
+                   correct: "food and shelter", wrong: ["gravity", "magnetism", "fractions"],
+                   funFact: "Habitat loss threatens survival."),
+                mc(topic: topic, question: "Migration helps some animals find better ___",
+                   correct: "food and weather", wrong: ["magnet", "circuit", "shadow only"],
+                   funFact: "Moving to new areas can help animals survive."),
+                mc(topic: topic, question: "Camouflage helps an animal avoid ___",
+                   correct: "predators", wrong: ["sunlight", "roots", "circuits"],
+                   funFact: "Blending in is a survival adaptation."),
+            ])
         }
     }
 
@@ -413,30 +500,51 @@ enum ScienceProblemGenerator {
     private static func habitats(topic: Topic, difficulty: Difficulty) -> Problem {
         switch difficulty {
         case .easy:
-            return mc(
-                topic: topic,
-                question: "A cactus stores water. It is most likely found in a ___",
-                correct: "desert",
-                wrong: ["ocean", "rainforest", "wetland"],
-                funFact: "Desert plants like cacti save water because rain is rare."
-            )
+            return pick([
+                mc(topic: topic, question: "A cactus stores water. It is most likely found in a ___",
+                   correct: "desert", wrong: ["ocean", "rainforest", "wetland"],
+                   funFact: "Desert plants like cacti save water because rain is rare."),
+                mc(topic: topic, question: "A polar bear lives in the cold ___",
+                   correct: "Arctic", wrong: ["desert", "rainforest", "coral reef"],
+                   funFact: "Arctic animals need thick fur and blubber."),
+                mc(topic: topic, question: "Fish are best adapted to live in the ___",
+                   correct: "ocean", wrong: ["desert", "cave", "mountain top"],
+                   funFact: "Fish have gills for underwater life."),
+                mc(topic: topic, question: "Many monkeys live in a ___",
+                   correct: "rainforest", wrong: ["desert", "Arctic", "deep cave"],
+                   funFact: "Rainforests have tall trees and lots of rain."),
+            ])
         case .medium:
-            return mc(
-                topic: topic,
-                question: "Which animal is best adapted to live in the ocean?",
-                correct: "fish",
-                wrong: ["eagle", "rabbit", "deer"],
-                funFact: "Fish have gills to breathe underwater."
-            )
+            return pick([
+                mc(topic: topic, question: "Which animal is best adapted to live in the ocean?",
+                   correct: "fish", wrong: ["eagle", "rabbit", "deer"],
+                   funFact: "Fish have gills to breathe underwater."),
+                mc(topic: topic, question: "A frog is most at home near ___",
+                   correct: "water", wrong: ["desert sand", "Arctic ice", "deep space"],
+                   funFact: "Frogs need moist places."),
+                mc(topic: topic, question: "A deer lives in a forest where it finds ___",
+                   correct: "plants to eat", wrong: ["only salt water", "only lava", "only metal"],
+                   funFact: "Forest habitats provide food and shelter."),
+                mc(topic: topic, question: "Penguins are adapted to cold ___ habitats.",
+                   correct: "Antarctic", wrong: ["desert", "rainforest", "cave"],
+                   funFact: "Thick feathers keep penguins warm."),
+            ])
         case .hard:
-            return mc(
-                topic: topic,
-                question: "In a food chain: grass → rabbit → fox, the grass is the ___",
-                correct: "producer",
-                wrong: ["consumer", "predator", "decomposer"],
-                visual: .foodChain(producer: "Grass", herbivore: "Rabbit", carnivore: "Fox"),
-                funFact: "Plants are producers because they make their own food from sunlight."
-            )
+            return pick([
+                mc(topic: topic, question: "In a food chain: grass → rabbit → fox, the grass is the ___",
+                   correct: "producer", wrong: ["consumer", "predator", "decomposer"],
+                   visual: .foodChain(producer: "Grass", herbivore: "Rabbit", carnivore: "Fox"),
+                   funFact: "Plants are producers because they make their own food from sunlight."),
+                mc(topic: topic, question: "If a forest is cut down, animals may lose ___",
+                   correct: "shelter and food", wrong: ["gravity", "magnetism", "the Moon"],
+                   funFact: "Habitat change affects survival."),
+                mc(topic: topic, question: "Wetlands are habitats with lots of ___",
+                   correct: "water", wrong: ["sand only", "metal", "magnets"],
+                   funFact: "Wetlands support many plants and animals."),
+                mc(topic: topic, question: "An oasis in a desert has ___ that helps animals survive.",
+                   correct: "water", wrong: ["ice only", "magnets", "shadows"],
+                   funFact: "Water is essential in every habitat."),
+            ])
         }
     }
 
@@ -483,70 +591,203 @@ enum ScienceProblemGenerator {
     private static func mixtures(topic: Topic, difficulty: Difficulty) -> Problem {
         switch difficulty {
         case .easy:
-            return mc(topic: topic, question: "Salt dissolved in water makes a ___",
-                      correct: "solution", wrong: ["mixture only", "solid", "gas"],
-                      funFact: "When salt dissolves, it spreads evenly in the water.")
+            return pick([
+                mc(topic: topic, question: "Salt dissolved in water makes a ___",
+                   correct: "solution", wrong: ["mixture only", "solid", "gas"],
+                   funFact: "When salt dissolves, it spreads evenly in the water."),
+                mc(topic: topic, question: "Sugar stirred into tea is a ___",
+                   correct: "solution", wrong: ["solid rock", "gas only", "magnet"],
+                   funFact: "Dissolved sugar spreads through the liquid."),
+                mc(topic: topic, question: "When something dissolves, it ___ in the liquid.",
+                   correct: "spreads out", wrong: ["turns into wood", "freezes always", "disappears forever"],
+                   funFact: "Dissolving means particles mix evenly into a liquid."),
+                mc(topic: topic, question: "Which is a liquid we drink that can dissolve sugar?",
+                   correct: "water", wrong: ["sand", "rock", "metal"],
+                   funFact: "Water is often called the universal solvent."),
+            ])
         case .medium:
-            return mc(topic: topic, question: "Sand stirred into water is a ___",
-                      correct: "mixture", wrong: ["solution", "compound", "element"],
-                      funFact: "Sand does not dissolve — you can still see the grains.")
+            return pick([
+                mc(topic: topic, question: "Sand stirred into water is a ___",
+                   correct: "mixture", wrong: ["solution", "compound", "element"],
+                   funFact: "Sand does not dissolve — you can still see the grains."),
+                mc(topic: topic, question: "Oil floating on water is a ___",
+                   correct: "mixture", wrong: ["solution", "single element", "magnet"],
+                   funFact: "Oil and water stay separate."),
+                mc(topic: topic, question: "Trail mix with nuts and raisins is a ___",
+                   correct: "mixture", wrong: ["solution", "gas", "circuit"],
+                   funFact: "You can still see each part in a mixture."),
+                mc(topic: topic, question: "Which pair is a mixture, not a solution?",
+                   correct: "cereal and milk", wrong: ["salt water", "sugar water", "powdered drink mix"],
+                   funFact: "In a mixture the parts stay easy to see or separate."),
+            ])
         default:
-            return mc(topic: topic, question: "Which can be separated by a filter?",
-                      correct: "sand and water", wrong: ["salt water", "sugar water", "juice"],
-                      funFact: "A filter catches solids but lets liquid through.")
+            return pick([
+                mc(topic: topic, question: "Which can be separated by a filter?",
+                   correct: "sand and water", wrong: ["salt water", "sugar water", "juice"],
+                   funFact: "A filter catches solids but lets liquid through."),
+                mc(topic: topic, question: "Which mixture can be separated by evaporation?",
+                   correct: "salt water", wrong: ["sand and pebbles", "wood and nails", "paper clips only"],
+                   funFact: "Heating can leave the salt behind when water evaporates."),
+                mc(topic: topic, question: "A magnet best separates ___",
+                   correct: "iron filings and sand", wrong: ["salt and water", "sugar and tea", "juice and water"],
+                   funFact: "Magnets attract some metals but not sand."),
+                mc(topic: topic, question: "Which tool separates pasta from boiling water?",
+                   correct: "strainer", wrong: ["thermometer", "magnet", "ruler"],
+                   funFact: "A strainer keeps solids and lets liquid pass through."),
+            ])
         }
     }
 
     private static func weatherSeasons(topic: Topic, difficulty: Difficulty) -> Problem {
         switch difficulty {
         case .easy:
-            return mc(topic: topic, question: "What do we wear when it is very cold?",
-                      correct: "coat", wrong: ["swimsuit", "sandals", "shorts"],
-                      funFact: "Weather changes what clothes we need.")
+            return pick([
+                mc(topic: topic, question: "What do we wear when it is very cold?",
+                   correct: "coat", wrong: ["swimsuit", "sandals", "shorts"],
+                   funFact: "Weather changes what clothes we need."),
+                mc(topic: topic, question: "Umbrellas help when the weather is ___",
+                   correct: "rainy", wrong: ["sunny only", "windless always", "frozen metal"],
+                   funFact: "Rain gear keeps us dry."),
+                mc(topic: topic, question: "Shorts and sandals fit ___ weather best.",
+                   correct: "hot", wrong: ["snowy", "freezing", "icy"],
+                   funFact: "Hot weather means we need less clothing."),
+                mc(topic: topic, question: "Clouds often bring ___",
+                   correct: "rain", wrong: ["rocks", "magnets", "roots"],
+                   funFact: "Rain falls from clouds."),
+            ])
         case .medium:
-            return mc(topic: topic, question: "Which season usually has the hottest weather in Texas?",
-                      correct: "summer", wrong: ["winter", "fall", "spring"],
-                      funFact: "Summer has longer, hotter days.")
+            return pick([
+                mc(topic: topic, question: "Which season usually has the hottest weather in Texas?",
+                   correct: "summer", wrong: ["winter", "fall", "spring"],
+                   funFact: "Summer has longer, hotter days."),
+                mc(topic: topic, question: "Leaves often fall from trees in ___",
+                   correct: "fall", wrong: ["summer", "spring only", "winter only"],
+                   funFact: "Some trees lose leaves in autumn."),
+                mc(topic: topic, question: "Flowers often bloom in ___",
+                   correct: "spring", wrong: ["winter", "deep ocean", "outer space"],
+                   funFact: "Spring brings warmer days and new plant growth."),
+                mc(topic: topic, question: "Which season is coldest in many places?",
+                   correct: "winter", wrong: ["summer", "spring", "fall"],
+                   funFact: "Winter days are shorter and colder."),
+            ])
         default:
-            return mc(topic: topic, question: "Rain, snow, and sunshine are examples of ___",
-                      correct: "weather", wrong: ["seasons", "habitats", "food chains"],
-                      funFact: "Weather is what happens in the sky day to day.")
+            return pick([
+                mc(topic: topic, question: "Rain, snow, and sunshine are examples of ___",
+                   correct: "weather", wrong: ["seasons", "habitats", "food chains"],
+                   funFact: "Weather is what happens in the sky day to day."),
+                mc(topic: topic, question: "A pattern of weather over many years is called ___",
+                   correct: "climate", wrong: ["a shadow", "a magnet", "a fraction"],
+                   funFact: "Climate describes long-term weather trends."),
+                mc(topic: topic, question: "Thermometers measure ___",
+                   correct: "temperature", wrong: ["length", "weight only", "sound pitch"],
+                   funFact: "Temperature tells how hot or cold it is."),
+                mc(topic: topic, question: "Wind is moving ___",
+                   correct: "air", wrong: ["water only", "rock", "soil only"],
+                   funFact: "Air moves from place to place as wind."),
+            ])
         }
     }
 
     private static func foodChains(topic: Topic, difficulty: Difficulty) -> Problem {
         switch difficulty {
         case .easy:
-            return mc(topic: topic, question: "Grass → Rabbit → Fox. What is the rabbit?",
-                      correct: "consumer", wrong: ["producer", "decomposer", "sun"],
-                      visual: .foodChain(producer: "Grass", herbivore: "Rabbit", carnivore: "Fox"),
-                      funFact: "Animals that eat plants are consumers.")
+            return pick([
+                mc(topic: topic, question: "Grass → Rabbit → Fox. What is the rabbit?",
+                   correct: "consumer", wrong: ["producer", "decomposer", "sun"],
+                   visual: .foodChain(producer: "Grass", herbivore: "Rabbit", carnivore: "Fox"),
+                   funFact: "Animals that eat plants are consumers."),
+                mc(topic: topic, question: "Sun → Grass → Deer. What is the grass?",
+                   correct: "producer", wrong: ["carnivore", "decomposer", "predator"],
+                   visual: .foodChain(producer: "Grass", herbivore: "Deer", carnivore: "Wolf"),
+                   funFact: "Plants make food using sunlight."),
+                mc(topic: topic, question: "What gives energy to most food chains?",
+                   correct: "the Sun", wrong: ["the Moon", "rocks", "soil only"],
+                   funFact: "Sunlight powers producers."),
+                mc(topic: topic, question: "A mushroom that breaks down dead leaves is a ___",
+                   correct: "decomposer", wrong: ["producer", "Sun", "herbivore"],
+                   funFact: "Decomposers recycle nutrients."),
+            ])
         case .medium:
-            return mc(topic: topic, question: "What do all food chains start with?",
-                      correct: "the Sun", wrong: ["a fox", "rocks", "water only"],
-                      funFact: "The Sun gives energy to plants.")
+            return pick([
+                mc(topic: topic, question: "What do all food chains start with?",
+                   correct: "the Sun", wrong: ["a fox", "rocks", "water only"],
+                   funFact: "The Sun gives energy to plants."),
+                mc(topic: topic, question: "An animal that eats only plants is a ___",
+                   correct: "herbivore", wrong: ["carnivore", "producer", "Sun"],
+                   funFact: "Herbivores eat producers."),
+                mc(topic: topic, question: "An animal that eats other animals is a ___",
+                   correct: "carnivore", wrong: ["producer", "decomposer", "root"],
+                   funFact: "Carnivores eat meat."),
+                mc(topic: topic, question: "Algae → Minnow → Heron. The minnow is a ___",
+                   correct: "consumer", wrong: ["producer", "Sun", "decomposer"],
+                   funFact: "Consumers get energy by eating other living things."),
+            ])
         default:
-            return mc(topic: topic, question: "In a food chain, a plant is a ___",
-                      correct: "producer", wrong: ["carnivore", "decomposer", "predator"],
-                      visual: .foodChain(producer: "Grass", herbivore: "Deer", carnivore: "Wolf"),
-                      funFact: "Producers make food using sunlight.")
+            return pick([
+                mc(topic: topic, question: "In a food chain, a plant is a ___",
+                   correct: "producer", wrong: ["carnivore", "decomposer", "predator"],
+                   visual: .foodChain(producer: "Grass", herbivore: "Deer", carnivore: "Wolf"),
+                   funFact: "Producers make food using sunlight."),
+                mc(topic: topic, question: "If rabbits eat too much grass, the grass population may ___",
+                   correct: "decrease", wrong: ["turn into rocks", "become the Sun", "stop needing water"],
+                   funFact: "Consumers affect producer populations."),
+                mc(topic: topic, question: "Energy flows from producers to ___",
+                   correct: "consumers", wrong: ["the Moon", "only rocks", "only air"],
+                   funFact: "Consumers eat producers or other consumers."),
+                mc(topic: topic, question: "Which is at the top of this chain: grass → mouse → owl?",
+                   correct: "owl", wrong: ["grass", "mouse", "Sun"],
+                   funFact: "Top predators eat other consumers."),
+            ])
         }
     }
 
     private static func scientificMethod(topic: Topic, difficulty: Difficulty) -> Problem {
         switch difficulty {
         case .easy:
-            return mc(topic: topic, question: "A scientist asks a question first. What comes next?",
-                      correct: "make a prediction", wrong: ["write the answer", "ignore data", "stop"],
-                      funFact: "Scientists predict what they think will happen.")
+            return pick([
+                mc(topic: topic, question: "A scientist asks a question first. What comes next?",
+                   correct: "make a prediction", wrong: ["write the answer", "ignore data", "stop"],
+                   funFact: "Scientists predict what they think will happen."),
+                mc(topic: topic, question: "Before testing, a scientist often makes a ___",
+                   correct: "hypothesis", wrong: ["song", "joke", "map only"],
+                   funFact: "A hypothesis is an educated guess."),
+                mc(topic: topic, question: "Scientists use their ___ to learn about the world.",
+                   correct: "senses", wrong: ["only guesses", "only dreams", "only art"],
+                   funFact: "Observations start with seeing, hearing, and measuring."),
+                mc(topic: topic, question: "Which step comes first in the scientific method?",
+                   correct: "ask a question", wrong: ["ignore results", "skip testing", "hide data"],
+                   funFact: "Science begins with curiosity."),
+            ])
         case .medium:
-            return mc(topic: topic, question: "Recording what you see in an experiment is called ___",
-                      correct: "observing", wrong: ["guessing", "sleeping", "skipping"],
-                      funFact: "Good scientists write down their observations.")
+            return pick([
+                mc(topic: topic, question: "Recording what you see in an experiment is called ___",
+                   correct: "observing", wrong: ["guessing", "sleeping", "skipping"],
+                   funFact: "Good scientists write down their observations."),
+                mc(topic: topic, question: "A test to answer a question is called an ___",
+                   correct: "experiment", wrong: ["opinion", "story", "song"],
+                   funFact: "Experiments provide evidence."),
+                mc(topic: topic, question: "Numbers collected during an experiment are called ___",
+                   correct: "data", wrong: ["fiction", "weather only", "habitats"],
+                   funFact: "Data helps support conclusions."),
+                mc(topic: topic, question: "Changing only one thing in a test keeps the experiment ___",
+                   correct: "fair", wrong: ["invisible", "magnetic", "frozen"],
+                   funFact: "Fair tests change one variable at a time."),
+            ])
         default:
-            return mc(topic: topic, question: "After an experiment, a scientist draws a ___",
-                      correct: "conclusion", wrong: ["song", "joke", "map only"],
-                      funFact: "A conclusion explains what the results mean.")
+            return pick([
+                mc(topic: topic, question: "After an experiment, a scientist draws a ___",
+                   correct: "conclusion", wrong: ["song", "joke", "map only"],
+                   funFact: "A conclusion explains what the results mean."),
+                mc(topic: topic, question: "If results do not match the hypothesis, a scientist should ___",
+                   correct: "learn from the evidence", wrong: ["change the data", "ignore it", "stop asking questions"],
+                   funFact: "Unexpected results can teach us something new."),
+                mc(topic: topic, question: "Sharing results helps other scientists ___",
+                   correct: "check the work", wrong: ["hide evidence", "skip safety", "avoid thinking"],
+                   funFact: "Science builds on shared evidence."),
+                mc(topic: topic, question: "Repeating an experiment helps show results are ___",
+                   correct: "reliable", wrong: ["magical", "invisible", "unimportant"],
+                   funFact: "Repeat tests increase confidence in evidence."),
+            ])
         }
     }
 
@@ -639,26 +880,73 @@ enum ScienceProblemGenerator {
     private static func conservation(topic: Topic, difficulty: Difficulty) -> Problem {
         switch difficulty {
         case .easy:
-            return mc(topic: topic, question: "Recycling paper helps ___",
-                      correct: "save trees", wrong: ["waste water", "pollute air", "use more oil"],
-                      funFact: "Recycling gives materials a new life.")
+            return pick([
+                mc(topic: topic, question: "Recycling paper helps ___",
+                   correct: "save trees", wrong: ["waste water", "pollute air", "use more oil"],
+                   funFact: "Recycling gives materials a new life."),
+                mc(topic: topic, question: "Turning off unused lights saves ___",
+                   correct: "energy", wrong: ["gravity", "magnetism", "shadows"],
+                   funFact: "Using less electricity helps conserve resources."),
+                mc(topic: topic, question: "Reusing a water bottle helps reduce ___",
+                   correct: "trash", wrong: ["sunlight", "gravity", "sound"],
+                   funFact: "Reusing means less waste in landfills."),
+                mc(topic: topic, question: "Planting trees can help clean the ___",
+                   correct: "air", wrong: ["Moon", "magnet", "circuit"],
+                   funFact: "Trees take in carbon dioxide and release oxygen."),
+            ])
         case .medium:
-            return mc(topic: topic, question: "Which is a natural resource?",
-                      correct: "water", wrong: ["plastic toy", "metal spoon from factory", "paper cup"],
-                      funFact: "Natural resources come from Earth.")
+            return pick([
+                mc(topic: topic, question: "Which is a natural resource?",
+                   correct: "water", wrong: ["plastic toy", "metal spoon from factory", "paper cup"],
+                   funFact: "Natural resources come from Earth."),
+                mc(topic: topic, question: "Which resource comes from living trees?",
+                   correct: "wood", wrong: ["plastic", "glass", "steel"],
+                   funFact: "Wood is renewable when forests are managed well."),
+                mc(topic: topic, question: "Oil and coal are ___ resources.",
+                   correct: "nonrenewable", wrong: ["invisible", "magnetic", "liquid only"],
+                   funFact: "They take a very long time to form."),
+                mc(topic: topic, question: "Solar panels use energy from the ___",
+                   correct: "Sun", wrong: ["Moon", "soil", "magnet"],
+                   funFact: "Sunlight is a renewable energy source."),
+            ])
         default:
-            return mc(topic: topic, question: "Turning off lights when you leave saves ___",
-                      correct: "energy", wrong: ["gravity", "soil", "wind only"],
-                      funFact: "Saving energy helps the environment.")
+            return pick([
+                mc(topic: topic, question: "Turning off lights when you leave saves ___",
+                   correct: "energy", wrong: ["gravity", "soil", "wind only"],
+                   funFact: "Saving energy helps the environment."),
+                mc(topic: topic, question: "Composting food scraps returns nutrients to ___",
+                   correct: "soil", wrong: ["the Moon", "magnet", "circuit"],
+                   funFact: "Compost helps gardens grow."),
+                mc(topic: topic, question: "Pollution can harm animals by dirtying their ___",
+                   correct: "habitat", wrong: ["birthday", "fraction", "number line"],
+                   funFact: "Clean habitats help ecosystems stay healthy."),
+                mc(topic: topic, question: "Using both sides of paper reduces ___",
+                   correct: "waste", wrong: ["gravity", "magnetism", "sound waves"],
+                   funFact: "Less waste means fewer resources used."),
+            ])
         }
     }
 
     // MARK: - 3rd Grade Science
 
     private static func sci3Investigation(topic: Topic, difficulty: Difficulty) -> Problem {
-        mc(topic: topic, question: "In a fair test, you change only one ___",
-           correct: "variable", wrong: ["color of your shoes", "friend", "lunch"],
-           funFact: "Change one thing at a time to learn what causes the result.")
+        pick([
+            mc(topic: topic, question: "In a fair test, you change only one ___",
+               correct: "variable", wrong: ["color of your shoes", "friend", "lunch"],
+               funFact: "Change one thing at a time to learn what causes the result."),
+            mc(topic: topic, question: "Scientists write down measurements in a ___",
+               correct: "data table", wrong: ["song", "joke", "map only"],
+               funFact: "Tables organize evidence clearly."),
+            mc(topic: topic, question: "A testable idea before experimenting is a ___",
+               correct: "hypothesis", wrong: ["habitat", "magnet", "shadow"],
+               funFact: "Hypotheses guide fair tests."),
+            mc(topic: topic, question: "Repeating a test helps show the results are ___",
+               correct: "reliable", wrong: ["magical", "invisible", "unimportant"],
+               funFact: "Repeat tests increase confidence in evidence."),
+            mc(topic: topic, question: "Which keeps an experiment safe and fair?",
+               correct: "follow the plan and wear goggles", wrong: ["change many things at once", "ignore results", "skip records"],
+               funFact: "Safety and careful records are part of investigation."),
+        ])
     }
 
     private static func sci3SciencePractices(topic: Topic, difficulty: Difficulty) -> Problem {
@@ -873,5 +1161,9 @@ struct ScienceProblemGeneratorEngine: ProblemGenerating {
 
     func generate(difficulty: Difficulty) -> Problem {
         ScienceProblemGenerator.generate(topic: topic, difficulty: difficulty)
+    }
+
+    func generateSession(difficulty: Difficulty, count: Int) -> [Problem] {
+        ScienceProblemGenerator.generateSession(topic: topic, difficulty: difficulty, count: count)
     }
 }

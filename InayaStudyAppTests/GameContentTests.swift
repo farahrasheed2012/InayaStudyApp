@@ -36,6 +36,18 @@ final class GameContentTests: XCTestCase {
         }
     }
 
+    func testShadowMatchChoicesAreShuffled() {
+        var sawCorrectNotFirst = false
+        for _ in 0..<40 {
+            let shadow = GameContent.shadowRound(grade: .second, round: 1)
+            if shadow.choices.first != shadow.correct {
+                sawCorrectNotFirst = true
+                break
+            }
+        }
+        XCTAssertTrue(sawCorrectNotFirst, "Shadow choices should be shuffled, not always first")
+    }
+
     func testPotionRoundsAllowSubsetAnswers() {
         for grade in Grade.allCases {
             for round in 1...8 {

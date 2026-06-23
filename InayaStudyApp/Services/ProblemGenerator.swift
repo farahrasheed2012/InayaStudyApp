@@ -18,6 +18,12 @@ enum ProblemGenerator {
             return generate(topic: randomTopic, difficulty: difficulty)
         }
 
+        if topic.id == "pot-mixed-catchup-2" {
+            let pool = TopicRegistry.potCatchUpPracticeTopics
+            let randomTopic = pool.randomElement() ?? topic
+            return generate(topic: randomTopic, difficulty: difficulty)
+        }
+
         switch topic.id {
         case "place-value-1200": return placeValue(topic: topic, difficulty: difficulty)
         case "compose-decompose": return composeDecompose(topic: topic, difficulty: difficulty)
@@ -65,6 +71,18 @@ enum ProblemGenerator {
         case "data-graphs": return dataGraphs(topic: topic, difficulty: difficulty)
         case "money-word-problems": return moneyWordProblems(topic: topic, difficulty: difficulty)
         case "financial-literacy-3": return financialLiteracy3(topic: topic, difficulty: difficulty)
+        case "pot-box-diagrams-2": return potBoxDiagrams2(topic: topic, difficulty: difficulty)
+        case "pot-fact-families-2": return potFactFamilies2(topic: topic, difficulty: difficulty)
+        case "pot-rounding-2": return potRounding2(topic: topic, difficulty: difficulty)
+        case "pot-time-word-problems-2": return potTimeWordProblems2(topic: topic, difficulty: difficulty)
+        case "pot-add-three-numbers-2": return potAddThreeNumbers2(topic: topic, difficulty: difficulty)
+        case "pot-solid-geometry-2": return potSolidGeometry2(topic: topic, difficulty: difficulty)
+        case "pot-coin-word-problems-2": return potCoinWordProblems2(topic: topic, difficulty: difficulty)
+        case "pot-fraction-of-set-2": return potFractionOfSet2(topic: topic, difficulty: difficulty)
+        case "pot-line-graphs-2": return potLineGraphs2(topic: topic, difficulty: difficulty)
+        case "pot-venn-diagrams-2": return potVennDiagrams2(topic: topic, difficulty: difficulty)
+        case "pot-logic-reasoning-2": return potLogicReasoning2(topic: topic, difficulty: difficulty)
+        case "pot-multiply-multidigit-2": return potMultiplyMultidigit2(topic: topic, difficulty: difficulty)
         default:
             return multiplication(topic: topic, difficulty: difficulty)
         }
@@ -1150,6 +1168,245 @@ enum ProblemGenerator {
             correctAnswer: pick.1,
             choices: multipleChoiceOptions(correct: pick.1, distractors: pick.2),
             hint: "Think about earning, saving, spending, and giving.",
+            teksId: topic.teks
+        )
+    }
+
+    // MARK: - Math POT 2 catch-up (July 2026)
+
+    private static func potFactFamilies2(topic: Topic, difficulty: Difficulty) -> Problem {
+        let a = Int.random(in: 2...(difficulty == .easy ? 8 : 12))
+        let b = Int.random(in: 1...(difficulty == .easy ? 9 : 15))
+        let sum = a + b
+        let variant = Int.random(in: 0...2)
+        switch variant {
+        case 0:
+            return Problem(
+                questionText: "Fact family: \(a) + \(b) = \(sum). What is \(sum) − \(a)?",
+                answerType: .numberEntry,
+                correctAnswer: "\(b)",
+                hint: "Addition and subtraction are opposites in a fact family.",
+                teksId: topic.teks
+            )
+        case 1:
+            return Problem(
+                questionText: "Which goes with \(a) + \(b) = \(sum)?",
+                answerType: .multipleChoice,
+                correctAnswer: "\(sum) − \(b) = \(a)",
+                choices: multipleChoiceOptions(correct: "\(sum) − \(b) = \(a)", distractors: [
+                    "\(sum) + \(b) = \(a)",
+                    "\(a) − \(b) = \(sum)",
+                    "\(sum) × \(a) = \(b)"
+                ]),
+                teksId: topic.teks
+            )
+        default:
+            return Problem(
+                questionText: "Fill in the blank: \(a) + ___ = \(sum)",
+                answerType: .numberEntry,
+                correctAnswer: "\(b)",
+                hint: "What plus \(a) makes \(sum)?",
+                teksId: topic.teks
+            )
+        }
+    }
+
+    private static func potBoxDiagrams2(topic: Topic, difficulty: Difficulty) -> Problem {
+        let a = Int.random(in: range(for: difficulty, easy: 5..<20, medium: 20..<60, hard: 60...120))
+        let b = Int.random(in: range(for: difficulty, easy: 3..<15, medium: 10..<40, hard: 30...80))
+        return Problem(
+            questionText: "Inaya has \(a) stickers. She gets \(b) more. Draw a box diagram: one box for \(a), one for \(b). How many in all?",
+            answerType: .numberEntry,
+            correctAnswer: "\(a + b)",
+            hint: "Add the two parts shown in the boxes.",
+            teksId: topic.teks
+        )
+    }
+
+    private static func potRounding2(topic: Topic, difficulty: Difficulty) -> Problem {
+        let n = randomInt(in: range(for: difficulty, easy: 15..<100, medium: 100..<1000, hard: 500...1200))
+        let roundToTen = ((n + 5) / 10) * 10
+        if difficulty == .easy || Bool.random() {
+            return Problem(
+                questionText: "Round \(n) to the nearest ten.",
+                answerType: .numberEntry,
+                correctAnswer: "\(roundToTen)",
+                hint: "Look at the ones digit: 5 or more rounds up.",
+                teksId: topic.teks
+            )
+        }
+        let roundToHundred = ((n + 50) / 100) * 100
+        return Problem(
+            questionText: "Round \(n) to the nearest hundred.",
+            answerType: .numberEntry,
+            correctAnswer: "\(roundToHundred)",
+            hint: "Look at the tens digit to decide up or down.",
+            teksId: topic.teks
+        )
+    }
+
+    private static func potTimeWordProblems2(topic: Topic, difficulty: Difficulty) -> Problem {
+        let startHour = Int.random(in: 1...11)
+        let addHours = Int.random(in: 1...(difficulty == .easy ? 2 : 4))
+        let endHour = startHour + addHours
+        return Problem(
+            questionText: "Inaya starts reading at \(startHour):00. She reads for \(addHours) hours. What time does she finish? (Use :00 format, e.g. 3:00)",
+            answerType: .numberEntry,
+            correctAnswer: "\(endHour):00",
+            hint: "Add the hours to the start time.",
+            teksId: topic.teks
+        )
+    }
+
+    private static func potAddThreeNumbers2(topic: Topic, difficulty: Difficulty) -> Problem {
+        let a = Int.random(in: range(for: difficulty, easy: 10..<100, medium: 100..<400, hard: 200...600))
+        let b = Int.random(in: range(for: difficulty, easy: 10..<100, medium: 50..<300, hard: 100...400))
+        let c = Int.random(in: range(for: difficulty, easy: 5..<50, medium: 20..<200, hard: 50...300))
+        return Problem(
+            questionText: "What is \(a) + \(b) + \(c)?",
+            answerType: .numberEntry,
+            correctAnswer: "\(a + b + c)",
+            hint: "Add two numbers first, then add the third.",
+            teksId: topic.teks
+        )
+    }
+
+    private static func potSolidGeometry2(topic: Topic, difficulty: Difficulty) -> Problem {
+        let shapes: [(String, Int, Int, Int)] = [
+            ("cube", 6, 12, 8),
+            ("rectangular prism", 6, 12, 8),
+            ("square pyramid", 5, 8, 5),
+            ("triangular prism", 5, 9, 6),
+        ]
+        let s = shapes.randomElement()!
+        let ask = ["faces", "edges", "vertices"].randomElement()!
+        let answer: Int
+        switch ask {
+        case "faces": answer = s.1
+        case "edges": answer = s.2
+        default: answer = s.3
+        }
+        return Problem(
+            questionText: "How many \(ask) does a \(s.0) have?",
+            answerType: .numberEntry,
+            correctAnswer: "\(answer)",
+            hint: "Count flat surfaces (faces), line segments (edges), or corner points (vertices).",
+            teksId: topic.teks
+        )
+    }
+
+    private static func potCoinWordProblems2(topic: Topic, difficulty: Difficulty) -> Problem {
+        let price = priceCents(difficulty: difficulty)
+        var price2 = priceCents(difficulty: difficulty)
+        if difficulty == .easy { price2 = 0 }
+        let total = price + price2
+        let paid = ((total + 99) / 100) * 100
+        if price2 == 0 {
+            return Problem(
+                questionText: "A toy costs \(formatCents(price)). Inaya pays \(formatCents(paid)). How much change?",
+                answerType: .numberEntry,
+                correctAnswer: formatCents(paid - price),
+                hint: "Subtract the price from what she paid.",
+                teksId: topic.teks
+            )
+        }
+        return Problem(
+            questionText: "Inaya buys fruit for \(formatCents(price)) and juice for \(formatCents(price2)). How much does she spend?",
+            answerType: .numberEntry,
+            correctAnswer: formatCents(total),
+            teksId: topic.teks
+        )
+    }
+
+    private static func potFractionOfSet2(topic: Topic, difficulty: Difficulty) -> Problem {
+        let denom = [2, 3, 4].randomElement()!
+        let numer = 1
+        let total = denom * Int.random(in: 2...(difficulty == .easy ? 4 : 8))
+        let part = total * numer / denom
+        return Problem(
+            questionText: "There are \(total) apples. What is \(numer)/\(denom) of the apples?",
+            answerType: .numberEntry,
+            correctAnswer: "\(part)",
+            hint: "Divide the total into \(denom) equal groups. Take \(numer) group.",
+            teksId: topic.teks
+        )
+    }
+
+    private static func potLineGraphs2(topic: Topic, difficulty: Difficulty) -> Problem {
+        let days = ["Mon", "Tue", "Wed", "Thu"]
+        let values = days.map { _ in Int.random(in: 2...10) }
+        let data = zip(days, values).map { ($0.0, $0.1) }
+        let i = Int.random(in: 0..<days.count)
+        let j = (i + 1) % days.count
+        if Bool.random() {
+            return Problem(
+                questionText: "Line graph: \(data.map { "\($0.0) \($0.1)" }.joined(separator: ", ")). How many on \(days[i])?",
+                answerType: .numberEntry,
+                correctAnswer: "\(values[i])",
+                teksId: topic.teks
+            )
+        }
+        return Problem(
+            questionText: "Line graph: \(data.map { "\($0.0) \($0.1)" }.joined(separator: ", ")). How many more on \(days[i]) than \(days[j])?",
+            answerType: .numberEntry,
+            correctAnswer: "\(abs(values[i] - values[j]))",
+            hint: "Subtract the smaller value from the larger.",
+            teksId: topic.teks
+        )
+    }
+
+    private static func potVennDiagrams2(topic: Topic, difficulty: Difficulty) -> Problem {
+        let onlyA = Int.random(in: 2...8)
+        let onlyB = Int.random(in: 2...8)
+        let both = Int.random(in: 1...5)
+        if Bool.random() {
+            return Problem(
+                questionText: "Venn diagram: \(onlyA) only in Art, \(onlyB) only in Music, \(both) in both. How many in Art (including both)?",
+                answerType: .numberEntry,
+                correctAnswer: "\(onlyA + both)",
+                hint: "Add the Art-only and the overlap.",
+                teksId: topic.teks
+            )
+        }
+        return Problem(
+            questionText: "Venn diagram: \(onlyA) only cats, \(onlyB) only dogs, \(both) both. How many animals total?",
+            answerType: .numberEntry,
+            correctAnswer: "\(onlyA + onlyB + both)",
+            hint: "Add all three regions.",
+            teksId: topic.teks
+        )
+    }
+
+    private static func potLogicReasoning2(topic: Topic, difficulty: Difficulty) -> Problem {
+        let names = ["Inaya", "Maya", "Sam", "Zoe"].shuffled().prefix(3)
+        let n = Array(names)
+        let heights = ["tallest", "shortest", "middle"].shuffled()
+        if difficulty == .easy {
+            return Problem(
+                questionText: "\(n[0]) is taller than \(n[1]). \(n[1]) is taller than \(n[2]). Who is tallest?",
+                answerType: .tapSelection,
+                correctAnswer: n[0],
+                teksId: topic.teks,
+                tapOptions: n
+            )
+        }
+        return Problem(
+            questionText: "Logic table: Red > Blue, Blue > Green. Which color is \(heights[0])?",
+            answerType: .tapSelection,
+            correctAnswer: heights[0] == "tallest" ? "Red" : (heights[0] == "shortest" ? "Green" : "Blue"),
+            teksId: topic.teks,
+            tapOptions: ["Red", "Blue", "Green"]
+        )
+    }
+
+    private static func potMultiplyMultidigit2(topic: Topic, difficulty: Difficulty) -> Problem {
+        let multiplier = Int.random(in: 2...(difficulty == .easy ? 5 : 9))
+        let n = randomInt(in: range(for: difficulty, easy: 10..<30, medium: 20..<100, hard: 100...400))
+        return Problem(
+            questionText: "What is \(n) × \(multiplier)?",
+            answerType: .numberEntry,
+            correctAnswer: "\(n * multiplier)",
+            hint: "Multiply ones first, then regroup if needed.",
             teksId: topic.teks
         )
     }

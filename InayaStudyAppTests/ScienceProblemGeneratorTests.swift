@@ -27,4 +27,12 @@ final class ScienceProblemGeneratorTests: XCTestCase {
             XCTAssertFalse(problem.correctAnswer.isEmpty)
         }
     }
+
+    func testScienceSessionHasVariedQuestions() {
+        let topic = TopicRegistry.topic(id: "sci-food-chains")!
+        let session = ScienceProblemGenerator.generateSession(topic: topic, difficulty: .easy, count: 20)
+        XCTAssertEqual(session.count, 20)
+        let uniqueQuestions = Set(session.map(\.questionText))
+        XCTAssertGreaterThan(uniqueQuestions.count, 1, "Science quizzes should not repeat one question for every slot")
+    }
 }

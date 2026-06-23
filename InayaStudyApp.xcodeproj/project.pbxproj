@@ -116,6 +116,8 @@
 		MPB115 /* InayaStudyApp/Services/SwiftDataSchemaMigration.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF115 /* InayaStudyApp/Services/SwiftDataSchemaMigration.swift */; };
 		MPB201 /* InayaStudyAppTests/ScienceProblemGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF201 /* InayaStudyAppTests/ScienceProblemGeneratorTests.swift */; };
 		MPB202 /* InayaStudyAppTests/GameContentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF202 /* InayaStudyAppTests/GameContentTests.swift */; };
+		MPB210 /* InayaStudyApp/Data/POTCatchUpCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF210 /* InayaStudyApp/Data/POTCatchUpCatalog.swift */; };
+		MPB211 /* InayaStudyApp/Views/Map/POTCatchUpMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF211 /* InayaStudyApp/Views/Map/POTCatchUpMapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -240,6 +242,8 @@
 		MPF115 /* InayaStudyApp/Services/SwiftDataSchemaMigration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Services/SwiftDataSchemaMigration.swift; sourceTree = SOURCE_ROOT; };
 		MPF201 /* InayaStudyAppTests/ScienceProblemGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyAppTests/ScienceProblemGeneratorTests.swift; sourceTree = SOURCE_ROOT; };
 		MPF202 /* InayaStudyAppTests/GameContentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyAppTests/GameContentTests.swift; sourceTree = SOURCE_ROOT; };
+		MPF210 /* InayaStudyApp/Data/POTCatchUpCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Data/POTCatchUpCatalog.swift; sourceTree = SOURCE_ROOT; };
+		MPF211 /* InayaStudyApp/Views/Map/POTCatchUpMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Map/POTCatchUpMapView.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,6 +285,7 @@
 				MPF005 /* InayaStudyApp/Models/CharacterState.swift */,
 				MPF006 /* InayaStudyApp/Data/TopicRegistry.swift */,
 				MPF007 /* InayaStudyApp/Data/AdventureMapLayout.swift */,
+				MPF210 /* InayaStudyApp/Data/POTCatchUpCatalog.swift */,
 				MPF008 /* InayaStudyApp/Data/TopicStudyGuide.swift */,
 				MPF009 /* InayaStudyApp/Services/ProblemGenerator.swift */,
 				MPF010 /* InayaStudyApp/Services/ScienceProblemGenerator.swift */,
@@ -357,6 +362,7 @@
 				MPF038 /* InayaStudyApp/Views/SettingsView.swift */,
 				MPF039 /* InayaStudyApp/Views/Character/CharacterView.swift */,
 				MPF040 /* InayaStudyApp/Views/Map/AdventureMapView.swift */,
+				MPF211 /* InayaStudyApp/Views/Map/POTCatchUpMapView.swift */,
 				MPF041 /* InayaStudyApp/Views/Map/StreakRowView.swift */,
 				MPF042 /* InayaStudyApp/Views/Rewards/StarsEarnedView.swift */,
 				MPF043 /* InayaStudyApp/Views/Rewards/RewardBadgeView.swift */,
@@ -504,6 +510,7 @@
 				MPB005 /* InayaStudyApp/Models/CharacterState.swift in Sources */,
 				MPB006 /* InayaStudyApp/Data/TopicRegistry.swift in Sources */,
 				MPB007 /* InayaStudyApp/Data/AdventureMapLayout.swift in Sources */,
+				MPB210 /* InayaStudyApp/Data/POTCatchUpCatalog.swift in Sources */,
 				MPB008 /* InayaStudyApp/Data/TopicStudyGuide.swift in Sources */,
 				MPB009 /* InayaStudyApp/Services/ProblemGenerator.swift in Sources */,
 				MPB010 /* InayaStudyApp/Services/ScienceProblemGenerator.swift in Sources */,
@@ -537,6 +544,7 @@
 				MPB038 /* InayaStudyApp/Views/SettingsView.swift in Sources */,
 				MPB039 /* InayaStudyApp/Views/Character/CharacterView.swift in Sources */,
 				MPB040 /* InayaStudyApp/Views/Map/AdventureMapView.swift in Sources */,
+				MPB211 /* InayaStudyApp/Views/Map/POTCatchUpMapView.swift in Sources */,
 				MPB041 /* InayaStudyApp/Views/Map/StreakRowView.swift in Sources */,
 				MPB042 /* InayaStudyApp/Views/Rewards/StarsEarnedView.swift in Sources */,
 				MPB043 /* InayaStudyApp/Views/Rewards/RewardBadgeView.swift in Sources */,
@@ -670,7 +678,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -698,7 +706,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -724,7 +732,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
@@ -740,7 +748,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;

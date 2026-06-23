@@ -60,7 +60,7 @@ final class QuizViewModel: ObservableObject {
     }
 
     func start() {
-        problems = (0..<questionCount).map { _ in self.generator.generate(difficulty: difficulty) }
+        problems = generator.generateSession(difficulty: difficulty, count: questionCount)
         currentIndex = 0
         answered = []
         showingFeedback = false

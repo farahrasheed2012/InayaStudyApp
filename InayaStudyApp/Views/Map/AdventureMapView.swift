@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct AdventureMapView: View {
+    var onOpenCatchUp: (() -> Void)? = nil
+
     @EnvironmentObject private var progressStore: ProgressStore
     @EnvironmentObject private var profileStore: UserProfileStore
     @ObservedObject private var settings = SettingsStore.shared
@@ -99,6 +101,44 @@ struct AdventureMapView: View {
                     gradePill(.second)
                     gradePill(.third)
                 }
+            }
+
+            if subject == .math && grade == .second {
+                Button {
+                    onOpenCatchUp?()
+                    Haptics.tap()
+                } label: {
+                    HStack(spacing: 10) {
+                        Image(systemName: "calendar.badge.clock")
+                            .font(.title3)
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Math POT Catch-Up Week")
+                                .font(AppTypography.label)
+                            Text("7 days · all 28 POT 2 topics (T032–T059)")
+                                .font(AppTypography.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .foregroundStyle(.secondary)
+                    }
+                    .foregroundStyle(.primary)
+                    .padding()
+                    .background(
+                        LinearGradient(
+                            colors: [Color.orange.opacity(0.25), Color.yellow.opacity(0.15)],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    )
+                    .clipShape(RoundedRectangle(cornerRadius: 14))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 14)
+                            .stroke(Color.orange.opacity(0.4), lineWidth: 1)
+                    )
+                }
+                .buttonStyle(.plain)
+                .appTappableStyle()
             }
         }
         .padding()

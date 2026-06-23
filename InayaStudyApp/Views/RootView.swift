@@ -8,10 +8,16 @@ struct RootView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             NavigationStack {
-                AdventureMapView()
+                AdventureMapView(onOpenCatchUp: { selectedTab = .catchUp })
             }
             .tabItem { Label(AppTab.adventure.title, systemImage: AppTab.adventure.icon) }
             .tag(AppTab.adventure)
+
+            NavigationStack {
+                POTCatchUpMapView()
+            }
+            .tabItem { Label(AppTab.catchUp.title, systemImage: AppTab.catchUp.icon) }
+            .tag(AppTab.catchUp)
 
             NavigationStack {
                 GamesHubView()
@@ -35,11 +41,12 @@ struct RootView: View {
 }
 
 enum AppTab: String, CaseIterable, Identifiable {
-    case adventure, games, badges, settings
+    case adventure, catchUp, games, badges, settings
     var id: String { rawValue }
     var title: String {
         switch self {
         case .adventure: return "Adventure"
+        case .catchUp: return "Catch-Up"
         case .games: return "Games"
         case .badges: return "Badges"
         case .settings: return "Settings"
@@ -48,6 +55,7 @@ enum AppTab: String, CaseIterable, Identifiable {
     var icon: String {
         switch self {
         case .adventure: return "map.fill"
+        case .catchUp: return "calendar.badge.clock"
         case .games: return "gamecontroller.fill"
         case .badges: return "rosette"
         case .settings: return "gearshape.fill"
