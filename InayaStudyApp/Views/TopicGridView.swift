@@ -26,7 +26,10 @@ struct TopicGridView: View {
                                 .font(.headline)
                                 .multilineTextAlignment(.leading)
                                 .foregroundStyle(.primary)
-                            Text(topic.teks)
+                            if topic.isPOT2Topic {
+                                POT2TopicBadge(topic: topic)
+                            }
+                            Text(topic.isPOT2Topic ? (topic.potCode ?? topic.teks) : topic.teks)
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                         }

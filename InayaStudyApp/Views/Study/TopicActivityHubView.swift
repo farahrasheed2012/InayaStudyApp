@@ -111,5 +111,6 @@ struct TopicActivityHubView: View {
             RoundedRectangle(cornerRadius: 18)
                 .stroke(color.opacity(0.35), lineWidth: 2)
         )
+        .contentShape(RoundedRectangle(cornerRadius: 18))
     }
 }

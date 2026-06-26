@@ -23,6 +23,53 @@ final class ProblemGeneratorTests: XCTestCase {
         }
     }
 
+    func testAllPOT2TopicsGenerateValidProblems() {
+        for topic in TopicRegistry.mathPOT2Topics {
+            for difficulty in Difficulty.allCases {
+                for _ in 0..<3 {
+                    assertValidProblem(ProblemGenerator.generate(topic: topic, difficulty: difficulty), topic: topic)
+                }
+            }
+        }
+    }
+
+    func testPOT2RegistryHasTwentyEightTopics() {
+        XCTAssertEqual(TopicRegistry.mathPOT2Topics.count, 28)
+        XCTAssertTrue(POTCatchUpCatalog.includesAllPot2Topics)
+    }
+
+    func testPOT2CompetitionTopicsShowStarBadge() {
+        let competition = TopicRegistry.mathPOT2Topics.filter(\.isCompetitionOnly)
+        XCTAssertEqual(competition.count, 5)
+        XCTAssertEqual(Set(competition.compactMap(\.potCode)), POTCatchUpCatalog.competitionPot2Codes)
+    }
+
+    func testPOT2ChickenRabbitValidCounts() {
+        let topic = TopicRegistry.topic(id: "pot2-t042")!
+        for difficulty in Difficulty.allCases {
+            let problem = ProblemGenerator.generate(topic: topic, difficulty: difficulty)
+            XCTAssertTrue(ProblemGenerator.isAnswerValid(problem, userAnswer: problem.correctAnswer))
+            guard let answer = Int(problem.correctAnswer) else {
+                XCTFail("Expected integer answer")
+                continue
+            }
+            XCTAssertGreaterThanOrEqual(answer, 0)
+        }
+    }
+
+    func testPOT2FrogHoleEscapesInReasonableDays() {
+        let topic = TopicRegistry.topic(id: "pot2-t053")!
+        for _ in 0..<20 {
+            let problem = ProblemGenerator.generate(topic: topic, difficulty: .medium)
+            guard let days = Int(problem.correctAnswer) else {
+                XCTFail("Expected day count")
+                continue
+            }
+            XCTAssertGreaterThan(days, 0)
+            XCTAssertLessThanOrEqual(days, 60)
+        }
+    }
+
     func testAllScienceTopicsGenerateValidProblems() {
         for topic in TopicRegistry.scienceSecondGrade + TopicRegistry.scienceThirdGrade {
             for difficulty in Difficulty.allCases {

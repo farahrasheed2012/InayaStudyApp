@@ -118,6 +118,12 @@
 		MPB202 /* InayaStudyAppTests/GameContentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF202 /* InayaStudyAppTests/GameContentTests.swift */; };
 		MPB210 /* InayaStudyApp/Data/POTCatchUpCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF210 /* InayaStudyApp/Data/POTCatchUpCatalog.swift */; };
 		MPB211 /* InayaStudyApp/Views/Map/POTCatchUpMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF211 /* InayaStudyApp/Views/Map/POTCatchUpMapView.swift */; };
+		MPB212 /* InayaStudyApp/Data/MathPOT2Topics.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF212 /* InayaStudyApp/Data/MathPOT2Topics.swift */; };
+		MPB213 /* InayaStudyApp/Services/POT2ProblemGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF213 /* InayaStudyApp/Services/POT2ProblemGenerator.swift */; };
+		MPB214 /* InayaStudyApp/Views/Visuals/LineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF214 /* InayaStudyApp/Views/Visuals/LineGraphView.swift */; };
+		MPB215 /* InayaStudyApp/Views/Visuals/VennDiagramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF215 /* InayaStudyApp/Views/Visuals/VennDiagramView.swift */; };
+		MPB216 /* InayaStudyApp/Views/Components/POT2TopicBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF216 /* InayaStudyApp/Views/Components/POT2TopicBadge.swift */; };
+		MPB217 /* InayaStudyApp/Views/Map/MathPOT2AcademySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MPF217 /* InayaStudyApp/Views/Map/MathPOT2AcademySectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -244,6 +250,12 @@
 		MPF202 /* InayaStudyAppTests/GameContentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyAppTests/GameContentTests.swift; sourceTree = SOURCE_ROOT; };
 		MPF210 /* InayaStudyApp/Data/POTCatchUpCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Data/POTCatchUpCatalog.swift; sourceTree = SOURCE_ROOT; };
 		MPF211 /* InayaStudyApp/Views/Map/POTCatchUpMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Map/POTCatchUpMapView.swift; sourceTree = SOURCE_ROOT; };
+		MPF212 /* InayaStudyApp/Data/MathPOT2Topics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Data/MathPOT2Topics.swift; sourceTree = SOURCE_ROOT; };
+		MPF213 /* InayaStudyApp/Services/POT2ProblemGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Services/POT2ProblemGenerator.swift; sourceTree = SOURCE_ROOT; };
+		MPF214 /* InayaStudyApp/Views/Visuals/LineGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/LineGraphView.swift; sourceTree = SOURCE_ROOT; };
+		MPF215 /* InayaStudyApp/Views/Visuals/VennDiagramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Visuals/VennDiagramView.swift; sourceTree = SOURCE_ROOT; };
+		MPF216 /* InayaStudyApp/Views/Components/POT2TopicBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Components/POT2TopicBadge.swift; sourceTree = SOURCE_ROOT; };
+		MPF217 /* InayaStudyApp/Views/Map/MathPOT2AcademySectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InayaStudyApp/Views/Map/MathPOT2AcademySectionView.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,8 +298,10 @@
 				MPF006 /* InayaStudyApp/Data/TopicRegistry.swift */,
 				MPF007 /* InayaStudyApp/Data/AdventureMapLayout.swift */,
 				MPF210 /* InayaStudyApp/Data/POTCatchUpCatalog.swift */,
+				MPF212 /* InayaStudyApp/Data/MathPOT2Topics.swift */,
 				MPF008 /* InayaStudyApp/Data/TopicStudyGuide.swift */,
 				MPF009 /* InayaStudyApp/Services/ProblemGenerator.swift */,
+				MPF213 /* InayaStudyApp/Services/POT2ProblemGenerator.swift */,
 				MPF010 /* InayaStudyApp/Services/ScienceProblemGenerator.swift */,
 				MPF011 /* InayaStudyApp/Services/ProgressStore.swift */,
 				MPF071 /* InayaStudyApp/Services/GameSessionStore.swift */,
@@ -363,12 +377,14 @@
 				MPF039 /* InayaStudyApp/Views/Character/CharacterView.swift */,
 				MPF040 /* InayaStudyApp/Views/Map/AdventureMapView.swift */,
 				MPF211 /* InayaStudyApp/Views/Map/POTCatchUpMapView.swift */,
+				MPF217 /* InayaStudyApp/Views/Map/MathPOT2AcademySectionView.swift */,
 				MPF041 /* InayaStudyApp/Views/Map/StreakRowView.swift */,
 				MPF042 /* InayaStudyApp/Views/Rewards/StarsEarnedView.swift */,
 				MPF043 /* InayaStudyApp/Views/Rewards/RewardBadgeView.swift */,
 				MPF044 /* InayaStudyApp/Views/Rewards/ProfileView.swift */,
 				MPF045 /* InayaStudyApp/Views/Onboarding/OnboardingView.swift */,
 				MPF046 /* InayaStudyApp/Views/Components/NumericKeypadView.swift */,
+				MPF216 /* InayaStudyApp/Views/Components/POT2TopicBadge.swift */,
 				MPF047 /* InayaStudyApp/Views/Components/AdventureNumpadView.swift */,
 				MPF048 /* InayaStudyApp/Views/Components/SharedComponents.swift */,
 				MPF049 /* InayaStudyApp/Views/Components/QuizKeyboardShortcuts.swift */,
@@ -378,6 +394,8 @@
 				MPF053 /* InayaStudyApp/Views/Visuals/ArrayGridView.swift */,
 				MPF054 /* InayaStudyApp/Views/Visuals/FractionCircleView.swift */,
 				MPF055 /* InayaStudyApp/Views/Visuals/BarGraphView.swift */,
+				MPF214 /* InayaStudyApp/Views/Visuals/LineGraphView.swift */,
+				MPF215 /* InayaStudyApp/Views/Visuals/VennDiagramView.swift */,
 				MPF056 /* InayaStudyApp/Views/Visuals/ProblemVisualView.swift */,
 				MPF057 /* InayaStudyApp/Views/Visuals/MatterStateView.swift */,
 				MPF058 /* InayaStudyApp/Views/Visuals/FoodChainView.swift */,
@@ -511,8 +529,10 @@
 				MPB006 /* InayaStudyApp/Data/TopicRegistry.swift in Sources */,
 				MPB007 /* InayaStudyApp/Data/AdventureMapLayout.swift in Sources */,
 				MPB210 /* InayaStudyApp/Data/POTCatchUpCatalog.swift in Sources */,
+				MPB212 /* InayaStudyApp/Data/MathPOT2Topics.swift in Sources */,
 				MPB008 /* InayaStudyApp/Data/TopicStudyGuide.swift in Sources */,
 				MPB009 /* InayaStudyApp/Services/ProblemGenerator.swift in Sources */,
+				MPB213 /* InayaStudyApp/Services/POT2ProblemGenerator.swift in Sources */,
 				MPB010 /* InayaStudyApp/Services/ScienceProblemGenerator.swift in Sources */,
 				MPB011 /* InayaStudyApp/Services/ProgressStore.swift in Sources */,
 				MPB012 /* InayaStudyApp/Services/SettingsStore.swift in Sources */,
@@ -545,12 +565,14 @@
 				MPB039 /* InayaStudyApp/Views/Character/CharacterView.swift in Sources */,
 				MPB040 /* InayaStudyApp/Views/Map/AdventureMapView.swift in Sources */,
 				MPB211 /* InayaStudyApp/Views/Map/POTCatchUpMapView.swift in Sources */,
+				MPB217 /* InayaStudyApp/Views/Map/MathPOT2AcademySectionView.swift in Sources */,
 				MPB041 /* InayaStudyApp/Views/Map/StreakRowView.swift in Sources */,
 				MPB042 /* InayaStudyApp/Views/Rewards/StarsEarnedView.swift in Sources */,
 				MPB043 /* InayaStudyApp/Views/Rewards/RewardBadgeView.swift in Sources */,
 				MPB044 /* InayaStudyApp/Views/Rewards/ProfileView.swift in Sources */,
 				MPB045 /* InayaStudyApp/Views/Onboarding/OnboardingView.swift in Sources */,
 				MPB046 /* InayaStudyApp/Views/Components/NumericKeypadView.swift in Sources */,
+				MPB216 /* InayaStudyApp/Views/Components/POT2TopicBadge.swift in Sources */,
 				MPB047 /* InayaStudyApp/Views/Components/AdventureNumpadView.swift in Sources */,
 				MPB048 /* InayaStudyApp/Views/Components/SharedComponents.swift in Sources */,
 				MPB049 /* InayaStudyApp/Views/Components/QuizKeyboardShortcuts.swift in Sources */,
@@ -560,6 +582,8 @@
 				MPB053 /* InayaStudyApp/Views/Visuals/ArrayGridView.swift in Sources */,
 				MPB054 /* InayaStudyApp/Views/Visuals/FractionCircleView.swift in Sources */,
 				MPB055 /* InayaStudyApp/Views/Visuals/BarGraphView.swift in Sources */,
+				MPB214 /* InayaStudyApp/Views/Visuals/LineGraphView.swift in Sources */,
+				MPB215 /* InayaStudyApp/Views/Visuals/VennDiagramView.swift in Sources */,
 				MPB056 /* InayaStudyApp/Views/Visuals/ProblemVisualView.swift in Sources */,
 				MPB057 /* InayaStudyApp/Views/Visuals/MatterStateView.swift in Sources */,
 				MPB058 /* InayaStudyApp/Views/Visuals/FoodChainView.swift in Sources */,

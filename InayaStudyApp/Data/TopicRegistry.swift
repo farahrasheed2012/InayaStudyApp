@@ -3,26 +3,16 @@ import Foundation
 enum TopicRegistry {
     static let all: [Topic] = mathSecondGrade + mathPOTCatchUpTopics + mathThirdGrade + scienceSecondGrade + scienceThirdGrade
 
-    /// Math POT 2 catch-up topics (July 2026) — not on the main adventure map.
-    static let mathPOTCatchUpTopics: [Topic] = [
-        Topic(id: "pot-box-diagrams-2", subject: .math, grade: .second, name: "Box Diagram Word Problems", teks: "2.4D", icon: "rectangle.split.3x1", color: "00B894"),
-        Topic(id: "pot-fact-families-2", subject: .math, grade: .second, name: "Fact Families", teks: "2.4B", icon: "arrow.triangle.2.circlepath", color: "55EFC4"),
-        Topic(id: "pot-rounding-2", subject: .math, grade: .second, name: "Rounding Numbers", teks: "2.2D", icon: "arrow.up.and.down.circle", color: "74B9FF"),
-        Topic(id: "pot-time-word-problems-2", subject: .math, grade: .second, name: "Time Word Problems", teks: "2.9G", icon: "clock.arrow.circlepath", color: "3498DB"),
-        Topic(id: "pot-add-three-numbers-2", subject: .math, grade: .second, name: "Adding Three Numbers", teks: "2.4B", icon: "plus.circle.fill", color: "2ECC71"),
-        Topic(id: "pot-solid-geometry-2", subject: .math, grade: .second, name: "Faces, Edges & Vertices", teks: "2.7A", icon: "cube.transparent", color: "9B59B6"),
-        Topic(id: "pot-coin-word-problems-2", subject: .math, grade: .second, name: "Money Word Problems", teks: "2.5A", icon: "cart.fill", color: "F1C40F"),
-        Topic(id: "pot-fraction-of-set-2", subject: .math, grade: .second, name: "Fraction of a Set", teks: "2.3A", icon: "circle.grid.3x3.fill", color: "E74C3C"),
-        Topic(id: "pot-line-graphs-2", subject: .math, grade: .second, name: "Line Graphs", teks: "2.8A", icon: "chart.xyaxis.line", color: "FDCB6E"),
-        Topic(id: "pot-venn-diagrams-2", subject: .math, grade: .second, name: "Venn Diagrams", teks: "2.8A", icon: "circle.circle", color: "6C5CE7"),
-        Topic(id: "pot-logic-reasoning-2", subject: .math, grade: .second, name: "Logic Puzzles", teks: "2.4D", icon: "brain.head.profile", color: "E67E22"),
-        Topic(id: "pot-multiply-multidigit-2", subject: .math, grade: .second, name: "Multiply by One Digit", teks: "2.6A", icon: "multiply.circle.fill", color: "A29BFE"),
+    /// All 28 Math POT Level 2 topics (T032–T059).
+    static var mathPOT2Topics: [Topic] { MathPOT2Topics.all }
+
+    /// Math POT 2 catch-up path — dedicated POT2 topics plus mixed review.
+    static let mathPOTCatchUpTopics: [Topic] = MathPOT2Topics.all + [
         Topic(id: "pot-mixed-catchup-2", subject: .math, grade: .second, name: "Math POT Mixed Review", teks: "2.all", icon: "star.circle.fill", color: "E17055"),
     ]
 
     static var potCatchUpPracticeTopics: [Topic] {
-        POTCatchUpCatalog.uniqueTopicIds.compactMap { topic(id: $0) }
-            .filter { $0.id != "pot-mixed-catchup-2" }
+        mathPOT2Topics
     }
 
     static let mathSecondGrade: [Topic] = [
@@ -132,8 +122,8 @@ enum TopicRegistry {
 
     static func topics(for grade: GradeLevel, subject: Subject) -> [Topic] {
         switch (subject, grade) {
-        case (.math, .second): return mathSecondGrade
-        case (.math, .third): return mathThirdGrade
+        case (.math, .second): return mathSecondGrade + mathPOT2Topics
+        case (.math, .third): return mathThirdGrade + mathPOT2Topics
         case (.science, .second): return scienceSecondGrade
         case (.science, .third): return scienceThirdGrade
         }

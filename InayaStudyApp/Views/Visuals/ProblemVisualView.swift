@@ -17,6 +17,18 @@ struct ProblemVisualView: View {
             FractionCircleView(numerator: num, denominator: denom)
         case .barGraph(let data):
             BarGraphView(data: data)
+        case .lineGraph(let labels, let values):
+            LineGraphView(labels: labels, values: values)
+        case .vennDiagram2(let onlyA, let onlyB, let both, let labelA, let labelB):
+            VennDiagramView(style: .twoCircle(onlyA: onlyA, onlyB: onlyB, both: both, labelA: labelA, labelB: labelB))
+        case .vennDiagram3(let onlyA, let onlyB, let onlyC, let ab, let ac, let bc, let abc, let labelA, let labelB, let labelC):
+            VennDiagramView(style: .threeCircle(
+                onlyA: onlyA, onlyB: onlyB, onlyC: onlyC,
+                ab: ab, ac: ac, bc: bc, abc: abc,
+                labelA: labelA, labelB: labelB, labelC: labelC
+            ))
+        case .cubeStack(let rows, let cols, let hidden):
+            CubeStackView(rows: rows, cols: cols, hidden: hidden)
         case .rectangle(let width, let height):
             RectangleDiagramView(width: width, height: height)
         case .matterState(let state):

@@ -1,6 +1,6 @@
 import Foundation
 
-/// Math POT 2 topics (T032–T059) mapped to Inaya Study App topics for July catch-up week.
+/// Math POT 2 topics (T032–T059) mapped to dedicated POT2 topic entries for July catch-up week.
 enum POTCatchUpCatalog {
     struct Item: Identifiable {
         let potCode: String
@@ -25,8 +25,7 @@ enum POTCatchUpCatalog {
 
     static var schoolPot2Codes: Set<String> {
         Set(allItems.filter { item in
-            ["T042", "T051", "T052", "T053", "T054"].contains(item.potCode) == false
-                && item.potCode != "MIX"
+            competitionPot2Codes.contains(item.potCode) == false && item.potCode != "MIX"
         }.map(\.potCode))
     }
 
@@ -39,43 +38,36 @@ enum POTCatchUpCatalog {
         Set(allPot2Codes) == coveredPot2Codes
     }
 
-    /// All 28 POT 2 codes → app topic (existing or new `pot-*` topic).
+    /// One POT2 code per dedicated topic (T032–T059).
     static let allItems: [Item] = [
-        // Day 1 — Block 1: clocks, box diagrams, large add/sub, fact families
-        Item(potCode: "T032", topicId: "time-minutes", day: 1),
-        Item(potCode: "T033", topicId: "pot-box-diagrams-2", day: 1),
-        Item(potCode: "T034", topicId: "add-sub-1000", day: 1),
-        Item(potCode: "T035", topicId: "add-sub-1000", day: 1),
-        Item(potCode: "T036", topicId: "pot-fact-families-2", day: 1),
-        // Day 2 — Block 2: place value & rounding
-        Item(potCode: "T037", topicId: "place-value-1200", day: 2),
-        Item(potCode: "T038", topicId: "compare-order", day: 2),
-        Item(potCode: "T039", topicId: "compose-decompose", day: 2),
-        Item(potCode: "T040", topicId: "number-word-form", day: 2),
-        Item(potCode: "T049", topicId: "pot-rounding-2", day: 2),
-        // Day 3 — Block 3: time word problems, 3-number add, 3D solids
-        Item(potCode: "T041", topicId: "pot-time-word-problems-2", day: 3),
-        Item(potCode: "T043", topicId: "pot-add-three-numbers-2", day: 3),
-        Item(potCode: "T044", topicId: "pot-solid-geometry-2", day: 3),
-        Item(potCode: "T042", topicId: "pot-logic-reasoning-2", day: 3),
-        // Day 4 — Block 4a: graphs, money, fractions
-        Item(potCode: "T045", topicId: "graphs-data-2", day: 4),
-        Item(potCode: "T046", topicId: "pot-coin-word-problems-2", day: 4),
-        Item(potCode: "T047", topicId: "pot-fraction-of-set-2", day: 4),
-        // Day 5 — Block 4b: line graphs & Venn
-        Item(potCode: "T048", topicId: "pot-line-graphs-2", day: 5),
-        Item(potCode: "T050", topicId: "pot-venn-diagrams-2", day: 5),
-        Item(potCode: "T058", topicId: "pot-venn-diagrams-2", day: 5),
-        Item(potCode: "T051", topicId: "pot-logic-reasoning-2", day: 5),
-        Item(potCode: "T052", topicId: "pot-venn-diagrams-2", day: 5),
-        Item(potCode: "T053", topicId: "pot-logic-reasoning-2", day: 5),
-        Item(potCode: "T054", topicId: "pot-logic-reasoning-2", day: 5),
-        // Day 6 — Block 5: logic & multiplication
-        Item(potCode: "T055", topicId: "pot-logic-reasoning-2", day: 6),
-        Item(potCode: "T056", topicId: "pot-logic-reasoning-2", day: 6),
-        Item(potCode: "T057", topicId: "arrays-groups-2", day: 6),
-        Item(potCode: "T059", topicId: "pot-multiply-multidigit-2", day: 6),
-        // Day 7 — full mixed review
+        Item(potCode: "T032", topicId: "pot2-t032", day: 1),
+        Item(potCode: "T033", topicId: "pot2-t033", day: 1),
+        Item(potCode: "T034", topicId: "pot2-t034", day: 1),
+        Item(potCode: "T035", topicId: "pot2-t035", day: 1),
+        Item(potCode: "T036", topicId: "pot2-t036", day: 1),
+        Item(potCode: "T037", topicId: "pot2-t037", day: 2),
+        Item(potCode: "T038", topicId: "pot2-t038", day: 2),
+        Item(potCode: "T039", topicId: "pot2-t039", day: 2),
+        Item(potCode: "T040", topicId: "pot2-t040", day: 2),
+        Item(potCode: "T049", topicId: "pot2-t049", day: 2),
+        Item(potCode: "T041", topicId: "pot2-t041", day: 3),
+        Item(potCode: "T043", topicId: "pot2-t043", day: 3),
+        Item(potCode: "T044", topicId: "pot2-t044", day: 3),
+        Item(potCode: "T042", topicId: "pot2-t042", day: 3),
+        Item(potCode: "T045", topicId: "pot2-t045", day: 4),
+        Item(potCode: "T046", topicId: "pot2-t046", day: 4),
+        Item(potCode: "T047", topicId: "pot2-t047", day: 4),
+        Item(potCode: "T048", topicId: "pot2-t048", day: 5),
+        Item(potCode: "T050", topicId: "pot2-t050", day: 5),
+        Item(potCode: "T058", topicId: "pot2-t058", day: 5),
+        Item(potCode: "T051", topicId: "pot2-t051", day: 5),
+        Item(potCode: "T052", topicId: "pot2-t052", day: 5),
+        Item(potCode: "T053", topicId: "pot2-t053", day: 5),
+        Item(potCode: "T054", topicId: "pot2-t054", day: 5),
+        Item(potCode: "T055", topicId: "pot2-t055", day: 6),
+        Item(potCode: "T056", topicId: "pot2-t056", day: 6),
+        Item(potCode: "T057", topicId: "pot2-t057", day: 6),
+        Item(potCode: "T059", topicId: "pot2-t059", day: 6),
         Item(potCode: "MIX", topicId: "pot-mixed-catchup-2", day: 7),
     ]
 
@@ -93,8 +85,11 @@ enum POTCatchUpCatalog {
 
     /// Unique practice topics in the catch-up path (excludes mixed review).
     static var uniqueTopicIds: [String] {
-        var seen = Set<String>()
-        return allItems.map(\.topicId).filter { seen.insert($0).inserted }
+        mathPOT2TopicIds
+    }
+
+    static var mathPOT2TopicIds: [String] {
+        MathPOT2Topics.all.map(\.id)
     }
 
     static func topics(forDay day: Int) -> [Topic] {
@@ -107,11 +102,9 @@ enum POTCatchUpCatalog {
     }
 
     static func potCodes(forTopicId topicId: String) -> [String] {
-        var seen = Set<String>()
-        return allItems
+        allItems
             .filter { $0.topicId == topicId }
             .map(\.potCode)
-            .filter { seen.insert($0).inserted }
     }
 
     private static func dayTitle(_ day: Int) -> String {

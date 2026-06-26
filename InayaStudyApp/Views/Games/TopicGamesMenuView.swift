@@ -11,14 +11,23 @@ struct TopicGamesMenuView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
+                topicHeader
+
                 CharacterView(
                     mood: .excited,
                     size: 88,
-                    speechText: "Games help you learn, \(profileStore.studentName)! No pressure — just fun."
+                    speechText: "Pick a game, \(profileStore.studentName)! No pressure — just fun."
                 )
 
+                Text("Mini-Games")
+                    .font(AppTypography.sectionTitle)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
                 ForEach(games) { game in
-                    NavigationLink(value: game) {
+                    NavigationLink {
+                        TopicGameViews.root(for: game, topic: topic)
+                            .appScreenBackground()
+                    } label: {
                         gameCard(game)
                     }
                     .appTappableStyle()
@@ -32,10 +41,28 @@ struct TopicGamesMenuView: View {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
-        .navigationDestination(for: TopicGameKind.self) { game in
-            TopicGameViews.root(for: game, topic: topic)
-                .appScreenBackground()
+    }
+
+    private var topicHeader: some View {
+        HStack(spacing: 14) {
+            Image(systemName: topic.icon)
+                .font(.title)
+                .foregroundStyle(.white)
+                .frame(width: 52, height: 52)
+                .background(accent)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+            VStack(alignment: .leading, spacing: 4) {
+                Text(topic.name)
+                    .font(AppTypography.sectionTitle)
+                Text("TEKS \(topic.teks)")
+                    .font(AppTypography.caption)
+                    .foregroundStyle(.secondary)
+            }
+            Spacer()
         }
+        .padding(16)
+        .background(AppTheme.card)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 
     private func gameCard(_ game: TopicGameKind) -> some View {

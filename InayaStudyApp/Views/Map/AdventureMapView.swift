@@ -11,6 +11,7 @@ struct AdventureMapView: View {
     @State private var subject: Subject = .math
     @State private var grade: GradeLevel = .second
     @State private var slideDirection: CGFloat = 0
+    @State private var scrollTarget: String?
 
     private var route: AdventureMapRoute {
         AdventureMapLayout.route(subject: subject, grade: grade)
@@ -38,7 +39,7 @@ struct AdventureMapView: View {
         ScrollViewReader { proxy in
             ScrollView {
                 VStack(spacing: 0) {
-                    header
+                    header(scrollToAcademy: { scrollTarget = "math-pot2-academy" })
                     mapContent
                         .padding(.bottom, 40)
                 }
@@ -47,13 +48,20 @@ struct AdventureMapView: View {
             .onAppear { scrollToCurrent(proxy: proxy) }
             .onChange(of: subject) { _ in scrollToCurrent(proxy: proxy) }
             .onChange(of: grade) { _ in scrollToCurrent(proxy: proxy) }
+            .onChange(of: scrollTarget) { target in
+                guard let target else { return }
+                withAnimation(.spring()) {
+                    proxy.scrollTo(target, anchor: .top)
+                }
+                scrollTarget = nil
+            }
         }
         .background(mapBackground.ignoresSafeArea())
         .navigationTitle(profileStore.greeting())
         .navigationBarTitleDisplayMode(.inline)
     }
 
-    private var header: some View {
+    private func header(scrollToAcademy: @escaping () -> Void) -> some View {
         VStack(spacing: 12) {
             HStack(alignment: .center, spacing: 12) {
                 let streak = progressStore.streak()
@@ -103,24 +111,24 @@ struct AdventureMapView: View {
                 }
             }
 
-            if subject == .math && grade == .second {
+            if subject == .math {
                 Button {
-                    onOpenCatchUp?()
+                    scrollToAcademy()
                     Haptics.tap()
                 } label: {
                     HStack(spacing: 10) {
-                        Image(systemName: "calendar.badge.clock")
-                            .font(.title3)
+                        Text("🎓")
+                            .font(.title2)
                         VStack(alignment: .leading, spacing: 2) {
-                            Text("Math POT Catch-Up Week")
+                            Text("Math POT 2 Academy")
                                 .font(AppTypography.label)
-                            Text("7 days · all 28 POT 2 topics (T032–T059)")
+                            Text("Scroll down on the map · 28 topics · 7-day catch-up plan")
                                 .font(AppTypography.caption)
                                 .foregroundStyle(.secondary)
                         }
                         Spacer()
-                        Image(systemName: "chevron.right")
-                            .foregroundStyle(.secondary)
+                        Image(systemName: "chevron.down.circle.fill")
+                            .foregroundStyle(.orange)
                     }
                     .foregroundStyle(.primary)
                     .padding()
@@ -206,6 +214,11 @@ struct AdventureMapView: View {
                     )
                     .id(stop.id)
                 }
+            }
+
+            if subject == .math {
+                MathPOT2AcademySectionView(onOpenCatchUp: onOpenCatchUp)
+                    .id("math-pot2-academy")
             }
 
             startEndNode(title: route.endTitle, emoji: route.endEmoji)

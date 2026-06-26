@@ -8,6 +8,7 @@ struct POTCatchUpMapView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 headerCard
+                allTopicsSection
 
                 ForEach(POTCatchUpCatalog.dayPlans) { plan in
                     daySection(plan)
@@ -52,6 +53,20 @@ struct POTCatchUpMapView: View {
 
     private var masteredTopicCount: Int {
         POTCatchUpCatalog.uniqueTopicIds.filter { progressStore.accuracy(for: $0) >= 0.6 }.count
+    }
+
+    private var allTopicsSection: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("All Math POT 2 Topics")
+                .font(AppTypography.cardTitle)
+            Text("28 topics · grades 2–3 TEKS")
+                .font(AppTypography.caption)
+                .foregroundStyle(.secondary)
+
+            ForEach(TopicRegistry.mathPOT2Topics) { topic in
+                topicRow(topic, potCodes: topic.potCode.map { [$0] } ?? [])
+            }
+        }
     }
 
     private func daySection(_ plan: POTCatchUpCatalog.DayPlan) -> some View {
@@ -102,9 +117,12 @@ struct POTCatchUpMapView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 10))
 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(topic.name)
-                        .font(AppTypography.label)
-                        .foregroundStyle(.primary)
+                    HStack(spacing: 6) {
+                        Text(topic.name)
+                            .font(AppTypography.label)
+                            .foregroundStyle(.primary)
+                        POT2TopicBadge(topic: topic)
+                    }
                     if !potCodes.isEmpty {
                         Text(potCodes.map { $0 == "MIX" ? "All topics" : $0 }.joined(separator: " · "))
                             .font(AppTypography.caption)

@@ -24,6 +24,10 @@ enum ProblemGenerator {
             return generate(topic: randomTopic, difficulty: difficulty)
         }
 
+        if topic.potCode != nil {
+            return POT2ProblemGenerator.generate(topic: topic, difficulty: difficulty)
+        }
+
         switch topic.id {
         case "place-value-1200": return placeValue(topic: topic, difficulty: difficulty)
         case "compose-decompose": return composeDecompose(topic: topic, difficulty: difficulty)
@@ -71,18 +75,6 @@ enum ProblemGenerator {
         case "data-graphs": return dataGraphs(topic: topic, difficulty: difficulty)
         case "money-word-problems": return moneyWordProblems(topic: topic, difficulty: difficulty)
         case "financial-literacy-3": return financialLiteracy3(topic: topic, difficulty: difficulty)
-        case "pot-box-diagrams-2": return potBoxDiagrams2(topic: topic, difficulty: difficulty)
-        case "pot-fact-families-2": return potFactFamilies2(topic: topic, difficulty: difficulty)
-        case "pot-rounding-2": return potRounding2(topic: topic, difficulty: difficulty)
-        case "pot-time-word-problems-2": return potTimeWordProblems2(topic: topic, difficulty: difficulty)
-        case "pot-add-three-numbers-2": return potAddThreeNumbers2(topic: topic, difficulty: difficulty)
-        case "pot-solid-geometry-2": return potSolidGeometry2(topic: topic, difficulty: difficulty)
-        case "pot-coin-word-problems-2": return potCoinWordProblems2(topic: topic, difficulty: difficulty)
-        case "pot-fraction-of-set-2": return potFractionOfSet2(topic: topic, difficulty: difficulty)
-        case "pot-line-graphs-2": return potLineGraphs2(topic: topic, difficulty: difficulty)
-        case "pot-venn-diagrams-2": return potVennDiagrams2(topic: topic, difficulty: difficulty)
-        case "pot-logic-reasoning-2": return potLogicReasoning2(topic: topic, difficulty: difficulty)
-        case "pot-multiply-multidigit-2": return potMultiplyMultidigit2(topic: topic, difficulty: difficulty)
         default:
             return multiplication(topic: topic, difficulty: difficulty)
         }
